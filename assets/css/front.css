@@ -1,0 +1,287 @@
+.cev-authorization-grid__visual{
+	height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5000;
+}
+.cev-authorization-grid__holder {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 0px;
+    flex: 1 1 0;
+    padding: 24px 0;
+    position: relative;
+    z-index: 100;
+	height:100%;
+}
+.cev-authorization-grid__inner {
+    max-width: 480px;
+    width: 100%;
+}
+.cev-authorization {
+    border-radius: 6px;
+    -webkit-box-shadow: 0 4px 20px 4px rgba(0,0,0,.12), 0 12px 18px 2px rgba(0,0,0,.12), 0 6px 8px -4px rgba(0,0,0,.4), 0 0 0 1px rgba(0,0,0,.04);
+    box-shadow: 0 4px 20px 4px rgba(0,0,0,.12), 0 12px 18px 2px rgba(0,0,0,.12), 0 6px 8px -4px rgba(0,0,0,.4), 0 0 0 1px rgba(0,0,0,.04);
+    background-color: #fafafa;
+}
+.cev-authorization__holder {
+    padding: 30px 30px 10px;
+    position: relative;
+    color: rgba(0,0,0,.6);
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+}
+.cev-authorization__holder .cev-authorization__envelope {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    border-radius: 50%;
+    height: 88px;
+    margin-bottom: 10px;
+    margin-left: 19px;
+    width: 88px;
+}
+.cev-authorization__envelope:before {
+	position: absolute;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    top: 50%;
+    display: block;
+    height: 64px;
+    width: 96px;
+    left: -38px;
+    background-image: url(images/email-verification-icon.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    content: '';
+}
+.cev-authorization__heading {
+    position: relative;
+}
+.cev-authorization__title {
+    display: block;
+    color: #333333;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 40px;
+}
+.cev-authorization__description {
+    display: block;
+    margin: 10px 0;
+	text-align: initial;
+}
+.cev-pin-verification__failure {
+    margin-bottom: 16px;
+}
+.cev-alert:not(.cev-alert_without_rounding) {
+    border-radius: 4px;
+	margin-top: 15px;
+}
+.cev-alert_theme_red {
+    background-color: rgba(255,205,210,.4);
+    color: #e53935;
+}
+.cev-alert {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    overflow: hidden;
+    padding: 12px 24px;
+    position: relative;
+    font-size: 14px;
+    line-height: 24px;
+}
+.cev-alert__icon_color_red {
+    color: #f44336;
+}
+.cev-alert__icon {
+    margin-right: 16px;
+}
+.cev-icon {
+    font-size: 24px;
+    line-height: 24px;
+    display: inline-block;
+    vertical-align: top;
+}
+.cev-pin-verification__row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+.cev-field {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: block;
+    padding: 1px;
+    width: 100%;
+    position: relative;
+	direction: ltr;
+}
+
+.cev-pin-verification__events {
+    position: relative;
+    margin-bottom: 20px;
+}
+.cev-button:not(.cev-button-text-normal) {
+    text-transform: none;
+	width: 100%;
+	margin-top: 17px;
+	margin-bottom: 5px;
+}
+.cev-authorization__footer {
+    border-radius: 0 0 6px 6px;
+    padding: 15px 18px;
+    color: rgba(0,0,0,.8);
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+	border-top: solid 1px #eee;
+}
+h5.required-filed-email {
+    font-size: 15px;
+    text-align: initial;
+    font-weight: bold;
+}
+.cev-link {    
+    cursor: pointer;
+    text-decoration: none;
+	margin: 0;
+}
+.cev-button {
+    -webkit-transition: background-color .3s ease-in-out,color .15s ease-in-out,-webkit-box-shadow .3s cubic-bezier(.4,0,.2,1);
+    transition: background-color .3s ease-in-out,color .15s ease-in-out,-webkit-box-shadow .3s cubic-bezier(.4,0,.2,1);
+    transition: box-shadow .3s cubic-bezier(.4,0,.2,1),background-color .3s ease-in-out,color .15s ease-in-out;
+    transition: box-shadow .3s cubic-bezier(.4,0,.2,1),background-color .3s ease-in-out,color .15s ease-in-out,-webkit-box-shadow .3s cubic-bezier(.4,0,.2,1);
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.08);
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.08);
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border: none;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    outline: 0;
+    position: relative;
+    cursor: pointer;
+    letter-spacing: .5px;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: top;
+    white-space: nowrap;
+    padding: 8px 16px;
+	margin: 0;	
+}
+.cev-button_color_success {
+    background-color: #212121;
+    color: #fff;
+	font-size: 15px;
+}
+.cev-field_text_center input, .cev-field_text_center textarea {
+    text-align: center;
+}
+.cev_pin_verification_form input.cev_pin_box {
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    text-align: initial;
+    border-radius: 5px;
+    display: inline-block;
+}
+#cev_verify_email input.cev_pin_box_email {
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    text-align: initial;
+    border-radius: 5px;
+    display: inline-block;
+	margin-bottom: 0;
+}
+.cev_pin_verification_form input.cev_pin_box:last-child {
+  /*margin-right: 0;*/
+}
+.cev_pin_verification_form input.cev_pin_box::-webkit-inner-spin-button, .cev_pin_verification_form input.cev_pin_box::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+a.cev-link-try-again-color,a.cev-link-try-again-color:hover {
+    color: #2196f3;
+}
+.cev_send_email_tag {
+    text-align: left;
+}	
+.cev_pin_verification_form_pro input.cev_pin_box_email::-webkit-inner-spin-button, .cev_pin_verification_form_pro input.cev_pin_box_email::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+
+/* Chrome, Safari, Edge, Opera */
+.js-pincode::-webkit-inner-spin-button {
+  -webkit-appearance: none;  
+}
+
+/* Firefox */
+.js-pincode{
+  -moz-appearance: textfield;
+}
+h5.required-filed {
+    font-size: 15px;
+    text-align: initial;
+	font-weight: normal;
+}
+.popup_image {
+    position: relative;
+    border-radius: 50%;
+    width: 140px;
+    margin: 0 auto 15px;
+}
+a.a_cev_resend_guest_user{
+    vertical-align: unset;
+    width: 100%;
+    display: block;
+    text-align: right;
+}
+.cev-try-again-disable{
+	pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.5;	
+}
+a.cev_already_verify {
+    color: #2196f3;
+    display: block;
+    text-align: left;
+    font-size: .9em;
+}
+.cev_limit_message {
+    color: red;
+    font-size: .9em;
+}
+section.cev-authorization__holder .popup_image img {
+    max-width: 100%;
+}

@@ -1,0 +1,378 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Customer Email verification for WooCommerce\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-04-22 11:41+0000\n"
+"PO-Revision-Date: 2022-10-07 10:35+0000\n"
+"Last-Translator: John Doe\n"
+"Language-Team: Arabic\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100 >= 3 "
+"&& n%100<=10 ? 3 : n%100 >= 11 && n%100<=99 ? 4 : 5;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.2; wp-6.0.2"
+
+#: includes/views/cev_admin_endpoint_popup_template.php:38
+#: includes/views/cev_admin_endpoint_popup_template.php:42
+msgid "4-digits code"
+msgstr "4 أرقام كود"
+
+#: includes/class-wc-customer-email-verification-admin.php:510
+msgid "Actions"
+msgstr "أجراءات"
+
+#: includes/customizer/class-cev-customizer.php:190
+#: includes/customizer/class-cev-new-account-email-customizer.php:166
+#: includes/customizer/verification-widget-message.php:237
+msgid "Available variables"
+msgstr "المتغيرات المتاحة"
+
+#. Name of the plugin
+msgid "Customer Email Verification for WooCommerce"
+msgstr "التحقق من البريد الإلكتروني للعميل لـ WooCommerce"
+
+#: includes/class-wc-customer-email-verification-admin.php:676
+msgid "Customer verification"
+msgstr "التحقق من العميل"
+
+#: includes/customizer/verification-widget-message.php:106
+msgid "Didn't receive an email? {cev_resend_verification}"
+msgstr "ألم تتلق بريدًا إلكترونيًا؟ {cev_resend_verification}"
+
+#. %s: search with Try_again
+#: includes/views/front/preview_cev_popup_page.php:75
+#, php-format
+msgid "Didn’t receive an email? <strong>%s</strong>"
+msgstr "ألم تتلق بريدًا إلكترونيًا؟ <strong>٪ s </strong>"
+
+#: includes/views/front/preview_cev_popup_page.php:73
+msgid "Didn’t receive an email? Try Again"
+msgstr "ألم تتلق بريدًا إلكترونيًا؟ حاول ثانية"
+
+#: includes/customizer/class-cev-customizer.php:145
+msgid "Email Heading"
+msgstr "عنوان البريد الإلكتروني"
+
+#: includes/class-wc-customer-email-verification-admin.php:509
+#| msgid "Email for Verification"
+msgid "Email verification"
+msgstr "تأكيد بواسطة البريد الالكتروني"
+
+#: includes/class-wc-customer-email-verification-email-common.php:180
+#| msgid "Email Verification link"
+msgid "Email Verification Link"
+msgstr "رابط التحقق من البريد الإلكتروني"
+
+#: includes/views/admin_options_settings.php:38
+msgid "Email verification settings"
+msgstr "إعدادات التحقق من البريد الإلكتروني"
+
+#: includes/class-wc-customer-email-verification-admin.php:678
+msgid "Email verification status:"
+msgstr "حالة التحقق من البريد الإلكتروني:"
+
+#: includes/class-wc-customer-email-verification-admin.php:433
+#| msgid "Verification Success Message"
+msgid "Email verification success message"
+msgstr "رسالة نجاح التحقق من البريد الإلكتروني"
+
+#: includes/customizer/verification-widget-message.php:216
+msgid "Footer content"
+msgstr "محتوى التذييل"
+
+#: includes/class-wc-customer-email-verification-admin.php:197
+#: includes/class-wc-customer-email-verification-admin.php:201
+msgid "Go Pro"
+msgstr "Go Pro"
+
+#: includes/customizer/verification-widget-message.php:169
+msgid "Header text"
+msgstr "نص العنوان"
+
+#. Author URI of the plugin
+msgid "https://redvilla.tech/creator/redvilla-plugins/"
+msgstr "https://redvilla.tech/creator/redvilla-plugins/"
+
+#. URI of the plugin
+msgid ""
+"https://redvilla.tech/download/apps/plugins/email-verification-for-woocommerce-registration/"
+msgstr ""
+"https://redvilla.tech/download/apps/plugins/email-verification-for-woocommerce-registration/"
+
+#: includes/views/front/preview_cev_popup_page.php:2
+msgid "johny@example.com"
+msgstr "johny@example.com"
+
+#: includes/class-wc-customer-email-verification-admin.php:758
+#| msgid "Not Verified"
+msgid "Non verified"
+msgstr "لم يتم التحقق منها"
+
+#: includes/customizer/class-cev-new-account-email-customizer.php:123
+#| msgid "Only for a separate verification email"
+msgid "Only for a New Account verification email"
+msgstr "فقط للبريد الإلكتروني للتحقق من الحساب الجديد"
+
+#: includes/customizer/verification-widget-message.php:132
+msgid "Overlay background Color"
+msgstr "تراكب لون الخلفية"
+
+#: includes/class-wc-customer-email-verification-admin.php:401
+msgid "Page to redirect after successful verification"
+msgstr "الصفحة المراد إعادة توجيهها بعد التحقق الناجح"
+
+#. %s: search WooCommerce plugin link
+#: customer-email-verification-for-woocommerce.php:125
+#, php-format
+msgid ""
+"Please install and activate %1$sWooCommerce%2$s for Customer Email "
+"Verification for WooCommerce!"
+msgstr ""
+"الرجاء تثبيت وتنشيط٪ 1 $ sWooCommerce٪ 2 $ s للتحقق من البريد الإلكتروني "
+"للعميل لـ WooCommerce!"
+
+#: includes/customizer/class-cev-customizer.php:92
+msgid "Please Verify Your Email Address"
+msgstr "يرجى التحقق من عنوان البريد الإلكتروني الخاص بك"
+
+#: includes/customizer/class-cev-new-account-email-customizer.php:93
+msgid "Please verify your email address"
+msgstr "يرجى التحقق من عنوان البريد الإلكتروني الخاص بك"
+
+#: includes/customizer/class-cev-customizer.php:93
+msgid "Please Verify Your Email Address on {site_title}"
+msgstr "يرجى التحقق من عنوان بريدك الإلكتروني على {site_title}"
+
+#: includes/class-wc-customer-email-verification-email-common.php:188
+msgid "Resend Confirmation Email"
+msgstr "أعد إرسال رسالة البريد الالكتروني الخاصة بالتأكيد"
+
+#: includes/class-wc-customer-email-verification-email-common.php:257
+msgid "Resend confirmation email"
+msgstr "أعد إرسال رسالة البريد الالكتروني الخاصة بالتأكيد"
+
+#: includes/class-wc-customer-email-verification-admin.php:659
+#: includes/class-wc-customer-email-verification-admin.php:707
+#| msgid "Resend Verification Email"
+msgid "Resend verification email"
+msgstr "إعادة ارسال بريد التحقق"
+
+#: includes/views/admin_options_settings.php:27
+#: includes/views/admin_options_settings.php:44
+msgid "Save & Close"
+msgstr "حفظ وإغلاق"
+
+#: includes/class-wc-customer-email-verification-admin.php:404
+msgid ""
+"select a page to redirect users after successful verification. In case the "
+"email verification was during checkout, the user will be directed to checkout"
+msgstr ""
+"حدد صفحة لإعادة توجيه المستخدمين بعد التحقق الناجح. في حال تم التحقق من "
+"البريد الإلكتروني أثناء الخروج ، سيتم توجيه المستخدم إلى الخروج"
+
+#: includes/class-wc-customer-email-verification-admin.php:814
+#| msgid "Send Verification Email"
+msgid "Send verification email"
+msgstr "ارسل ايميل التفعيل"
+
+#: includes/class-wc-customer-email-verification-admin.php:177
+#: includes/class-wc-customer-email-verification-admin.php:181
+msgid "Settings"
+msgstr "إعدادات"
+
+#: customer-email-verification-for-woocommerce.php:313
+#| msgid "Sign Up Email Verification"
+msgid "Sign up email verification"
+msgstr "تسجيل التحقق من البريد الإلكتروني"
+
+#: includes/views/admin_options_settings.php:21
+msgid "Signup Verification"
+msgstr "التحقق من التسجيل"
+
+#: includes/class-wc-customer-email-verification-email-common.php:196
+msgid "Site Title"
+msgstr "عنوان الموقع"
+
+#: includes/class-wc-customer-email-verification-admin.php:444
+#| msgid "Skip email verification for the selected user roles"
+msgid "Skip email verification for the selected user roles:"
+msgstr "تخطي التحقق من البريد الإلكتروني لأدوار المستخدم المحددة:"
+
+#. Description of the plugin
+msgid ""
+"The Customer verification helps WooCommerce store owners to reduce "
+"registration spam by requiring customers to verify their email address when "
+"they register an account on your store, before they can access their account "
+"area."
+msgstr ""
+"يساعد التحقق من العميل مالكي متاجر WooCommerce على تقليل البريد العشوائي "
+"للتسجيل من خلال مطالبة العملاء بالتحقق من عنوان بريدهم الإلكتروني عند "
+"تسجيلهم حسابًا في متجرك ، قبل أن يتمكنوا من الوصول إلى منطقة حساباتهم."
+
+#: includes/class-wc-customer-email-verification-admin.php:435
+msgid ""
+"the message that will appear on the top of the my-account or checkout page "
+"after successful email verification"
+msgstr ""
+"الرسالة التي ستظهر أعلى صفحة حسابي أو صفحة الخروج بعد التحقق من البريد "
+"الإلكتروني بنجاح"
+
+#: includes/customizer/class-cev-customizer.php:94
+msgid ""
+"To finish signing up, please confirm your email address. This ensures we "
+"have the right email in case we need to contact you.<p>Your verification "
+"code: {cev_user_verification_pin}</p><p>Or, verify your account clicking on "
+"the button below:"
+msgstr ""
+"لإنهاء التسجيل ، يرجى تأكيد عنوان بريدك الإلكتروني. يضمن هذا حصولنا على "
+"البريد الإلكتروني الصحيح في حالة الحاجة إلى الاتصال بك. <p> رمز التحقق الخاص "
+"بك: {cev_user_verification_pin} </p> <p> أو تحقق من حسابك بالنقر فوق الزر "
+"أدناه:"
+
+#: includes/class-wc-customer-email-verification-email-common.php:200
+#: includes/class-wc-customer-email-verification-email-common.php:303
+#: includes/views/front/preview_cev_popup_page.php:3
+msgid "Try Again"
+msgstr "حاول ثانية"
+
+#: includes/class-wc-customer-email-verification-admin.php:711
+msgid "Un-verify email"
+msgstr "إلغاء التحقق من البريد الإلكتروني"
+
+#: includes/class-wc-customer-email-verification-email-common.php:172
+msgid "User display name"
+msgstr "اسم عرض المستخدم"
+
+#: includes/class-wc-customer-email-verification-email-common.php:176
+msgid "User email"
+msgstr "البريد الالكتروني للمستخدم"
+
+#: includes/class-wc-customer-email-verification-email-common.php:168
+msgid "User login"
+msgstr "تسجيل دخول المستخدم"
+
+#: includes/class-wc-customer-email-verification-admin.php:647
+#| msgid "User Unverified."
+msgid "User unverified."
+msgstr "المستخدم لم يتم التحقق منه."
+
+#: includes/class-wc-customer-email-verification-admin.php:761
+msgid "User verification"
+msgstr "التحقق من المستخدم"
+
+#: includes/class-wc-customer-email-verification-admin.php:639
+#| msgid "User Verified Successfully."
+msgid "User verified successfully."
+msgstr "تم التحقق من المستخدم بنجاح."
+
+#: includes/views/cev_admin_endpoint_popup_template.php:48
+#: includes/views/front/preview_cev_popup_page.php:58
+msgid "Verification code does not match"
+msgstr "رمز التحقق لا يتطابق"
+
+#: includes/customizer/class-customer-verification-new-customizer.php:35
+#| msgid "Verification Email"
+msgid "Verification email"
+msgstr "البريد الإلكتروني للتحقق"
+
+#: includes/class-wc-customer-email-verification-admin.php:630
+#| msgid "Verification Email Successfully Sent."
+msgid "Verification email successfully sent."
+msgstr "تم إرسال البريد الإلكتروني للتحقق بنجاح."
+
+#: includes/customizer/class-customer-verification-new-customizer.php:44
+#| msgid "Verification in Account Email"
+msgid "Verification in new account email"
+msgstr "التحقق في البريد الإلكتروني للحساب"
+
+#: includes/class-wc-customer-email-verification-email-common.php:184
+msgid "Verification link"
+msgstr "رابط التحقق"
+
+#: includes/customizer/class-cev-customizer.php:169
+#: includes/customizer/class-cev-new-account-email-customizer.php:145
+msgid "Verification Message"
+msgstr "رسالة التحقق"
+
+#: includes/class-wc-customer-email-verification-email-common.php:192
+msgid "Verification Pin"
+msgstr "دبوس التحقق"
+
+#: includes/customizer/class-customer-verification-new-customizer.php:27
+msgid "Verification widget"
+msgstr "أداة التحقق"
+
+#: includes/class-wc-customer-email-verification-admin.php:757
+msgid "Verified"
+msgstr "تم التحقق"
+
+#: includes/views/front/preview_cev_popup_page.php:65
+msgid "Verify Code"
+msgstr "التحقق من كود"
+
+#: includes/views/cev_admin_endpoint_popup_template.php:56
+msgid "Verify code"
+msgstr "التحقق من كود"
+
+#: includes/class-wc-customer-email-verification-admin.php:703
+msgid "Verify email manually"
+msgstr "تحقق من البريد الإلكتروني يدويًا"
+
+#: includes/customizer/verification-widget-message.php:104
+#: includes/views/front/preview_cev_popup_page.php:31
+msgid "Verify its you."
+msgstr "تحقق من هويتك."
+
+#: includes/class-wc-customer-email-verification-admin.php:813
+msgid "Verify users email"
+msgstr "تحقق من البريد الإلكتروني للمستخدمين"
+
+#: includes/class-wc-customer-email-verification-email-common.php:244
+#: includes/class-wc-customer-email-verification-email-common.php:246
+msgid "Verify your email"
+msgstr "قم بتأكيد بريدك الألكتروني"
+
+#: includes/customizer/verification-widget-message.php:105
+msgid ""
+"We sent verification code to  {customer_email}. To verify your email address,"
+" please check your inbox and enter the code below."
+msgstr ""
+"لقد أرسلنا رمز التحقق إلى {customer_email}. للتحقق من عنوان بريدك الإلكتروني "
+"، يرجى التحقق من صندوق الوارد الخاص بك وإدخال الرمز أدناه."
+
+#. %s: search email
+#. %s: search with $email
+#: includes/views/cev_admin_endpoint_popup_template.php:26
+#: includes/views/front/preview_cev_popup_page.php:43
+#, php-format
+msgid ""
+"We sent verification code to <strong>%s</strong>. To verify your email "
+"address, please check your inbox and enter the code below."
+msgstr ""
+"أرسلنا رمز التحقق إلى <strong>٪ s </strong>. للتحقق من عنوان بريدك "
+"الإلكتروني ، يرجى التحقق من صندوق الوارد الخاص بك وإدخال الرمز أدناه."
+
+#: includes/customizer/verification-widget-message.php:150
+msgid "Widget background Color"
+msgstr "القطعة لون الخلفية"
+
+#: includes/class-wc-customer-email-verification-admin.php:436
+#: includes/class-wc-customer-email-verification-admin.php:438
+#| msgid "Your Email is verified!"
+msgid "Your email is verified!"
+msgstr "تم التحقق من بريدك الإلكتروني!"
+
+#: includes/customizer/class-cev-new-account-email-customizer.php:94
+msgid ""
+"Your Verification Code: {cev_user_verification_pin} \n"
+"Or, verify your account by clicking on the verification link: "
+msgstr ""
+"رمز التحقق الخاص بك: {cev_user_verification_pin}\n"
+"أو قم بتأكيد حسابك بالنقر فوق ارتباط التحقق:"
+
+#. Author of the plugin
+msgid "redvilla"
+msgstr "زورم"

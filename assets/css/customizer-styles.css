@@ -1,0 +1,9 @@
+.customize-control code {
+    padding: 10px;
+    display: block;
+    background: #f9f9f9;
+    color: #505050;
+}
+li#accordion-panel-widgets {
+    display: none !important;
+}

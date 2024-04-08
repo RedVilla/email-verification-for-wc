@@ -1,0 +1,12 @@
+<wpml-config>
+	<admin-texts>			
+		<key name="cev_verification_email_subject"/>
+		<key name="cev_verification_email_heading"/>
+		<key name="cev_verification_email_body"/>
+		<key name="cev_verification_message"/>
+		<key name="cev_verification_success_message"/>
+		<key name="cev_resend_verification_email_message"/>
+		<key name="cev_verified_user_message"/>
+		<key name="cev_re_verification_message"/>		
+	</admin-texts>	
+</wpml-config>

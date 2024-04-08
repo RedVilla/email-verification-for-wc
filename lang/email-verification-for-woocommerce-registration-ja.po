@@ -1,0 +1,350 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Customer Email verification for WooCommerce\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-07 10:34+0000\n"
+"PO-Revision-Date: 2022-12-23 05:06+0000\n"
+"Last-Translator: ニックネーム\n"
+"Language-Team: 日本語\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.3; wp-6.1.1"
+
+#: includes/views/cev_admin_endpoint_popup_template.php:38 
+#: includes/views/cev_admin_endpoint_popup_template.php:42
+msgid "4-digits code"
+msgstr "認証コード"
+
+#: includes/class-wc-customer-email-verification-admin.php:510
+msgid "Actions"
+msgstr "アクション"
+
+#: includes/customizer/class-cev-customizer.php:190 
+#: includes/customizer/class-cev-new-account-email-customizer.php:166 
+#: includes/customizer/verification-widget-message.php:237
+msgid "Available variables"
+msgstr "利用可能数"
+
+#. Name of the plugin
+msgid "Customer Email Verification for WooCommerce"
+msgstr "Customer Email Verification for WooCommerce"
+
+#: includes/class-wc-customer-email-verification-admin.php:676
+msgid "Customer verification"
+msgstr "顧客認証"
+
+#: includes/customizer/verification-widget-message.php:106
+msgid "Didn't receive an email? {cev_resend_verification}"
+msgstr "メールは届きましたか？ {cev_resend_verification}"
+
+#. %s: search with Try_again
+#: includes/views/front/preview_cev_popup_page.php:75
+#, php-format
+msgid "Didn’t receive an email? <strong>%s</strong>"
+msgstr "メールを受け取りましたか？ <strong>%s</strong>"
+
+#: includes/views/front/preview_cev_popup_page.php:73
+msgid "Didn’t receive an email? Try Again"
+msgstr "メールは届きましたか？ 再送する"
+
+#: includes/customizer/class-cev-customizer.php:145
+msgid "Email Heading"
+msgstr "メールのタイトル"
+
+#: includes/class-wc-customer-email-verification-admin.php:509
+msgid "Email verification"
+msgstr "メール認証"
+
+#: includes/class-wc-customer-email-verification-email-common.php:180
+msgid "Email Verification Link"
+msgstr "メール認証リンク"
+
+#: includes/views/admin_options_settings.php:38
+msgid "Email verification settings"
+msgstr "メール認証設定"
+
+#: includes/class-wc-customer-email-verification-admin.php:678
+msgid "Email verification status:"
+msgstr "メール認証ステータス"
+
+#: includes/class-wc-customer-email-verification-admin.php:433
+msgid "Email verification success message"
+msgstr "メール認証が完了したときに表示するメッセージ"
+
+#: includes/customizer/verification-widget-message.php:216
+msgid "Footer content"
+msgstr "フッターコンテンツ"
+
+#: includes/class-wc-customer-email-verification-admin.php:197 
+#: includes/class-wc-customer-email-verification-admin.php:201
+msgid "Go Pro"
+msgstr "Pro版にする"
+
+#: includes/customizer/verification-widget-message.php:169
+msgid "Header text"
+msgstr "ヘッダーテキスト"
+
+#. Author URI of the plugin
+msgid "https://redvilla.tech/creator/redvilla-plugins/"
+msgstr "https://redvilla.tech/creator/redvilla-plugins/"
+
+#. URI of the plugin
+msgid ""
+"https://redvilla.tech/download/apps/plugins/email-verification-for-woocommerce-registration/"
+msgstr ""
+"https://redvilla.tech/download/apps/plugins/email-verification-for-woocommerce-registration/"
+
+#: includes/views/front/preview_cev_popup_page.php:2
+msgid "johny@example.com"
+msgstr "johny@example.com"
+
+#: includes/class-wc-customer-email-verification-admin.php:758
+msgid "Non verified"
+msgstr "認証されませんでした"
+
+#: includes/customizer/class-cev-new-account-email-customizer.php:123
+msgid "Only for a New Account verification email"
+msgstr "新規アカウント認証メールのみ"
+
+#: includes/customizer/verification-widget-message.php:132
+msgid "Overlay background Color"
+msgstr "背景色"
+
+#: includes/class-wc-customer-email-verification-admin.php:401
+msgid "Page to redirect after successful verification"
+msgstr "会員認証完了後に遷移するページを設定"
+
+#. %s: search WooCommerce plugin link
+#: customer-email-verification-for-woocommerce.php:125
+#, php-format
+msgid ""
+"Please install and activate %1$sWooCommerce%2$s for Customer Email "
+"Verification for WooCommerce!"
+msgstr ""
+"プラグインをインストールして有効化してください。 %1$sWooCommerce%2$s for Customer Email Verification "
+"for WooCommerce"
+
+#: includes/customizer/class-cev-customizer.php:92
+msgid "Please Verify Your Email Address"
+msgstr "メールアドレスを認証してください"
+
+#: includes/customizer/class-cev-new-account-email-customizer.php:93
+msgid "Please verify your email address"
+msgstr "メールアドレスを認証してください"
+
+#: includes/customizer/class-cev-customizer.php:93
+msgid "Please Verify Your Email Address on {site_title}"
+msgstr "{site_title}｜メールアドレスを認証してください"
+
+#: includes/class-wc-customer-email-verification-email-common.php:188
+msgid "Resend Confirmation Email"
+msgstr "確認メールを再送する"
+
+#: includes/class-wc-customer-email-verification-email-common.php:257
+msgid "Resend confirmation email"
+msgstr "確認メールを再送する"
+
+#: includes/class-wc-customer-email-verification-admin.php:659 
+#: includes/class-wc-customer-email-verification-admin.php:707
+msgid "Resend verification email"
+msgstr "認証メールを再送する"
+
+#: includes/views/admin_options_settings.php:27 
+#: includes/views/admin_options_settings.php:44
+msgid "Save & Close"
+msgstr "保存して閉じる"
+
+#: includes/class-wc-customer-email-verification-admin.php:404
+msgid ""
+"select a page to redirect users after successful verification. In case the "
+"email verification was during checkout, the user will be directed to checkout"
+msgstr ""
+"ユーザー認証完了後に遷移するページを選択してください。ただし、チェックアウト時にメール認証が行われた場合、ユーザーはチェックアウトに誘導されます。"
+
+#: includes/class-wc-customer-email-verification-admin.php:814
+msgid "Send verification email"
+msgstr "認証メールを送信する"
+
+#: includes/class-wc-customer-email-verification-admin.php:177 
+#: includes/class-wc-customer-email-verification-admin.php:181
+msgid "Settings"
+msgstr "設定"
+
+#: customer-email-verification-for-woocommerce.php:313
+msgid "Sign up email verification"
+msgstr "サインアップする"
+
+#: includes/views/admin_options_settings.php:21
+msgid "Signup Verification"
+msgstr "会員登録認証"
+
+#: includes/class-wc-customer-email-verification-email-common.php:196
+msgid "Site Title"
+msgstr "サイトタイトル"
+
+#: includes/class-wc-customer-email-verification-admin.php:444
+msgid "Skip email verification for the selected user roles:"
+msgstr "メール認証をしないユーザー権限を設定"
+
+#. Description of the plugin
+msgid ""
+"The Customer verification helps WooCommerce store owners to reduce "
+"registration spam by requiring customers to verify their email address when "
+"they register an account on your store, before they can access their account "
+"area."
+msgstr ""
+"この顧客認証システムは、ユーザーがアカウントを登録する際にメールアドレス認証を要求することでスパムからの攻撃を激減させることになり、あなたは安心してWooCommerceサイトを運営することができるようになります。"
+
+#: includes/class-wc-customer-email-verification-admin.php:435
+msgid ""
+"the message that will appear on the top of the my-account or checkout page "
+"after successful email verification"
+msgstr "メール認証成功後、マイアカウントまたはチェックアウトページのトップに表示されるメッセージです"
+
+#: includes/customizer/class-cev-customizer.php:94
+msgid ""
+"To finish signing up, please confirm your email address. This ensures we "
+"have the right email in case we need to contact you.<p>Your verification "
+"code: {cev_user_verification_pin}</p><p>Or, verify your account clicking on "
+"the button below:"
+msgstr ""
+"以下の認証コードを入力してアカウントを有効化してください。メールアドレスが認証されるまでお買い物はできませんのでご注意ください。<p>認証コード：　 "
+"{cev_user_verification_pin}</p>"
+
+#: includes/class-wc-customer-email-verification-email-common.php:200 
+#: includes/class-wc-customer-email-verification-email-common.php:303 
+#: includes/views/front/preview_cev_popup_page.php:3
+msgid "Try Again"
+msgstr "再送する"
+
+#: includes/class-wc-customer-email-verification-admin.php:711
+msgid "Un-verify email"
+msgstr "メール認証を解除"
+
+#: includes/class-wc-customer-email-verification-email-common.php:172
+msgid "User display name"
+msgstr "ユーザー名"
+
+#: includes/class-wc-customer-email-verification-email-common.php:176
+msgid "User email"
+msgstr "ユーザーメール"
+
+#: includes/class-wc-customer-email-verification-email-common.php:168
+msgid "User login"
+msgstr "ユーザーログイン"
+
+#: includes/class-wc-customer-email-verification-admin.php:647
+msgid "User unverified."
+msgstr "認証されませんでした"
+
+#: includes/class-wc-customer-email-verification-admin.php:761
+msgid "User verification"
+msgstr "ユーザー認証"
+
+#: includes/class-wc-customer-email-verification-admin.php:639
+msgid "User verified successfully."
+msgstr "認証されました"
+
+#: includes/views/cev_admin_endpoint_popup_template.php:48 
+#: includes/views/front/preview_cev_popup_page.php:58
+msgid "Verification code does not match"
+msgstr "認証コードが違います"
+
+#: includes/customizer/class-customer-verification-new-customizer.php:35
+msgid "Verification email"
+msgstr "認証メール"
+
+#: includes/class-wc-customer-email-verification-admin.php:630
+msgid "Verification email successfully sent."
+msgstr "認証メールが送信されました"
+
+#: includes/customizer/class-customer-verification-new-customizer.php:44
+msgid "Verification in new account email"
+msgstr "あたらしいアカウントメールで認証"
+
+#: includes/class-wc-customer-email-verification-email-common.php:184
+msgid "Verification link"
+msgstr "認証用リンク"
+
+#: includes/customizer/class-cev-customizer.php:169 
+#: includes/customizer/class-cev-new-account-email-customizer.php:145
+msgid "Verification Message"
+msgstr "認証メッセージ"
+
+#: includes/class-wc-customer-email-verification-email-common.php:192
+msgid "Verification Pin"
+msgstr "認証ピン"
+
+#: includes/customizer/class-customer-verification-new-customizer.php:27
+msgid "Verification widget"
+msgstr "認証ウィジェット"
+
+#: includes/class-wc-customer-email-verification-admin.php:757
+msgid "Verified"
+msgstr "認証済み"
+
+#: includes/views/front/preview_cev_popup_page.php:65
+msgid "Verify Code"
+msgstr "認証コード"
+
+#: includes/views/cev_admin_endpoint_popup_template.php:56
+msgid "Verify code"
+msgstr "送信する"
+
+#: includes/class-wc-customer-email-verification-admin.php:703
+msgid "Verify email manually"
+msgstr "手動でメールを認証"
+
+#: includes/customizer/verification-widget-message.php:104 
+#: includes/views/front/preview_cev_popup_page.php:31
+msgid "Verify its you."
+msgstr "メールをご確認ください"
+
+#: includes/class-wc-customer-email-verification-admin.php:813
+msgid "Verify users email"
+msgstr "ユーザーメールを認証"
+
+#: includes/class-wc-customer-email-verification-email-common.php:244 
+#: includes/class-wc-customer-email-verification-email-common.php:246
+msgid "Verify your email"
+msgstr "メールを認証"
+
+#: includes/customizer/verification-widget-message.php:105
+msgid ""
+"We sent verification code to  {customer_email}. To verify your email address,"
+" please check your inbox and enter the code below."
+msgstr "ご登録のメールアドレスに認証メールをお送りいたしました。メールボックスを確認の上、下記に認証コードを入力してアカウントを有効化してください。"
+
+#. %s: search email
+#. %s: search with $email
+#: includes/views/cev_admin_endpoint_popup_template.php:26 
+#: includes/views/front/preview_cev_popup_page.php:43
+#, php-format
+msgid ""
+"We sent verification code to <strong>%s</strong>. To verify your email "
+"address, please check your inbox and enter the code below."
+msgstr ""
+"認証コードを送信しました <strong>%s</strong>。 メールボックスを確認して認証コードを入力して、メールアドレスを有効化してください。"
+
+#: includes/customizer/verification-widget-message.php:150
+msgid "Widget background Color"
+msgstr "ウィジェット背景色"
+
+#: includes/class-wc-customer-email-verification-admin.php:436 
+#: includes/class-wc-customer-email-verification-admin.php:438
+msgid "Your email is verified!"
+msgstr "メールが認証されました"
+
+#: includes/customizer/class-cev-new-account-email-customizer.php:94
+msgid ""
+"Your Verification Code: {cev_user_verification_pin} \n"
+"Or, verify your account by clicking on the verification link: "
+msgstr "認証コード：{cev_user_verification_pin} "
+
+#. Author of the plugin
+msgid "zorem"
+msgstr "zorem"
