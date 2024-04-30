@@ -307,12 +307,12 @@ class WC_Customer_Email_Verification_Email_Common {
 	}
 }
 /**
- * Returns an instance of zorem_woo_il_post.
+ * Returns an instance of redvilla_woo_il_post.
  *
  * @since 1.0
  * @version 1.0
  *
- * @return zorem_woo_il_post
+ * @return redvilla_woo_il_post
 */
 function WC_customer_email_verification_email_Common() {
 	static $instance;
