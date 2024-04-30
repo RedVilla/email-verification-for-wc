@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Customer Email verification for WooCommerce\n"
+"Project-Id-Version: Email Verification For WC Registration\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-22 11:41+0000\n"
-"PO-Revision-Date: 2022-10-07 10:35+0000\n"
+"PO-Revision-Date: 2024-05-01 10:35+0000\n"
 "Last-Translator: John Doe\n"
 "Language-Team: French (France)\n"
 "Language: fr_FR\n"
@@ -30,7 +30,7 @@ msgid "Available variables"
 msgstr "Variables disponibles"
 
 #. Name of the plugin
-msgid "Customer Email Verification for WooCommerce"
+msgid "Email Verification For WC Registration"
 msgstr "Vérification des e-mails des clients pour WooCommerce"
 
 #: includes/class-wc-customer-email-verification-admin.php:676
@@ -379,5 +379,5 @@ msgstr ""
 "Ou, vérifiez votre compte en cliquant sur le lien de vérification :"
 
 #. Author of the plugin
-msgid "zorem"
-msgstr "zorem"
+msgid "redvilla"
+msgstr "redvilla"
