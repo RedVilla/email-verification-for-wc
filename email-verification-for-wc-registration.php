@@ -3,14 +3,14 @@
 /**
  * @wordpress-plugin
  * Plugin Name: Email Verification for WC Registration
- * Plugin URI: https://redvilla.tech/download/apps/plugins/email-verification-for-woocommerce-registration/ 
+ * Plugin URI: https://redvilla.tech/download/apps/plugins/email-verification-for-wc-registration/ 
  * Description: Reduce registration spam by requiring customers to verify their email addresses before they Create an account.
  * Version: 1.0
  * Author: redvilla
  * Author URI: https://redvilla.tech 
  * License: GPL-2.0+
  * License URI: 
- * Text Domain: email-verification-for-woocommerce-registration
+ * Text Domain: email-verification-for-wc-registration
  * Domain Path: /lang/
  * WC tested up to: 8.5.2
  */
@@ -505,7 +505,7 @@ class Redvilla_Woo_Customer_Email_Verification
 
 		if (!class_exists('customer_email_verification_pro')) {
 			$links = array_merge($links, array(
-				'<a target="_blank" style="color: green; font-weight: bold;" href="' . esc_url('https://github.com/vedantdighe/Email-Verification-for-WooCommerce-Registration') . '">' . __('Contribute to Project', 'woocommerce') . '</a>'
+				'<a target="_blank" style="color: green; font-weight: bold;" href="' . esc_url('https://github.com/redvilla/email-verification-for-wc-registration') . '">' . __('Contribute to Project', 'woocommerce') . '</a>'
 			));
 		}
 
