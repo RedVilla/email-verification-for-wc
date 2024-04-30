@@ -16,7 +16,7 @@
  */
 
 
-class Zorem_Woo_Customer_Email_Verification
+class Redvilla_Woo_Customer_Email_Verification
 {
 	/**
 	 * Customer verification for WooCommerce version.
@@ -514,19 +514,19 @@ class Zorem_Woo_Customer_Email_Verification
 }
 
 /**
- * Returns an instance of zorem_woo_il_post.
+ * Returns an instance of redvilla_woo_il_post.
  *
  * @since 1.0
  * @version 1.0
  *
- * @return zorem_woo_il_post
+ * @return redvilla_woo_il_post
  */
 function woo_customer_email_verification()
 {
 	static $instance;
 
 	if (!isset($instance)) {
-		$instance = new Zorem_Woo_Customer_Email_Verification();
+		$instance = new Redvilla_Woo_Customer_Email_Verification();
 	}
 
 	return $instance;
