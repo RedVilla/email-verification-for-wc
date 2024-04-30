@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Customer Email verification for WooCommerce\n"
+"Project-Id-Version: Email Verification For WC Registration\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-22 11:41+0000\n"
 "PO-Revision-Date: 2021-12-23 05:47+0000\n"
@@ -50,7 +50,7 @@ msgid "Customer email verification"
 msgstr "ग्राहक ईमेल सत्यापन"
 
 #. Name of the plugin
-msgid "Customer Email Verification for WooCommerce"
+msgid "Email Verification For WC Registration"
 msgstr "WooCommerce के लिए ग्राहक ईमेल सत्यापन"
 
 #: includes/class-wc-customer-email-verification-admin.php:884
