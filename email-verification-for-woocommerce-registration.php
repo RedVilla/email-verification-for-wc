@@ -2,7 +2,7 @@
 
 /**
  * @wordpress-plugin
- * Plugin Name: Email Verification for WooCommerce Registration
+ * Plugin Name: Email Verification for WC Registration
  * Plugin URI: https://redvilla.tech/download/apps/plugins/email-verification-for-woocommerce-registration/ 
  * Description: Reduce registration spam by requiring customers to verify their email addresses before they Create an account.
  * Version: 1.0
