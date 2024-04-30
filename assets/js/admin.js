@@ -1,10 +1,10 @@
-/* zorem_snackbar jquery */
+/* redvilla_snackbar jquery */
 (function( $ ){
-	$.fn.zorem_snackbar = function(msg) {
-		var zorem_snackbar = $("<div></div>").addClass('zorem_snackbar show_snackbar').text( msg );
-		$("body").append(zorem_snackbar);
+	$.fn.redvilla_snackbar = function(msg) {
+		var redvilla_snackbar = $("<div></div>").addClass('redvilla_snackbar show_snackbar').text( msg );
+		$("body").append(redvilla_snackbar);
 
-		setTimeout(function(){ zorem_snackbar.remove(); }, 3000);
+		setTimeout(function(){ redvilla_snackbar.remove(); }, 3000);
 
 		return this;
 	};
@@ -54,7 +54,7 @@ jQuery(document).on("change", "#cev_enable_email_verification", function(){
 		type: 'POST',
 		dataType:"json",	
 		success: function() {	
-			jQuery("#cev_settings_form").zorem_snackbar( 'Your Settings have been successfully saved.' );		
+			jQuery("#cev_settings_form").redvilla_snackbar( 'Your Settings have been successfully saved.' );		
 		},
 		error: function(response) {
 			console.log(response);			
@@ -104,7 +104,7 @@ jQuery(document).on("click", ".cev_settings_save", function(){
 		dataType:"json",	
 		success: function() {	
 			form.find(".spinner").removeClass("active");
-			jQuery("#cev_settings_form").zorem_snackbar( 'Your Settings have been successfully saved.' );
+			jQuery("#cev_settings_form").redvilla_snackbar( 'Your Settings have been successfully saved.' );
 			jQuery( '.accordion' ).removeClass( 'active' );
 			jQuery( '.accordion' ).find( '.cev_settings_save' ).hide();
 			jQuery( '.accordion' ).find( 'span.dashicons' ).addClass( 'dashicons-arrow-right-alt2' );
@@ -161,7 +161,7 @@ jQuery(document).on("click", ".cev-dropdown-content li a", function(){
 	jQuery('.inner_tab_section').hide();
 	jQuery('.cev_nav_div').find("[data-tab='" + tab + "']").prop('checked', true); 
 	jQuery('#'+section).show();
-	jQuery('.zorem-layout-cev__header-breadcrumbs .header-breadcrumbs-last-cev').text(label);
+	jQuery('.redvilla-layout-cev__header-breadcrumbs .header-breadcrumbs-last-cev').text(label);
 	var url = window.location.protocol + "//" + window.location.host + window.location.pathname+"?page=customer-email-verification-for-woocommerce&tab="+tab;
 	window.history.pushState({path:url},'',url);
 	jQuery(".cev-dropdown-content").hide();
@@ -189,7 +189,7 @@ jQuery(document).on("click", ".cev-dropdown-content li a", function(){
 					jQuery('.cev_verification_widget_preview').prop("disabled", false);
 
 				$cev_verification_widget_settings_form.find(".spinner").removeClass("active");
-				jQuery("#cev_verification_widget_settings_form").zorem_snackbar( 'Your Settings have been successfully saved.' );		
+				jQuery("#cev_verification_widget_settings_form").redvilla_snackbar( 'Your Settings have been successfully saved.' );		
 			});
 			
 		}
