@@ -207,7 +207,7 @@ class Wc_Cev_Customizer {
 	
 }
 /**
- * Returns an instance of zorem_woocommerce_cev.
+ * Returns an instance of redvilla_woocommerce_cev.
  *
  * @since 1.6.5
  * @version 1.6.5
