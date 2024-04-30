@@ -27,7 +27,7 @@ This Customer verification will reduce WooCommerce registration spam in your sto
  
 == Installation ==
 
-1. Upload the folder `customer-email-verification-for-woocommerce` to the `/wp-content/plugins/` folder
+1. Upload the folder `email-verification-for-wc-registration` to the `/wp-content/plugins/` folder
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
 == Changelog ==
