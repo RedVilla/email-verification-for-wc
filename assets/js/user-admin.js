@@ -1,10 +1,10 @@
-/* zorem_snackbar jquery */
+/* redvilla_snackbar jquery */
 (function( $ ){
-$.fn.zorem_snackbar_user_admin = function(msg) {
-var zorem_snackbar_user_admin = $("<div></div>").addClass('zorem_snackbar_user_admin show_snackbar_user_admin').text( msg );
-$("body").append(zorem_snackbar_user_admin);
+$.fn.redvilla_snackbar_user_admin = function(msg) {
+var redvilla_snackbar_user_admin = $("<div></div>").addClass('redvilla_snackbar_user_admin show_snackbar_user_admin').text( msg );
+$("body").append(redvilla_snackbar_user_admin);
 
-setTimeout(function(){ zorem_snackbar_user_admin.remove(); }, 3000);
+setTimeout(function(){ redvilla_snackbar_user_admin.remove(); }, 3000);
 
 return this;
 };
@@ -109,7 +109,7 @@ jQuery(document).on('click', '.cev_dashicons_icon_resend_email', function(e) {
 		data : ajax_data,
 		success : function( response ) {
 		resend_btn.parent("td").unblock();
-		jQuery(this).zorem_snackbar_user_admin( 'Resend Email Successfully Send.' );
+		jQuery(this).redvilla_snackbar_user_admin( 'Resend Email Successfully Send.' );
 		}
 	}); 	
 });	
