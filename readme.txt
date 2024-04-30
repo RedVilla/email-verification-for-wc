@@ -1,4 +1,4 @@
-=== Email Verification For Woocommerce Registration   ===
+=== Email Verification For WC Registration   ===
 Contributors: redvilla plugins
 Tags: woocommerce, email address verification, email validation, woocommerce registration, customer account, customer verification, registration verification, woocommerce signup spam
 Requires at least: 5.3
