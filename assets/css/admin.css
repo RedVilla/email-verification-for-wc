@@ -24,20 +24,20 @@
     max-width: 930px;
 }
 
-.customer-email-verification-for-woocommerce .zorem-layout-cev__header .zorem-layout-cev__header-breadcrumbs a {
+.customer-email-verification-for-woocommerce .redvilla-layout-cev__header .redvilla-layout-cev__header-breadcrumbs a {
     box-shadow: none;
     color: #2196f3;
 }
-.customer-email-verification-for-woocommerce.rtl .zorem-layout-cev__header .zorem-layout-cev__header-breadcrumbs {
+.customer-email-verification-for-woocommerce.rtl .redvilla-layout-cev__header .redvilla-layout-cev__header-breadcrumbs {
     padding: 0 30px 0 0;
 }
 
-.customer-email-verification-for-woocommerce .zorem-layout__logo-panel .header-plugin-logo {
+.customer-email-verification-for-woocommerce .redvilla-layout__logo-panel .header-plugin-logo {
     width: 350px;
     display: flex;
     justify-content: flex-end;
 }
-.customer-email-verification-for-woocommerce .zorem-layout__logo-panel {
+.customer-email-verification-for-woocommerce .redvilla-layout__logo-panel {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -449,7 +449,7 @@ fieldset.customer_level {
     background: #ffffff;
 }
 @media screen and (max-width: 500px) {
-  .customer-email-verification-for-woocommerce .zorem-layout__logo-panel .header-plugin-logo{
+  .customer-email-verification-for-woocommerce .redvilla-layout__logo-panel .header-plugin-logo{
     width: 250px;
 }
 }
@@ -665,7 +665,7 @@ iframe#cev_preview_iframe {
 }
 
 /* The snackbar - position it at the bottom and in the middle of the screen */
-.zorem_snackbar {
+.redvilla_snackbar {
    visibility: hidden; /* Hidden by default. Visible on click */
    min-width: 250px; /* Set a default minimum width */
    margin-left: -125px; /* Divide value of min-width by 2 */
@@ -727,11 +727,11 @@ span.nav_document{
 	vertical-align: middle;
 }
 /** New Addons Page Design **/
-img.zorem_logo {
+img.redvilla_logo {
     width: 150px;
 	margin-top: 20px;
 }
-p.zorem_description {
+p.redvilla_description {
     color: #3c4858;
     font-size: 16px;
 }
@@ -818,11 +818,11 @@ p.zorem_description {
     margin: 0;
     font-size: 20px;        
 }
-.zorem_plugin_container {
+.redvilla_plugin_container {
     display: flex;
     flex-wrap: wrap;
 }
-.zorem_single_plugin {
+.redvilla_single_plugin {
      max-width: 33.33%;
     -ms-flex-preferred-size: 33.33%;
     flex-basis: 33.33%;
@@ -830,16 +830,16 @@ p.zorem_description {
     padding: 20px 20px 0 0;
     box-sizing: border-box;
 }
-.zorem_single_plugin:nth-child(3n) {
+.redvilla_single_plugin:nth-child(3n) {
     padding-right: 0;
 }
-.zorem_single_plugin .free_plugin_inner{
+.redvilla_single_plugin .free_plugin_inner{
     border: 1px solid #e0e0e0;
     border-radius: 3px;
     background: #fff;
     padding: 0 15px 15px;
 }
-.zorem_single_plugin .plugin_image {
+.redvilla_single_plugin .plugin_image {
     text-align: center;
     margin: 0 -15px;
     border-bottom: 1px solid #e0e0e0;
@@ -849,15 +849,15 @@ p.zorem_description {
     justify-content: left;
     align-items: center;
 }
-.zorem_single_plugin .plugin_image img{
+.redvilla_single_plugin .plugin_image img{
     height: 45px;
 }
-.zorem_single_plugin .plugin_title {
+.redvilla_single_plugin .plugin_title {
     font-size: 16px;
     font-weight: normal;
     margin-left: 20px;
 }
-.zorem_single_plugin .plugin_description p {
+.redvilla_single_plugin .plugin_description p {
     display: -webkit-inline-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
@@ -872,16 +872,16 @@ p.zorem_description {
     width: 100%;
     max-width: 30px;
 }
-.zorem_admin_layout h3.border0_heading{
+.redvilla_admin_layout h3.border0_heading{
 	color: #005b9a;
 	margin: 10px 0 -10px;
     font-size: 20px;
 }
-.zorem_admin_layout .csv_heading_section{
+.redvilla_admin_layout .csv_heading_section{
 	text-align:left;
 	margin-bottom: 25px;
 }
-.zorem_admin_layout .csv_heading_section .border0_heading{
+.redvilla_admin_layout .csv_heading_section .border0_heading{
 	 margin: 10px 0 0;
 }
 .border-bottom-1{
@@ -977,11 +977,11 @@ a.button-primary.cev-btn-large {
     float: right;
 }
 /* fallback */
-.zorem-layout-cev__header {
+.redvilla-layout-cev__header {
     margin: 0;
     padding: 0;
 }
-.zorem-layout-cev__header {
+.redvilla-layout-cev__header {
     background: #fff;
     display: flex;
     justify-content: space-between;
@@ -994,27 +994,27 @@ a.button-primary.cev-btn-large {
 	align-items: center;
 	position: relative;
 }
-.zorem-layout-cev__header .page_heading {
+.redvilla-layout-cev__header .page_heading {
     font-size: 14px;
     color: #3c4758;
     padding: 0 20px;
     margin: auto 0;
     font-weight: 400;
 }
-.zorem-layout-cev__header .page_heading a {
+.redvilla-layout-cev__header .page_heading a {
     text-decoration: none;
 }
-.zorem-layout-cev__header .page_heading .dashicons {
+.redvilla-layout-cev__header .page_heading .dashicons {
     font-size: 14px;
     vertical-align: middle;
     line-height: 20px;
 }
-.zorem-layout-cev__header .zorem-layout-cev__header-logo {
+.redvilla-layout-cev__header .redvilla-layout-cev__header-logo {
     width: 100px;
     padding: 0 20px;
     margin: 0;
 }
-h1.zorem-layout-cev__header-breadcrumbs {
+h1.redvilla-layout-cev__header-breadcrumbs {
     font-size: 14px;
     font-weight: 600;
     padding: 0 0 0 30px;
@@ -1023,16 +1023,16 @@ h1.zorem-layout-cev__header-breadcrumbs {
     line-height: 60px;
     height: 60px;   
 }
-.zorem-layout-cev__header .zorem-layout__header-breadcrumbs a{
+.redvilla-layout-cev__header .redvilla-layout__header-breadcrumbs a{
 	color: #005b9a;
 	text-decoration: none;
 }
-.zorem-layout-cev__header .zorem-layout__header-breadcrumbs span+span:before {
+.redvilla-layout-cev__header .redvilla-layout__header-breadcrumbs span+span:before {
     content: " > ";
     color: #555d66;
     margin: 0 2px;
 }
-.zorem-layout-cev__header * {
+.redvilla-layout-cev__header * {
     box-sizing: border-box;
 }
 .woocommerce-layout__activity-panel-tabs {
