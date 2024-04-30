@@ -98,9 +98,9 @@ msgstr "https://redvilla.tech/creator/redvilla-plugins/"
 
 #. URI of the plugin
 msgid ""
-"https://redvilla.tech/download/apps/plugins/email-verification-for-woocommerce-registration/"
+"https://redvilla.tech/download/apps/plugins/email-verification-for-wc-registration/"
 msgstr ""
-"https://redvilla.tech/download/apps/plugins/email-verification-for-woocommerce-registration/"
+"https://redvilla.tech/download/apps/plugins/email-verification-for-wc-registration/"
 
 #: includes/views/front/preview_cev_popup_page.php:2
 msgid "johny@example.com"
