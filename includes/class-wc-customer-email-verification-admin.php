@@ -139,7 +139,7 @@ class WC_Customer_Email_Verification_Admin
 	{
 		wp_enqueue_script('customer_email_verification_table_rows');
 ?>
-		<div class="zorem-layout-cev__header">
+		<div class="redvilla-layout-cev__header">
 			<h1 class="page_heading">
 				<a href="javascript:void(0)"><?php esc_html_e('Customer Email Verification', 'customer-email-verification'); ?></a> <span class="dashicons dashicons-arrow-right-alt2"></span> <span class="breadcums_page_heading"><?php esc_html_e('Settings', 'customer-email-verification'); ?></span>
 			</h1>
