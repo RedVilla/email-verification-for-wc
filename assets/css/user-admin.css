@@ -129,7 +129,7 @@ span.dashicons.dashicons-image-rotate {
 }
 
 /* The snackbar - position it at the bottom and in the middle of the screen */
-.zorem_snackbar_user_admin {
+.redvilla_snackbar_user_admin {
    visibility: hidden; /* Hidden by default. Visible on click */
    min-width: 250px; /* Set a default minimum width */
    margin-left: -125px; /* Divide value of min-width by 2 */
