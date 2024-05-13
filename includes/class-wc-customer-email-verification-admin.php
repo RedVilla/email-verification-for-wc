@@ -166,7 +166,7 @@ class WC_Customer_Email_Verification_Admin
 		foreach ((array) $arrays as $id => $array) {
 			if (isset($array['type']) && 'link' == $array['type']) {
 		?>
-				<a class="menu_cev_link" href="<?php esc_html_e(esc_url($array['link'])); ?>"><?php esc_html_e($array['title']); ?></a>
+				<a class="menu_cev_link" href="<?php echo esc_url($array['link']); ?>"><?php esc_html_e($array['title']); ?></a>
 			<?php
 			} else {
 			?>
@@ -294,7 +294,9 @@ class WC_Customer_Email_Verification_Admin
 								<input type="checkbox" id="<?php esc_html_e($id); ?>" name="<?php esc_html_e($id); ?>" class="" <?php esc_html_e($checked); ?> value="1" />
 								<span class="label">
 									<?php
-									esc_html_e($array['title']);
+									$sanitized_url = esc_url($array['link']);
+									_e(sprintf(__('Click here to verify your email: %s', 'customer-email-verification-for-woocommerce'), $sanitized_url));
+
 									if (!empty($array['select'])) {
 									?>
 										<select name="<?php esc_html_e($array['select']['id']); ?>" style="width: auto;">
