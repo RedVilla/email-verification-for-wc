@@ -1,5 +1,8 @@
 <?php
-
+if ( ! defined( 'ABSPATH' ) ) exit;
+?>
+	
+<?php
 /**
  * Html code for settings tab
  */
