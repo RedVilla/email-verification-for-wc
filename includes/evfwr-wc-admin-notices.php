@@ -3,7 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class WooCommerce_CEV_Admin_Notices_Under_WooCommerce_Admin {
+class WooCommerce_EVFWR_Admin_Notices_Under_WooCommerce_Admin {
 
 	/**
 	 * Instance of this class.
@@ -22,7 +22,7 @@ class WooCommerce_CEV_Admin_Notices_Under_WooCommerce_Admin {
 	/**
 	 * Get the class instance
 	 *
-	 * @return WC_CEV_Admin_Notices_Under_WC_Admin
+	 * @return WC_EVFWR_Admin_Notices_Under_WC_Admin
 	*/
 	public static function get_instance() {
 
@@ -38,31 +38,31 @@ class WooCommerce_CEV_Admin_Notices_Under_WooCommerce_Admin {
 	*/
 	public function init() {
 		
-		add_action( 'admin_init', array( $this, 'cev_settings_admin_notice_ignore' ) );
+		add_action( 'admin_init', array( $this, 'evfwr_settings_admin_notice_ignore' ) );
 	}
 
 	
-	public function cev_settings_admin_notice_ignore() {
-		if ( isset( $_GET['cev-pro-settings-ignore-notice'] ) ) {
-			set_transient( 'cev_settings_admin_notice_ignore', 'yes', 2592000 );
+	public function evfwr_settings_admin_notice_ignore() {
+		if ( isset( $_GET['evfwr-pro-settings-ignore-notice'] ) ) {
+			set_transient( 'evfwr_settings_admin_notice_ignore', 'yes', 2592000 );
 		}
 	}
 			
 }
 
 /**
- * Returns an instance of WC_CEV_Admin_Notices_Under_WC_Admin.
+ * Returns an instance of WC_EVWFR_Admin_Notices_Under_WC_Admin.
  *
  * @since 1.6.5
  * @version 1.6.5
  *
- * @return WC_CEV_Admin_Notices_Under_WC_Admin
+ * @return WC_EVWFR_Admin_Notices_Under_WC_Admin
 */
-function WooCommerce_CEV_Admin_Notices_Under_WooCommerce_Admin() {
+function WooCommerce_EVWFR_Admin_Notices_Under_WooCommerce_Admin() {
 	static $instance;
 
 	if ( ! isset( $instance ) ) {		
-		$instance = new WC_CEV_Admin_Notices_Under_WC_Admin();
+		$instance = new WC_EVWFR_Admin_Notices_Under_WC_Admin();
 	}
 
 	return $instance;
@@ -73,4 +73,4 @@ function WooCommerce_CEV_Admin_Notices_Under_WooCommerce_Admin() {
  *
  * Backward compatibility.
 */
-WC_CEV_Admin_Notices_Under_WC_Admin();
+WC_EVWFR_Admin_Notices_Under_WC_Admin();
