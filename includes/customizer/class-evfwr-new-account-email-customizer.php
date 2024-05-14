@@ -7,6 +7,9 @@
 /**
  * Adds the individual sections, settings, and controls to the theme customizer
  */
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 class evfwr_New_Account_Email_Customizer {
 	// Get our default values	
 	private static $order_ids  = null;
