@@ -407,7 +407,7 @@ class WC_Customer_Email_Verification_Email {
 		if ( $cev_email_link_expired ) {
 			$verification_message_expire = get_option( 'cev_verification_success_message', 'failed' );
 			wc_add_notice( $verification_message_expire, 'notice' );
-			echo json_encode( array('success' => 'false') );
+			echo wp_json_encode( array('success' => 'false') );
 			die();	
 		}
 					
@@ -428,10 +428,10 @@ class WC_Customer_Email_Verification_Email {
 			
 			do_action('cev_new_email_enable');
 				
-			echo json_encode( array('success' => 'true','url' => get_permalink($redirect_page_id)) );
+			echo wp_json_encode( array('success' => 'true','url' => get_permalink($redirect_page_id)) );
 			die();
 		} else {
-			echo json_encode( array('success' => 'false') );
+			echo wp_json_encode( array('success' => 'false') );
 			die();
 		}
 		exit;
