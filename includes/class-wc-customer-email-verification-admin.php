@@ -166,7 +166,7 @@ class WooCommerce_Customer_Email_Verification_Admin
 		foreach ((array) $arrays as $id => $array) {
 			if (isset($array['type']) && 'link' == $array['type']) {
 		?>
-				<a class="menu_evfwr_link" href="<?php echo esc_url($array['link']); ?>"><?php esc_html_e($array['title']); ?></a>
+				<a class="menu_evfwr_link" href="<?php echo esc_url($array['link']); ?>"><?php esc_url($array['title']); ?></a>
 			<?php
 			} else {
 			?>
