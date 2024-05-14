@@ -13,7 +13,7 @@ class WOOCOM_Customer_Email_Verification_Admin
 	 */
 	public function __construct()
 	{
-		$this->my_account_id = get_option('woocommerce_myaccount_page_id');
+		$this->my_account_id = get_option('woocommercemerce_myaccount_page_id');
 	}
 
 	/**
