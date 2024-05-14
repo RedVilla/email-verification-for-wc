@@ -1,3 +1,7 @@
+<?php 
+if ( ! defined( 'ABSPATH' ) ) exit;
+?>
+
 <div class="evfwr-authorization-grid__visual">
 	<div class="evfwr-authorization-grid__holder ">
 		<div class="evfwr-authorization-grid__inner">
