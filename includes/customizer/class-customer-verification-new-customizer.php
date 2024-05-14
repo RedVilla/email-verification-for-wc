@@ -2,7 +2,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-class Wc_Cev_Customizer {	
+class WOOCOM_Cev_Customizer {	
 	/**
 	 * Instance of this class.
 	 *
@@ -214,7 +214,7 @@ class Wc_Cev_Customizer {
  *
  * @return customer-email-verification-for-woocommerce
 */
-function wc_cev_customizer() {
+function WOOCOM_cev_customizer() {
 	static $instance;
 
 	if ( ! isset( $instance ) ) {		
