@@ -3,7 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class WC_CEV_Admin_Notices_Under_WC_Admin {
+class WooCommerce_CEV_Admin_Notices_Under_WC_Admin {
 
 	/**
 	 * Instance of this class.
