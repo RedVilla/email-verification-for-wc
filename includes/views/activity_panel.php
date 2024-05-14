@@ -1,4 +1,6 @@
+<?php 
 if ( ! defined( 'ABSPATH' ) ) exit;
+?>
 
 <div class="woocommerce-layout__activity-panel">
 	<div class="woocommerce-layout__activity-panel-tabs">
