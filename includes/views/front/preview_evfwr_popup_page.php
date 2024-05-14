@@ -1,3 +1,6 @@
+<?php 
+if ( ! defined( 'ABSPATH' ) ) exit;
+?>
 <?php
 $email = __( 'johny@example.com', 'customer-email-verification-for-woocommerce' );
 $Try_again = __( 'Try Again', 'customer-email-verification-for-woocommerce' );
