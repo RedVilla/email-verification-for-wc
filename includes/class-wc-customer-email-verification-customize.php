@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Cev_admin class.
  */
-class WOOCOM_Customer_Email_Verification_Customize {
+class WooCommerce_Customer_Email_Verification_Customize {
 
 	/**
 	 * Get the class instance
