@@ -7,16 +7,16 @@
 /**
  * Adds the individual sections, settings, and controls to the theme customizer
  */
-class Cev_New_Account_Email_Customizer {
+class evfwr_New_Account_Email_Customizer {
 	// Get our default values	
 	private static $order_ids  = null;
 	public $defaults;
 	public function __construct() {
 		// Get our Customizer defaults
-		$this->defaults = $this->cev_generate_defaults();		
+		$this->defaults = $this->evfwr_generate_defaults();		
 		
 		// Register our sample default controls
-		add_action( 'customize_register', array( $this, 'cev_my_account_customizer_options' ) );
+		add_action( 'customize_register', array( $this, 'evfwr_my_account_customizer_options' ) );
 		
 		// Only proceed if this is own request.				
 		if ( ! self::is_own_customizer_request() && ! self::is_own_preview_request()) {
@@ -24,22 +24,22 @@ class Cev_New_Account_Email_Customizer {
 		}		
 		
 		// Register our sections
-		add_action( 'customize_register', array( wc_cev_customizer(), 'cev_add_customizer_sections' ) );	
+		add_action( 'customize_register', array( wc_evfwr_customizer(), 'evfwr_add_customizer_sections' ) );	
 		
 		// Remove unrelated components.
-		add_filter( 'customize_loaded_components', array( wc_cev_customizer(), 'remove_unrelated_components' ), 99, 2 );
+		add_filter( 'customize_loaded_components', array( wc_evfwr_customizer(), 'remove_unrelated_components' ), 99, 2 );
 		
 		// Remove unrelated sections.
-		add_filter( 'customize_section_active', array( wc_cev_customizer(), 'remove_unrelated_sections' ), 10, 2 );	
+		add_filter( 'customize_section_active', array( wc_evfwr_customizer(), 'remove_unrelated_sections' ), 10, 2 );	
 		
 		// Unhook divi front end.
-		add_action( 'woomail_footer', array( wc_cev_customizer(), 'unhook_divi' ), 10 );
+		add_action( 'woomail_footer', array( wc_evfwr_customizer(), 'unhook_divi' ), 10 );
 		
 		// Unhook Flatsome js
-		add_action( 'customize_preview_init', array( wc_cev_customizer(), 'unhook_flatsome' ), 50  );	
+		add_action( 'customize_preview_init', array( wc_evfwr_customizer(), 'unhook_flatsome' ), 50  );	
 		
 
-		add_filter( 'customize_controls_enqueue_scripts', array( wc_cev_customizer(), 'enqueue_customizer_scripts' ) );	
+		add_filter( 'customize_controls_enqueue_scripts', array( wc_evfwr_customizer(), 'enqueue_customizer_scripts' ) );	
 		
 		add_action( 'parse_request', array( $this, 'set_up_preview' ) );	
 
@@ -50,7 +50,7 @@ class Cev_New_Account_Email_Customizer {
 	 * Add css and js for preview
 	*/	
 	public function enqueue_preview_scripts() {		 
-		 wp_enqueue_style('cev-pro-preview-styles', woo_customer_email_verification()->plugin_dir_url() . 'assets/css/preview-styles.css', array(), woo_customer_email_verification()->version  );		 
+		 wp_enqueue_style('evfwr-pro-preview-styles', woo_customer_email_verification()->plugin_dir_url() . 'assets/css/preview-styles.css', array(), woo_customer_email_verification()->version  );		 
 	}	
 	
 	/**
@@ -59,7 +59,7 @@ class Cev_New_Account_Email_Customizer {
 	 * @return bool
 	 */
 	public static function is_own_preview_request() {
-		return isset( $_REQUEST['cev-new-account-email-preview'] ) && '1' === $_REQUEST['cev-new-account-email-preview'];
+		return isset( $_REQUEST['evfwr-new-account-email-preview'] ) && '1' === $_REQUEST['evfwr-new-account-email-preview'];
 	}
 	
 	/**
@@ -68,7 +68,7 @@ class Cev_New_Account_Email_Customizer {
 	 * @return bool
 	 */
 	public static function is_own_customizer_request() {
-		return isset( $_REQUEST['section'] ) && 'cev_main_controls_section' === $_REQUEST['section'];
+		return isset( $_REQUEST['section'] ) && 'evfwr_main_controls_section' === $_REQUEST['section'];
 	}
 	
 	/**
@@ -78,9 +78,9 @@ class Cev_New_Account_Email_Customizer {
 	public static function get_customizer_url( $section ) {
 		
 		$customizer_url = add_query_arg( array(
-			'cev-customizer' => '1',
+			'evfwr-customizer' => '1',
 			'section' => $section,
-			'url'     => urlencode( add_query_arg( array( 'cev-new-account-email-preview' => '1' ), home_url( '/' ) ) ),
+			'url'     => urlencode( add_query_arg( array( 'evfwr-new-account-email-preview' => '1' ), home_url( '/' ) ) ),
 		), admin_url( 'customize.php' ) );		
 		return $customizer_url;
 	}
@@ -88,10 +88,10 @@ class Cev_New_Account_Email_Customizer {
 	/**
 	 * Code for initialize default value for customizer
 	*/	
-	public function cev_generate_defaults() {
+	public function evfwr_generate_defaults() {
 		$customizer_defaults = array(
-			'cev_new_acoount_email_heading' => __( 'Please verify your email address', 'customer-email-verification-for-woocommerce' ),
-			'cev_new_verification_email_body' => __( 'Your Verification Code: {cev_user_verification_pin} 
+			'evfwr_new_acoount_email_heading' => __( 'Please verify your email address', 'customer-email-verification-for-woocommerce' ),
+			'evfwr_new_verification_email_body' => __( 'Your Verification Code: {evfwr_user_verification_pin} 
 Or, verify your account by clicking on the verification link: ', 'customer-email-verification-for-woocommerce' ),
 		);
 		return $customizer_defaults;
@@ -100,7 +100,7 @@ Or, verify your account by clicking on the verification link: ', 'customer-email
 	/**
 	 * Register our sample default controls
 	 */
-	public function cev_my_account_customizer_options( $wp_customize ) {	
+	public function evfwr_my_account_customizer_options( $wp_customize ) {	
 	
 		/**
 		* Load all our Customizer Custom Controls
@@ -109,63 +109,63 @@ Or, verify your account by clicking on the verification link: ', 'customer-email
 													
 		
 		// Email heading	
-		$wp_customize->add_setting( 'cev_new_acoount_email_heading',
+		$wp_customize->add_setting( 'evfwr_new_acoount_email_heading',
 			array(
-				'default' => $this->defaults['cev_new_acoount_email_heading'],
+				'default' => $this->defaults['evfwr_new_acoount_email_heading'],
 				'transport' => 'refresh',
 				'type' => 'option',
 				'sanitize_callback' => ''
 			)
 		);
-		$wp_customize->add_control( 'cev_new_acoount_email_heading',
+		$wp_customize->add_control( 'evfwr_new_acoount_email_heading',
 			array(
 				'label' => __( 'Verification Heading', 'woocommerce' ),
 				'description' => esc_html__( 'Only for a New Account verification email', 'customer-email-verification-for-woocommerce' ),
-				'section' => 'cev_new_account_email_section',
+				'section' => 'evfwr_new_account_email_section',
 				'type' => 'text',
 				'input_attrs' => array(
 					'class' => '',
 					'style' => '',
-					'placeholder' => __( $this->defaults['cev_new_acoount_email_heading'], 'customer-email-verification-for-woocommerce' ),
+					'placeholder' => __( $this->defaults['evfwr_new_acoount_email_heading'], 'customer-email-verification-for-woocommerce' ),
 				),
 			)
 		);	
 		
 		// Email Body	
-		$wp_customize->add_setting( 'cev_new_verification_email_body',
+		$wp_customize->add_setting( 'evfwr_new_verification_email_body',
 			array(
-				'default' => $this->defaults['cev_new_verification_email_body'],
+				'default' => $this->defaults['evfwr_new_verification_email_body'],
 				'transport' => 'refresh',
 				'type' => 'option',
 				'sanitize_callback' => ''
 			)
 		);
-		$wp_customize->add_control( 'cev_new_verification_email_body',
+		$wp_customize->add_control( 'evfwr_new_verification_email_body',
 			array(
 				'label' => __( 'Verification Message', 'customer-email-verification-for-woocommerce' ),
 				'description' => '',
-				'section' => 'cev_new_account_email_section',
+				'section' => 'evfwr_new_account_email_section',
 				'type' => 'textarea',
 				'input_attrs' => array(
 					'class' => '',
 					'style' => '',
-					'placeholder' => __( $this->defaults['cev_new_verification_email_body'], 'customer-email-verification-for-woocommerce' ),
+					'placeholder' => __( $this->defaults['evfwr_new_verification_email_body'], 'customer-email-verification-for-woocommerce' ),
 				),
 			)
 		);
 		
-		$wp_customize->add_setting( 'cev_new_email_code_block',
+		$wp_customize->add_setting( 'evfwr_new_email_code_block',
 			array(
 				'default' => '',
 				'transport' => 'postMessage',
 				'sanitize_callback' => ''
 			)
 		);
-		$wp_customize->add_control( new WP_Customize_cev_codeinfoblock_Control( $wp_customize, 'cev_new_email_code_block',
+		$wp_customize->add_control( new WP_Customize_evfwr_codeinfoblock_Control( $wp_customize, 'evfwr_new_email_code_block',
 			array(
 				'label' => __( 'Available variables', 'customer-email-verification-for-woocommerce' ),
-				'description' => '<code>{cev_user_verification_pin}<br>{cev_user_verification_link}</code>',
-				'section' => 'cev_new_account_email_section',				
+				'description' => '<code>{evfwr_user_verification_pin}<br>{evfwr_user_verification_link}</code>',
+				'section' => 'evfwr_new_account_email_section',				
 			)
 		) );							
 	}	
@@ -194,9 +194,9 @@ Or, verify your account by clicking on the verification link: ', 'customer-email
 		$wc_emails      = WC_Emails::instance();
 		$emails         = $wc_emails->get_emails();
 		WC_customer_email_verification_email_Common()->wuev_user_id  = 1;
-		$email_heading     = get_option( 'cev_new_acoount_email_heading', $this->defaults['cev_new_acoount_email_heading'] );
+		$email_heading     = get_option( 'evfwr_new_acoount_email_heading', $this->defaults['evfwr_new_acoount_email_heading'] );
 		$email_heading 	   = WC_customer_email_verification_email_Common()->maybe_parse_merge_tags( $email_heading );
-		$email_content     = get_option( 'cev_new_verification_email_body', $this->defaults['cev_new_verification_email_body'] );
+		$email_content     = get_option( 'evfwr_new_verification_email_body', $this->defaults['evfwr_new_verification_email_body'] );
 		$email_type = 'WC_Email_Customer_New_Account';
 		if ( false === $email_type ) {
 			return false;
@@ -235,4 +235,4 @@ Or, verify your account by clicking on the verification link: ', 'customer-email
  * Initialise our Customizer settings
  */
 
-$cev_new_account_email_customizer = new cev_new_account_email_customizer();
+$evfwr_new_account_email_customizer = new evfwr_new_account_email_customizer();
