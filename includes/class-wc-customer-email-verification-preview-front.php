@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * WC_Customer_Email_Verification_Preview class.
  */
-class WOOCOM_Customer_Email_Verification_Preview {
+class WooCommerce_Customer_Email_Verification_Preview {
 
 	/**
 	 * Get the class instance
