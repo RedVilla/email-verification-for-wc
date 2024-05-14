@@ -7,6 +7,8 @@
 /**
  * Adds the individual sections, settings, and controls to the theme customizer
  */
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 class evfwr_Verification_Widget_Style {
 	// Get our default values	
 	private static $order_ids  = null;
