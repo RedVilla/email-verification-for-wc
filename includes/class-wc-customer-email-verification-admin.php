@@ -3,7 +3,7 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class WOOCOM_Customer_Email_Verification_Admin
+class WooCommerce_Customer_Email_Verification_Admin
 {
 
 	public $my_account_id;
