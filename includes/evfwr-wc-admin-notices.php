@@ -51,18 +51,18 @@ class WooCommerce_EVFWR_Admin_Notices_Under_WooCommerce_Admin {
 }
 
 /**
- * Returns an instance of WC_EVWFR_Admin_Notices_Under_WC_Admin.
+ * Returns an instance of WC_EVFWR_Admin_Notices_Under_WC_Admin.
  *
  * @since 1.6.5
  * @version 1.6.5
  *
- * @return WC_EVWFR_Admin_Notices_Under_WC_Admin
+ * @return WC_EVFWR_Admin_Notices_Under_WC_Admin
 */
-function WooCommerce_EVWFR_Admin_Notices_Under_WooCommerce_Admin() {
+function WooCommerce_EVFWR_Admin_Notices_Under_WooCommerce_Admin() {
 	static $instance;
 
 	if ( ! isset( $instance ) ) {		
-		$instance = new WC_EVWFR_Admin_Notices_Under_WC_Admin();
+		$instance = new WC_EVFWR_Admin_Notices_Under_WC_Admin();
 	}
 
 	return $instance;
@@ -73,4 +73,4 @@ function WooCommerce_EVWFR_Admin_Notices_Under_WooCommerce_Admin() {
  *
  * Backward compatibility.
 */
-WC_EVWFR_Admin_Notices_Under_WC_Admin();
+WC_EVFWR_Admin_Notices_Under_WC_Admin();
