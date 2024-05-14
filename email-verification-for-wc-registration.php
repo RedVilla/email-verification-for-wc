@@ -50,7 +50,7 @@ class Redvilla_Woo_Customer_Email_Verification
 			$this->my_account = get_option('page_on_front');
 		}
 
-		if (!$this->is_cev_pro_active() || !$this->cev_pro_version_check()) {
+		if (!$this->is_evfwr_pro_active() || !$this->evfwr_pro_version_check()) {
 
 			if ($this->is_wc_active()) {
 
@@ -77,7 +77,7 @@ class Redvilla_Woo_Customer_Email_Verification
 	 * @since  1.0.0
 	 * @return bool
 	 */
-	private function cev_pro_version_check()
+	private function evfwr_pro_version_check()
 	{
 
 		if (!function_exists('is_plugin_active')) {
@@ -85,9 +85,9 @@ class Redvilla_Woo_Customer_Email_Verification
 		}
 
 		$plugin_data = get_plugin_data(WP_PLUGIN_DIR . '/customer-email-verification-pro/customer-email-verification-pro.php');
-		$cev_pro_version = $plugin_data['Version'];
+		$evfwr_pro_version = $plugin_data['Version'];
 
-		if (version_compare($cev_pro_version, '1.0.5', '>=')) {
+		if (version_compare($evfwr_pro_version, '1.0.5', '>=')) {
 			$is_version = true;
 		} else {
 			$is_version = false;
@@ -142,12 +142,12 @@ class Redvilla_Woo_Customer_Email_Verification
 	}
 
 	/**
-	 * Check if CEV PRO is active
+	 * Check if evfwr PRO is active
 	 *	 
 	 * @since  1.0.0
 	 * @return bool
 	 */
-	private function is_cev_pro_active()
+	private function is_evfwr_pro_active()
 	{
 
 		if (!function_exists('is_plugin_active')) {
@@ -196,17 +196,17 @@ class Redvilla_Woo_Customer_Email_Verification
 		add_action('plugins_loaded', array($this, 'customer_email_verification_load_textdomain'));
 
 		add_action('admin_notices', array($this, 'admin_notice_pro_update'));
-		add_action('admin_init', array($this, 'cev_pro_notice_ignore'));
+		add_action('admin_init', array($this, 'evfwr_pro_notice_ignore'));
 
 		//Custom Woocomerce menu
 		add_action('admin_menu', array($this->admin, 'register_woocommerce_menu'), 99);
 
 		//load css js 
 		add_action('admin_enqueue_scripts', array($this->admin, 'admin_styles'), 4);
-		add_filter('woocommerce_account_menu_items', array($this, 'cev_account_menu_items'), 10, 1);
-		add_filter('woocommerce_account_menu_items', array($this, 'hide_cev_menu_my_account'), 999);
-		add_action('init', array($this, 'cev_add_my_account_endpoint'));
-		add_action('woocommerce_account_email-verification_endpoint', array($this, 'cev_email_verification_endpoint_content'));
+		add_filter('woocommerce_account_menu_items', array($this, 'evfwr_account_menu_items'), 10, 1);
+		add_filter('woocommerce_account_menu_items', array($this, 'hide_evfwr_menu_my_account'), 999);
+		add_action('init', array($this, 'evfwr_add_my_account_endpoint'));
+		add_action('woocommerce_account_email-verification_endpoint', array($this, 'evfwr_email_verification_endpoint_content'));
 		add_action('wp_enqueue_scripts', array($this, 'front_styles'));
 
 		//callback for add action link for plugin page	
@@ -244,11 +244,11 @@ class Redvilla_Woo_Customer_Email_Verification
 	public function on_plugins_loaded()
 	{
 		require_once $this->get_plugin_path() . '/includes/customizer/class-customer-verification-new-customizer.php';
-		require_once $this->get_plugin_path() . '/includes/customizer/class-cev-customizer.php';
-		require_once $this->get_plugin_path() . '/includes/customizer/class-cev-new-account-email-customizer.php';
+		require_once $this->get_plugin_path() . '/includes/customizer/class-evfwr-customizer.php';
+		require_once $this->get_plugin_path() . '/includes/customizer/class-evfwr-new-account-email-customizer.php';
 		require_once $this->get_plugin_path() . '/includes/customizer/verification-widget-style.php';
 		require_once $this->get_plugin_path() . '/includes/customizer/verification-widget-message.php';
-		require_once $this->get_plugin_path() . '/includes/cev-wc-admin-notices.php';
+		require_once $this->get_plugin_path() . '/includes/evfwr-wc-admin-notices.php';
 	}
 
 	/**
@@ -256,27 +256,27 @@ class Redvilla_Woo_Customer_Email_Verification
 	 */
 	public function front_styles()
 	{
-		wp_register_script('cev-front-js', woo_customer_email_verification()->plugin_dir_url() . 'assets/js/front.js', array('jquery'), woo_customer_email_verification()->version);
-		wp_localize_script('cev-front-js', 'cev_ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
-		wp_register_style('cev_front_style', woo_customer_email_verification()->plugin_dir_url() . 'assets/css/front.css', array(), woo_customer_email_verification()->version);
+		wp_register_script('evfwr-front-js', woo_customer_email_verification()->plugin_dir_url() . 'assets/js/front.js', array('jquery'), woo_customer_email_verification()->version);
+		wp_localize_script('evfwr-front-js', 'evfwr_ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
+		wp_register_style('evfwr_front_style', woo_customer_email_verification()->plugin_dir_url() . 'assets/css/front.css', array(), woo_customer_email_verification()->version);
 
 		global $wp;
 		$current_slug = add_query_arg(array(), $wp->request);
 		$email_verification_url = rtrim(wc_get_account_endpoint_url('email-verification'), '/');
 
 		if (home_url($wp->request) == $email_verification_url) {
-			wp_enqueue_style('cev_front_style');
-			wp_enqueue_script('cev-front-js');
+			wp_enqueue_style('evfwr_front_style');
+			wp_enqueue_script('evfwr-front-js');
 		}
 
 
 		if (is_checkout()) {
-			wp_enqueue_style('cev_front_style');
-			wp_enqueue_script('cev-front-js');
+			wp_enqueue_style('evfwr_front_style');
+			wp_enqueue_script('evfwr-front-js');
 		}
 		if (is_cart()) {
-			wp_enqueue_style('cev_front_style');
-			wp_enqueue_script('cev-front-js');
+			wp_enqueue_style('evfwr_front_style');
+			wp_enqueue_script('evfwr-front-js');
 		}
 	}
 
@@ -313,9 +313,9 @@ class Redvilla_Woo_Customer_Email_Verification
 		}
 
 		$roles = $user->roles;
-		$cev_skip_verification_for_selected_roles = get_option('cev_skip_verification_for_selected_roles');
+		$evfwr_skip_verification_for_selected_roles = get_option('evfwr_skip_verification_for_selected_roles');
 
-		foreach ((array) $cev_skip_verification_for_selected_roles as $role => $val) {
+		foreach ((array) $evfwr_skip_verification_for_selected_roles as $role => $val) {
 			if (in_array($role, (array) $roles) && 1 == $val) {
 				return true;
 			}
@@ -329,7 +329,7 @@ class Redvilla_Woo_Customer_Email_Verification
 	 * @param arr $items
 	 * @return arr
 	 */
-	public function cev_account_menu_items($items)
+	public function evfwr_account_menu_items($items)
 	{
 		$items['email-verification'] = __('Sign up email verification', 'customer-email-verification-for-woocommerce');
 		return $items;
@@ -338,7 +338,7 @@ class Redvilla_Woo_Customer_Email_Verification
 	/**
 	 * Hide Edit Address Tab @ My Account	
 	 */
-	public function hide_cev_menu_my_account($items)
+	public function hide_evfwr_menu_my_account($items)
 	{
 		unset($items['email-verification']);
 		return $items;
@@ -347,29 +347,29 @@ class Redvilla_Woo_Customer_Email_Verification
 	/**
 	 * Add endpoint
 	 */
-	public function cev_add_my_account_endpoint()
+	public function evfwr_add_my_account_endpoint()
 	{
 		add_rewrite_endpoint('email-verification', EP_PAGES);
-		if (version_compare(get_option('cev_version'), '1.5', '<')) {
+		if (version_compare(get_option('evfwr_version'), '1.5', '<')) {
 			global $wp_rewrite;
 			$wp_rewrite->set_permalink_structure('/%postname%/');
 			$wp_rewrite->flush_rules();
-			update_option('cev_version', '1.5');
+			update_option('evfwr_version', '1.5');
 		}
 	}
 
 	/**
 	 * Information content
 	 */
-	public function cev_email_verification_endpoint_content()
+	public function evfwr_email_verification_endpoint_content()
 	{
 
 		$current_user = wp_get_current_user();
 		$email = $current_user->user_email;
 		$verified  = get_user_meta(get_current_user_id(), 'customer_email_verified', true);
 
-		$cev_verification_widget_style = new cev_verification_widget_message();
-		$cev_verification_overlay_color = get_option('cev_verification_popup_overlay_background_color', $cev_verification_widget_style->defaults['cev_verification_popup_overlay_background_color']);
+		$evfwr_verification_widget_style = new evfwr_verification_widget_message();
+		$evfwr_verification_overlay_color = get_option('evfwr_verification_popup_overlay_background_color', $evfwr_verification_widget_style->defaults['evfwr_verification_popup_overlay_background_color']);
 
 		if ($this->is_admin_user(get_current_user_id()) || $this->is_verification_skip_for_user(get_current_user_id())) {
 			return;
@@ -380,18 +380,18 @@ class Redvilla_Woo_Customer_Email_Verification
 		}
 	?>
 		<style>
-			.cev-authorization-grid__visual {
-				background: <?php echo esc_html($this->hex2rgba($cev_verification_overlay_color, '0.7')); ?>;
+			.evfwr-authorization-grid__visual {
+				background: <?php echo esc_html($this->hex2rgba($evfwr_verification_overlay_color, '0.7')); ?>;
 			}
 		</style>
 	<?php
-		$cev_button_color_widget_header =  get_option('cev_button_color_widget_header', '#212121');
-		$cev_button_text_color_widget_header =  get_option('cev_button_text_color_widget_header', '#ffffff');
-		$cev_button_text_size_widget_header =  get_option('cev_button_text_size_widget_header', '15');
-		$cev_widget_header_image_width =  get_option('cev_widget_header_image_width', '150');
-		$cev_button_text_header_font_size = get_option('cev_button_text_header_font_size', '22');
+		$evfwr_button_color_widget_header =  get_option('evfwr_button_color_widget_header', '#212121');
+		$evfwr_button_text_color_widget_header =  get_option('evfwr_button_text_color_widget_header', '#ffffff');
+		$evfwr_button_text_size_widget_header =  get_option('evfwr_button_text_size_widget_header', '15');
+		$evfwr_widget_header_image_width =  get_option('evfwr_widget_header_image_width', '150');
+		$evfwr_button_text_header_font_size = get_option('evfwr_button_text_header_font_size', '22');
 
-		require_once $this->get_plugin_path() . '/includes/views/cev_admin_endpoint_popup_template.php';
+		require_once $this->get_plugin_path() . '/includes/views/evfwr_admin_endpoint_popup_template.php';
 	}
 
 	/* Convert hexdec color string to rgb(a) string */
@@ -443,19 +443,19 @@ class Redvilla_Woo_Customer_Email_Verification
 	public function admin_notice_pro_update()
 	{
 
-		if (get_option('wc_cev_pro_notice_ignore_1_5')) {
+		if (get_option('wc_evfwr_pro_notice_ignore_1_5')) {
 			return;
 		}
 
-		$dismissable_url = esc_url(add_query_arg('wc-cev-pro-ignore-notice-1-5', 'true'));
+		$dismissable_url = esc_url(add_query_arg('wc-evfwr-pro-ignore-notice-1-5', 'true'));
 	?>
 		<style>
-			.wp-core-ui .notice.cev-dismissable-notice {
+			.wp-core-ui .notice.evfwr-dismissable-notice {
 				position: relative;
 				padding-right: 38px;
 			}
 
-			.wp-core-ui .notice.cev-dismissable-notice a.notice-dismiss {
+			.wp-core-ui .notice.evfwr-dismissable-notice a.notice-dismiss {
 				padding: 9px;
 				text-decoration: none;
 			}
@@ -480,10 +480,10 @@ class Redvilla_Woo_Customer_Email_Verification
 	/*
 	* Hide admin notice on dismiss of ignore-notice
 	*/
-	public function cev_pro_notice_ignore()
+	public function evfwr_pro_notice_ignore()
 	{
-		if (isset($_GET['wc-cev-pro-ignore-notice-1-5'])) {
-			update_option('wc_cev_pro_notice_ignore_1_5', 'true');
+		if (isset($_GET['wc-evfwr-pro-ignore-notice-1-5'])) {
+			update_option('wc_evfwr_pro_notice_ignore_1_5', 'true');
 		}
 	}
 
