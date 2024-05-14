@@ -779,7 +779,7 @@ class WC_Customer_Email_Verification_Admin
 		$select = sprintf($st, $which, __('User verification', 'customer-email-verification-for-woocommerce'), $options);
 
 		// output <select> and submit button
-		echo ($select);
+		echo esc_html($select);
 		submit_button(__('Filter'), null, $which, false);
 	}
 
