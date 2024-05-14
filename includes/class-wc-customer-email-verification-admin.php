@@ -3,7 +3,7 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class WC_Customer_Email_Verification_Admin
+class WOOCOM_Customer_Email_Verification_Admin
 {
 
 	public $my_account_id;
