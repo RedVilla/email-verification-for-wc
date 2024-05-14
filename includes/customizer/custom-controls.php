@@ -5,7 +5,7 @@
  */
 if ( class_exists( 'WP_Customize_Control' ) ) {	
 		
-	class WP_Customize_Cev_Codeinfoblock_Control extends WP_Customize_Control {		
+	class WordPress_Customize_Cev_Codeinfoblock_Control extends WP_Customize_Control {		
 
 		public function render_content() {
 			?>
