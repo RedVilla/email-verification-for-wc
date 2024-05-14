@@ -7,6 +7,8 @@
 /**
  * Adds the individual sections, settings, and controls to the theme customizer
  */
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 class evwfr_Initialise_Customizer_Settings {
 	// Get our default values	
 	private static $order_ids  = null;
