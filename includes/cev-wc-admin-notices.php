@@ -3,7 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class WC_CEV_Admin_Notices_Under_WC_Admin {
+class WooCommerce_CEV_Admin_Notices_Under_WooCommerce_Admin {
 
 	/**
 	 * Instance of this class.
@@ -58,7 +58,7 @@ class WC_CEV_Admin_Notices_Under_WC_Admin {
  *
  * @return WC_CEV_Admin_Notices_Under_WC_Admin
 */
-function WC_CEV_Admin_Notices_Under_WC_Admin() {
+function WooCommerce_CEV_Admin_Notices_Under_WooCommerce_Admin() {
 	static $instance;
 
 	if ( ! isset( $instance ) ) {		
