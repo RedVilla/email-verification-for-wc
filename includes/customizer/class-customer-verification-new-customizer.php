@@ -2,7 +2,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-class WooCommerce_Cev_Customizer {	
+class WooCommerce_evfwr_Customizer {	
 	/**
 	 * Instance of this class.
 	 *
@@ -20,9 +20,9 @@ class WooCommerce_Cev_Customizer {
 	/**
 	 * Register the Customizer sections
 	 */
-	public function cev_add_customizer_sections( $wp_customize ) {	
+	public function evfwr_add_customizer_sections( $wp_customize ) {	
 		
-		$wp_customize->add_section( 'cev_verification_widget_messages',
+		$wp_customize->add_section( 'evfwr_verification_widget_messages',
 			array(
 				'title' => __( 'Verification widget', 'customer-email-verification-for-woocommerce' ),
 				'description' => '',
@@ -30,7 +30,7 @@ class WooCommerce_Cev_Customizer {
 			)
 		);
 		
-		$wp_customize->add_section( 'cev_controls_section',
+		$wp_customize->add_section( 'evfwr_controls_section',
 			array(
 					'title' => __( 'Verification email', 'customer-email-verification-for-woocommerce' ),
 					'description' => '',
@@ -38,8 +38,8 @@ class WooCommerce_Cev_Customizer {
 			)
 		);
 		
-		if ( 1 == get_option('cev_email_for_verification') ) {
-			$wp_customize->add_section( 'cev_new_account_email_section',
+		if ( 1 == get_option('evfwr_email_for_verification') ) {
+			$wp_customize->add_section( 'evfwr_new_account_email_section',
 				array(
 					'title' => __( 'Verification in new account email', 'customer-email-verification-for-woocommerce' ),
 					'description' => '',
@@ -95,7 +95,7 @@ class WooCommerce_Cev_Customizer {
 	* @return bool
 	*/
 	public static function is_own_section( $key ) {		
-		if ( 'cev_verification_widget_messages' === $key || 'cev_new_account_email_section' === $key || 'cev_controls_section' === $key ) {
+		if ( 'evfwr_verification_widget_messages' === $key || 'evfwr_new_account_email_section' === $key || 'evfwr_controls_section' === $key ) {
 			return true;
 		}
 
@@ -136,14 +136,14 @@ class WooCommerce_Cev_Customizer {
 	 * Add css and js for customizer
 	*/
 	public function enqueue_customizer_scripts() {
-		if ( isset( $_REQUEST['cev-customizer'] ) && '1' === $_REQUEST['cev-customizer'] ) {
+		if ( isset( $_REQUEST['evfwr-customizer'] ) && '1' === $_REQUEST['evfwr-customizer'] ) {
 			wp_enqueue_style( 'wp-color-picker' );	
-			wp_enqueue_style('cev-customizer-styles', woo_customer_email_verification()->plugin_dir_url() . 'assets/css/customizer-styles.css', array(), woo_customer_email_verification()->version  );
-			wp_enqueue_script('cev-customizer-scripts', woo_customer_email_verification()->plugin_dir_url() . 'assets/js/customizer-scripts.js', array('jquery', 'customize-controls'), woo_customer_email_verification()->version, true);
+			wp_enqueue_style('evfwr-customizer-styles', woo_customer_email_verification()->plugin_dir_url() . 'assets/css/customizer-styles.css', array(), woo_customer_email_verification()->version  );
+			wp_enqueue_script('evfwr-customizer-scripts', woo_customer_email_verification()->plugin_dir_url() . 'assets/js/customizer-scripts.js', array('jquery', 'customize-controls'), woo_customer_email_verification()->version, true);
 			
 			$section = isset( $_REQUEST['section'] ) ? wc_clean( $_REQUEST['section'] ) : ''; 
 			// Send variables to Javascript
-			wp_localize_script('cev-customizer-scripts', 'cev_customizer', array(
+			wp_localize_script('evfwr-customizer-scripts', 'evfwr_customizer', array(
 				'ajax_url'              => admin_url('admin-ajax.php'),				
 				'trigger_click'        => '#accordion-section-' . $section . ' h3',
 				'seperate_email_preview_url'    => $this->seperate_email_preview_url(),		
@@ -169,7 +169,7 @@ class WooCommerce_Cev_Customizer {
 	 */
 	public function seperate_email_preview_url() {		
 		$seperate_email_preview_url = add_query_arg( array(
-			'cev-email-preview' => '1',
+			'evfwr-email-preview' => '1',
 		), home_url( '' ) );		
 		return $seperate_email_preview_url;
 	}
@@ -180,7 +180,7 @@ class WooCommerce_Cev_Customizer {
 	 */
 	public function my_account_email_preview_url() {		
 		$my_account_email_preview_url = add_query_arg( array(
-			'cev-new-account-email-preview' => '1',
+			'evfwr-new-account-email-preview' => '1',
 		), home_url( '' ) );		
 		return $my_account_email_preview_url;
 	}
@@ -191,7 +191,7 @@ class WooCommerce_Cev_Customizer {
 	 */
 	public function verification_widget_preview_url() {		
 		$verification_widget_preview_url = add_query_arg( array(
-			'action' => 'preview_cev_verification_lightbox',
+			'action' => 'preview_evfwr_verification_lightbox',
 		), home_url( '' ) );		
 		return $verification_widget_preview_url;
 	}
@@ -200,25 +200,25 @@ class WooCommerce_Cev_Customizer {
 	 * Get Customizer URL
 	 */
 	public function verification_widget_message_preview_url() {
-		$action = apply_filters( 'verification_widget_message_preview_action', 'preview_cev_verification_lightbox' );	
+		$action = apply_filters( 'verification_widget_message_preview_action', 'preview_evfwr_verification_lightbox' );	
 		$verification_widget_message_preview_url = add_query_arg( array( 'action' => $action, ), home_url( '' ) );		
 		return $verification_widget_message_preview_url;		
 	}
 	
 }
 /**
- * Returns an instance of redvilla_woocommerce_cev.
+ * Returns an instance of redvilla_woocommerce_evfwr.
  *
  * @since 1.6.5
  * @version 1.6.5
  *
  * @return customer-email-verification-for-woocommerce
 */
-function woocommerce_cev_customizer() {
+function woocommerce_evfwr_customizer() {
 	static $instance;
 
 	if ( ! isset( $instance ) ) {		
-		$instance = new wc_cev_customizer();
+		$instance = new wc_evfwr_customizer();
 	}
 
 	return $instance;
@@ -229,4 +229,4 @@ function woocommerce_cev_customizer() {
  *
  * Backward compatibility.
 */
-wc_cev_customizer();
+wc_evfwr_customizer();
