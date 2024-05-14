@@ -53,13 +53,13 @@ class WooCommerce_Customer_Email_Verification_Email {
 		add_action( 'wp', array( $this, 'authenticate_user_by_email' ) );
 		add_filter( 'woocommerce_registration_redirect', array( $this, 'redirect_user_after_registration' ) );	
 		add_filter( 'wcalr_register_user_successful', array( $this, 'wcalr_register_user_successful_fun' ) );	
-		add_action( 'wp', array( $this, 'show_cev_notification_message_after_register' ) );
-		add_action( 'wp', array( $this, 'cev_resend_verification_email' ) );		
+		add_action( 'wp', array( $this, 'show_evfwr_notification_message_after_register' ) );
+		add_action( 'wp', array( $this, 'evfwr_resend_verification_email' ) );		
 		add_action( 'wp', array( $this, 'check_user_and_redirect_to_endpoint' ) );						
-		add_action( 'wp_ajax_nopriv_cev_verify_user_email_with_pin', array( $this, 'cev_verify_user_email_with_pin_fun') );
-		add_action( 'wp_ajax_cev_verify_user_email_with_pin', array( $this, 'cev_verify_user_email_with_pin_fun') );
-		add_action( 'user_register', array( $this, 'cev_verify_user_email_on_registration_checkout'), 10, 1 );		
-		add_action( 'password_reset', array( $this, 'cev_verify_user_password_reset_to_verify'), 10, 2 );
+		add_action( 'wp_ajax_nopriv_evfwr_verify_user_email_with_pin', array( $this, 'evfwr_verify_user_email_with_pin_fun') );
+		add_action( 'wp_ajax_evfwr_verify_user_email_with_pin', array( $this, 'evfwr_verify_user_email_with_pin_fun') );
+		add_action( 'user_register', array( $this, 'evfwr_verify_user_email_on_registration_checkout'), 10, 1 );		
+		add_action( 'password_reset', array( $this, 'evfwr_verify_user_password_reset_to_verify'), 10, 2 );
 		// add the action 
 	}
 
@@ -77,7 +77,7 @@ class WooCommerce_Customer_Email_Verification_Email {
 		$this->new_user_registration( $user_id );
 	}
 	
-	public function cev_verify_user_email_on_registration_checkout( $user_id ) {
+	public function evfwr_verify_user_email_on_registration_checkout( $user_id ) {
 		
 		$woocommerce_process_checkout_nonce = isset( $_REQUEST['woocommerce-process-checkout-nonce'] ) ? wc_clean( $_REQUEST['woocommerce-process-checkout-nonce'] ) : '';
 		$_wpnonce = isset( $_REQUEST['_wpnonce'] ) ? wc_clean( $_REQUEST['_wpnonce'] ) : '';
@@ -95,7 +95,7 @@ class WooCommerce_Customer_Email_Verification_Email {
 	 *
 	 * reset password user verify user auto verify
 	 */	
-	public function cev_verify_user_password_reset_to_verify( $user, $new_pass ) {	
+	public function evfwr_verify_user_password_reset_to_verify( $user, $new_pass ) {	
 		update_user_meta( $user->ID, 'customer_email_verified', 'true' );
 	}
 	
@@ -108,9 +108,9 @@ class WooCommerce_Customer_Email_Verification_Email {
 		
 		$verified = get_user_meta( $user_id, 'customer_email_verified', true );
 		
-		$cev_enable_email_verification = get_option( 'cev_enable_email_verification', 1 );		
+		$evfwr_enable_email_verification = get_option( 'evfwr_enable_email_verification', 1 );		
 		
-		if ( !woo_customer_email_verification()->is_admin_user( $user_id )  && !woo_customer_email_verification()->is_verification_skip_for_user( $user_id ) && 1 == $cev_enable_email_verification && 'true' != $verified ) {
+		if ( !woo_customer_email_verification()->is_admin_user( $user_id )  && !woo_customer_email_verification()->is_verification_skip_for_user( $user_id ) && 1 == $evfwr_enable_email_verification && 'true' != $verified ) {
 			
 			$current_user = get_user_by( 'id', $user_id );
 			$this->user_id                         = $current_user->ID;
@@ -127,9 +127,9 @@ class WooCommerce_Customer_Email_Verification_Email {
 				update_user_meta( $user_id, 'customer_email_verification_code', $secret_code );
 			}
 			
-			$cev_email_for_verification = get_option( 'cev_email_for_verification', 0 );
+			$evfwr_email_for_verification = get_option( 'evfwr_email_for_verification', 0 );
 			//echo $secret_code;exit;
-			if ( 0 == $cev_email_for_verification ) {
+			if ( 0 == $evfwr_email_for_verification ) {
 				WC_customer_email_verification_email_Common()->code_mail_sender( $current_user->user_email );
 			}
 			$this->is_new_user_email_sent = true;
@@ -148,12 +148,12 @@ class WooCommerce_Customer_Email_Verification_Email {
 		
 		if ( isset( $emailclass_object->id ) && ( 'customer_new_account' === $emailclass_object->id ) ) {
 			
-			$cev_initialise_customizer_settings = new cev_initialise_customizer_settings();
-			$cev_new_account_email_customizer = new cev_new_account_email_customizer();				
+			$evfwr_initialise_customizer_settings = new evfwr_initialise_customizer_settings();
+			$evfwr_new_account_email_customizer = new evfwr_new_account_email_customizer();				
 			$user_id = $emailclass_object->object->data->ID;
 			
 			$verification_pin = WC_customer_email_verification_email_Common()->generate_verification_pin();	
-			$expire_time =  get_option('cev_verification_code_expiration', 'never');
+			$expire_time =  get_option('evfwr_verification_code_expiration', 'never');
 		
 			if ( empty( $expire_time ) ) {
 				$expire_time = 'never';
@@ -165,23 +165,23 @@ class WooCommerce_Customer_Email_Verification_Email {
 				'enddate' => time() + (int) $expire_time,
 			);										
 			
-			$cev_enable_email_verification = get_option( 'cev_enable_email_verification', 1 );
+			$evfwr_enable_email_verification = get_option( 'evfwr_enable_email_verification', 1 );
 			
-			if ( isset( $_REQUEST['cev-new-account-email-preview'] ) && '1' == $_REQUEST['cev-new-account-email-preview'] ) {
+			if ( isset( $_REQUEST['evfwr-new-account-email-preview'] ) && '1' == $_REQUEST['evfwr-new-account-email-preview'] ) {
 				$preview = true;
 			} else {
 				$preview = false;
 			}
 			
-			if ( ( !woo_customer_email_verification()->is_admin_user( $user_id )  && !woo_customer_email_verification()->is_verification_skip_for_user( $user_id ) && 1 == $cev_enable_email_verification ) || $preview) {
+			if ( ( !woo_customer_email_verification()->is_admin_user( $user_id )  && !woo_customer_email_verification()->is_verification_skip_for_user( $user_id ) && 1 == $evfwr_enable_email_verification ) || $preview) {
 				
-				$cev_email_for_verification = get_option( 'cev_email_for_verification', 0 );
-				if ( 1 != $cev_email_for_verification ) {
+				$evfwr_email_for_verification = get_option( 'evfwr_email_for_verification', 0 );
+				if ( 1 != $evfwr_email_for_verification ) {
 					return;
 				}
 					
-				update_user_meta( $user_id, 'cev_email_verification_pin', $verification_data );
-				$cev_email_verification_pin = get_user_meta( $user_id, 'cev_email_verification_pin', true );							
+				update_user_meta( $user_id, 'evfwr_email_verification_pin', $verification_data );
+				$evfwr_email_verification_pin = get_user_meta( $user_id, 'evfwr_email_verification_pin', true );							
 				
 				$this->user_id = $user_id;					
 				$is_secret_code_present = get_user_meta( $user_id, 'customer_email_verification_code', true );
@@ -191,11 +191,11 @@ class WooCommerce_Customer_Email_Verification_Email {
 					update_user_meta( $user_id, 'customer_email_verification_code', $secret_code );
 				}
 				
-				$heading = get_option( 'cev_new_acoount_email_heading', $cev_new_account_email_customizer->defaults['cev_new_acoount_email_heading'] );								
+				$heading = get_option( 'evfwr_new_acoount_email_heading', $evfwr_new_account_email_customizer->defaults['evfwr_new_acoount_email_heading'] );								
 				$heading = apply_filters( 'the_content', $heading );
 				echo '<strong>' . wp_kses_post( $heading ) . '</strong>';	
 				
-				$email_body = get_option( 'cev_new_verification_email_body', $cev_new_account_email_customizer->defaults['cev_new_verification_email_body'] );
+				$email_body = get_option( 'evfwr_new_verification_email_body', $evfwr_new_account_email_customizer->defaults['evfwr_new_verification_email_body'] );
 				$email_body = WC_customer_email_verification_email_Common()->maybe_parse_merge_tags( $email_body );
 				$email_body = apply_filters( 'the_content', $email_body );
 				echo wp_kses_post( $email_body );
@@ -233,19 +233,19 @@ class WooCommerce_Customer_Email_Verification_Email {
 			
 			if ( ! empty( $verified_code ) && $verified_code === $user_meta[0] ) {
 				
-				$cev_email_link_expired = apply_filters( 'cev_email_link_expired', false, (int) $user_meta[1] );
+				$evfwr_email_link_expired = apply_filters( 'evfwr_email_link_expired', false, (int) $user_meta[1] );
 				
-				if ( $cev_email_link_expired ) {
-					$verification_failed_message = get_option( 'cev_verification_success_message', 'Your email verification link is expired.' );
+				if ( $evfwr_email_link_expired ) {
+					$verification_failed_message = get_option( 'evfwr_verification_success_message', 'Your email verification link is expired.' );
 					wc_add_notice( $verification_failed_message, 'notice' );
 				} else {
 					WC_customer_email_verification_email_Common()->wuev_user_id = (int) $user_meta[1];
 					$allow_automatic_login = 1;
 					update_user_meta( (int) $user_meta[1], 'customer_email_verified', 'true' );
-					update_user_meta( (int) $user_meta[1], 'cev_user_resend_times', 0 );					
-					$verification_success_message = get_option( 'cev_verification_success_message', 'Your email is verified!' );
+					update_user_meta( (int) $user_meta[1], 'evfwr_user_resend_times', 0 );					
+					$verification_success_message = get_option( 'evfwr_verification_success_message', 'Your email is verified!' );
 					wc_add_notice( $verification_success_message, 'notice' );	
-					do_action('cev_new_email_enable');
+					do_action('evfwr_new_email_enable');
 				}						
 			}
 		}
@@ -258,8 +258,8 @@ class WooCommerce_Customer_Email_Verification_Email {
 	 */
 	public function redirect_user_after_registration( $redirect ) {
 		if ( true === $this->is_new_user_email_sent  ) {
-			$cev_enter_account_after_registration = get_option( 'cev_enter_account_after_registration', 0 );
-			if ( 1 == $cev_enter_account_after_registration ) {
+			$evfwr_enter_account_after_registration = get_option( 'evfwr_enter_account_after_registration', 0 );
+			if ( 1 == $evfwr_enter_account_after_registration ) {
 				WC()->session->set( 'first_login', 1 );
 			}
 		}
@@ -268,24 +268,24 @@ class WooCommerce_Customer_Email_Verification_Email {
 	
 	public function wcalr_register_user_successful_fun() {
 		if ( true === $this->is_new_user_email_sent  ) {
-			$cev_enter_account_after_registration = get_option( 'cev_enter_account_after_registration', 0 );
-			if ( 1 == $cev_enter_account_after_registration ) {
+			$evfwr_enter_account_after_registration = get_option( 'evfwr_enter_account_after_registration', 0 );
+			if ( 1 == $evfwr_enter_account_after_registration ) {
 				WC()->session->set( 'first_login', 1 );
 			}
 		}		
 	}
 	
-	public function show_cev_notification_message_after_register() {
-		if ( isset( $_GET['cev'] ) && '' !== $_GET['cev'] ) { // WPCS: input var ok, CSRF ok.
-			$registration_message = get_option( 'cev_verification_message', 'We sent you a verification email. Check and verify your account.' );
+	public function show_evfwr_notification_message_after_register() {
+		if ( isset( $_GET['evfwr'] ) && '' !== $_GET['evfwr'] ) { // WPCS: input var ok, CSRF ok.
+			$registration_message = get_option( 'evfwr_verification_message', 'We sent you a verification email. Check and verify your account.' );
 			wc_add_notice( $registration_message, 'notice' );
 		}
-		if ( isset( $_GET['cevsm'] ) && '' !== $_GET['cevsm'] ) { // WPCS: input var ok, CSRF ok.
-			WC_customer_email_verification_email_Common()->wuev_user_id = base64_decode( wc_clean( $_GET['cevsm'] ) ); // WPCS: input var ok, CSRF ok.
+		if ( isset( $_GET['evfwrsm'] ) && '' !== $_GET['evfwrsm'] ) { // WPCS: input var ok, CSRF ok.
+			WC_customer_email_verification_email_Common()->wuev_user_id = base64_decode( wc_clean( $_GET['evfwrsm'] ) ); // WPCS: input var ok, CSRF ok.
 			if ( false === WC()->session->has_session() ) {
 				WC()->session->set_customer_session_cookie( true );
 			}
-			$message = get_option('cev_resend_verification_email_message', 'You need to verify your account before login. {{cev_resend_email_link}}');
+			$message = get_option('evfwr_resend_verification_email_message', 'You need to verify your account before login. {{evfwr_resend_email_link}}');
 			$message = WC_customer_email_verification_email_Common()->maybe_parse_merge_tags( $message );
 			if ( false === wc_has_notice( $message, 'notice' ) ) {
 				wc_add_notice( $message, 'notice' );
@@ -297,10 +297,10 @@ class WooCommerce_Customer_Email_Verification_Email {
 	 * This function sends a new verification email to user if the user clicks on 'resend verification email' link.
 	 * If the email is already verified then it redirects to my-account page
 	 */
-	public function cev_resend_verification_email() {
-		if ( isset( $_GET['cev_redirect_limit_resend'] ) && '' !== $_GET['cev_redirect_limit_resend'] ) { // WPCS: input var ok, CSRF ok.
+	public function evfwr_resend_verification_email() {
+		if ( isset( $_GET['evfwr_redirect_limit_resend'] ) && '' !== $_GET['evfwr_redirect_limit_resend'] ) { // WPCS: input var ok, CSRF ok.
 			
-			$user_id = base64_decode( wc_clean( $_GET['cev_redirect_limit_resend'] ) ); // WPCS: input var ok, CSRF ok.
+			$user_id = base64_decode( wc_clean( $_GET['evfwr_redirect_limit_resend'] ) ); // WPCS: input var ok, CSRF ok.
 
 			if ( false === WC()->session->has_session() ) {
 				WC()->session->set_customer_session_cookie( true );
@@ -309,7 +309,7 @@ class WooCommerce_Customer_Email_Verification_Email {
 			$verified = get_user_meta( $user_id, 'customer_email_verified', true );
 
 			if ( 'true' === $verified ) {				
-				$verified_message = get_option('cev_verified_user_message', 'Your email is already verified');
+				$verified_message = get_option('evfwr_verified_user_message', 'Your email is already verified');
 				wc_add_notice( $verified_message, 'notice' );
 			} else {
 				
@@ -318,23 +318,23 @@ class WooCommerce_Customer_Email_Verification_Email {
 				
 				$current_user = get_user_by( 'id', $user_id );
 				
-				$resend_limit_reached = apply_filters( 'cev_resend_email_limit', false, $user_id );
+				$resend_limit_reached = apply_filters( 'evfwr_resend_email_limit', false, $user_id );
 				
 				if ( $resend_limit_reached ) {
 					return;
 				}
 				
-				$user_resend_times = get_user_meta( $user_id, 'cev_user_resend_times', true );
+				$user_resend_times = get_user_meta( $user_id, 'evfwr_user_resend_times', true );
 				
 				if ( null == $user_resend_times ) {
 					$user_resend_times=0;
 				}
 				
-				update_user_meta( $user_id, 'cev_user_resend_times', (int) $user_resend_times+1 );	
+				update_user_meta( $user_id, 'evfwr_user_resend_times', (int) $user_resend_times+1 );	
 				
 				WC_customer_email_verification_email_Common()->code_mail_sender( $current_user->user_email );
 				//$this->new_user_registration( $user_id );
-				$message = get_option('cev_resend_verification_email_message', 'A new verification link is sent. Check email. {{cev_resend_email_link}}');
+				$message = get_option('evfwr_resend_verification_email_message', 'A new verification link is sent. Check email. {{evfwr_resend_email_link}}');
 				$message = WC_customer_email_verification_email_Common()->maybe_parse_merge_tags( $message );
 				wc_add_notice( $message, 'notice' );
 			}
@@ -363,8 +363,8 @@ class WooCommerce_Customer_Email_Verification_Email {
 				return;
 			}
 			
-			$cev_enable_email_verification = get_option( 'cev_enable_email_verification', 1 );
-			$cev_redirect_after_successfull_verification = get_option( 'cev_redirect_after_successfull_verification', $this->my_account );
+			$evfwr_enable_email_verification = get_option( 'evfwr_enable_email_verification', 1 );
+			$evfwr_redirect_after_successfull_verification = get_option( 'evfwr_redirect_after_successfull_verification', $this->my_account );
 			$redirect_url = wc_get_account_endpoint_url( 'email-verification' );
 			$redirect_url_my_account = wc_get_account_endpoint_url( 'dashboard' );
 			$logout_url = wc_get_account_endpoint_url( 'customer-logout' );				
@@ -378,10 +378,10 @@ class WooCommerce_Customer_Email_Verification_Email {
 				return;
 			}
 			
-			if ( !woo_customer_email_verification()->is_admin_user( $user_id ) && !woo_customer_email_verification()->is_verification_skip_for_user( $user_id ) && 1 == $cev_enable_email_verification ) {
+			if ( !woo_customer_email_verification()->is_admin_user( $user_id ) && !woo_customer_email_verification()->is_verification_skip_for_user( $user_id ) && 1 == $evfwr_enable_email_verification ) {
 				$verified = get_user_meta( get_current_user_id(), 'customer_email_verified', true );					
-				$cev_email_verification_pin = get_user_meta( get_current_user_id(), 'cev_email_verification_pin', true );
-				if ( !empty( $cev_email_verification_pin ) ) {
+				$evfwr_email_verification_pin = get_user_meta( get_current_user_id(), 'evfwr_email_verification_pin', true );
+				if ( !empty( $evfwr_email_verification_pin ) ) {
 					if ( 'true' !== $verified ) {					
 						if ( home_url( $wp->request ) != $email_verification_url ) {
 							wp_safe_redirect( $redirect_url );
@@ -398,35 +398,35 @@ class WooCommerce_Customer_Email_Verification_Email {
 		} 
 	}
 		
-	public function cev_verify_user_email_with_pin_fun() {
+	public function evfwr_verify_user_email_with_pin_fun() {
 		
-		check_admin_referer( 'cev_verify_user_email_with_pin', 'cev_verify_user_email_with_pin' );
+		check_admin_referer( 'evfwr_verify_user_email_with_pin', 'evfwr_verify_user_email_with_pin' );
 		
-		$cev_email_link_expired = apply_filters( 'cev_email_link_expired', false, get_current_user_id() );
+		$evfwr_email_link_expired = apply_filters( 'evfwr_email_link_expired', false, get_current_user_id() );
 				
-		if ( $cev_email_link_expired ) {
-			$verification_message_expire = get_option( 'cev_verification_success_message', 'failed' );
+		if ( $evfwr_email_link_expired ) {
+			$verification_message_expire = get_option( 'evfwr_verification_success_message', 'failed' );
 			wc_add_notice( $verification_message_expire, 'notice' );
 			echo wp_json_encode( array('success' => 'false') );
 			die();	
 		}
 					
-		$cev_email_verification_pin = get_user_meta( get_current_user_id(), 'cev_email_verification_pin', true );								
+		$evfwr_email_verification_pin = get_user_meta( get_current_user_id(), 'evfwr_email_verification_pin', true );								
 		
-		$cev_pin = isset( $_POST['cev_pin1'] ) ? wc_clean( $_POST['cev_pin1'] ) : '';
+		$evfwr_pin = isset( $_POST['evfwr_pin1'] ) ? wc_clean( $_POST['evfwr_pin1'] ) : '';
 		
-		if ( $cev_email_verification_pin['pin'] == $cev_pin ) {
+		if ( $evfwr_email_verification_pin['pin'] == $evfwr_pin ) {
 			$my_account = woo_customer_email_verification()->my_account;
 			
-			$redirect_page_id = get_option('cev_redirect_page_after_varification', $my_account);
+			$redirect_page_id = get_option('evfwr_redirect_page_after_varification', $my_account);
 			
 			update_user_meta( get_current_user_id(), 'customer_email_verified', 'true' );
-			update_user_meta( get_current_user_id(), 'cev_user_resend_times', 0 );	
+			update_user_meta( get_current_user_id(), 'evfwr_user_resend_times', 0 );	
 							
-			$verification_success_message = get_option( 'cev_verification_success_message', 'Your Email is verified!' );
+			$verification_success_message = get_option( 'evfwr_verification_success_message', 'Your Email is verified!' );
 			wc_add_notice( $verification_success_message, 'notice' );
 			
-			do_action('cev_new_email_enable');
+			do_action('evfwr_new_email_enable');
 				
 			echo wp_json_encode( array('success' => 'true','url' => get_permalink($redirect_page_id)) );
 			die();
