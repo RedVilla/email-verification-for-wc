@@ -1,3 +1,5 @@
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 <div class="woocommerce-layout__activity-panel">
 	<div class="woocommerce-layout__activity-panel-tabs">
 		<button type="button" id="activity-panel-tab-help" class="components-button woocommerce-layout__activity-panel-tab">
