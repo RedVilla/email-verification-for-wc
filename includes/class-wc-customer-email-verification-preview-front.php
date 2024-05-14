@@ -1,6 +1,6 @@
 <?php
 /**
- * CEV admin preview 
+ * EVFWR admin preview 
  *
  * @class WC_Customer_Email_Verification_Preview
  * @package WooCommerce/Classes
@@ -49,36 +49,36 @@ class WooCommerce_Customer_Email_Verification_Preview {
 	 * init function	 	
 	*/
 	public function init() {
-		add_action( 'wp_enqueue_scripts', array( $this, 'cev_pro_front_styles' ));		
-		add_action( 'template_redirect', array( $this, 'preview_cev_page') );
-		add_filter( 'cev_verification_popup_message', array( $this, 'cev_verification_popup_message_callback'), 10, 2 );	
+		add_action( 'wp_enqueue_scripts', array( $this, 'evfwr_pro_front_styles' ));		
+		add_action( 'template_redirect', array( $this, 'preview_evfwr_page') );
+		add_filter( 'evfwr_verification_popup_message', array( $this, 'evfwr_verification_popup_message_callback'), 10, 2 );	
 	}
 	
 	/**
 	 * Include front js and css
 	*/
-	public function cev_pro_front_styles() {				
+	public function evfwr_pro_front_styles() {				
 		
 		$action = ( isset( $_REQUEST[ 'action' ] ) ? wc_clean( $_REQUEST[ 'action' ] ) : '' );
 		
-		if ( 'preview_cev_verification_lightbox' == $action ) {
-			wp_enqueue_style( 'cev_front_style' );								
+		if ( 'preview_evfwr_verification_lightbox' == $action ) {
+			wp_enqueue_style( 'evfwr_front_style' );								
 		}		
 	}
 	
 	/*
-	* CEV Page preview
+	* EVFWR Page preview
 	*/
-	public function preview_cev_page() {
+	public function preview_evfwr_page() {
 		
 		$action = ( isset( $_REQUEST[ 'action' ] ) ? wc_clean( $_REQUEST[ 'action' ] ) : '' );
 		
-		if ( 'preview_cev_verification_lightbox' != $action ) {
+		if ( 'preview_evfwr_verification_lightbox' != $action ) {
 			return;
 		}
 		
 		wp_head();				
-		include 'views/front/preview_cev_popup_page.php';
+		include 'views/front/preview_evfwr_popup_page.php';
 		get_footer();
 		exit;
 	}
@@ -88,10 +88,10 @@ class WooCommerce_Customer_Email_Verification_Preview {
 	 * 
 	 * @since  1.0.0
 	*/
-	public function cev_verification_popup_message_callback( $message, $email ) {
+	public function evfwr_verification_popup_message_callback( $message, $email ) {
 		
-		$cev_verification_widget_message = new cev_verification_widget_message();
-		$message_text = get_option( 'cev_verification_message', $cev_verification_widget_message->defaults['cev_verification_message'] );
+		$evfwr_verification_widget_message = new evfwr_verification_widget_message();
+		$message_text = get_option( 'evfwr_verification_message', $evfwr_verification_widget_message->defaults['evfwr_verification_message'] );
 		$message_text = str_replace( '{customer_email}', $email, $message_text );		
 		
 		if ( '' != $message_text ) {
