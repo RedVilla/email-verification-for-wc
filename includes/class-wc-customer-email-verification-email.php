@@ -3,7 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class WOOCOM_Customer_Email_Verification_Email {				
+class WooCommerce_Customer_Email_Verification_Email {				
 	
 	public $is_user_already_verified = false;
 	public $is_new_user_email_sent = false;
