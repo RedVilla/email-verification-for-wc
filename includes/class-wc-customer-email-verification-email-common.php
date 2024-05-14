@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class WOOCOM_Customer_Email_Verification_Email_Common {	
+class WooCommerce_Customer_Email_Verification_Email_Common {	
 
 	public $wuev_user_id = null;
 	public $wuev_myaccount_page_id = null;
@@ -314,7 +314,7 @@ class WOOCOM_Customer_Email_Verification_Email_Common {
  *
  * @return redvilla_woo_il_post
 */
-function WOOCOM_customer_email_verification_email_Common() {
+function woocommerce_customer_email_verification_email_Common() {
 	static $instance;
 
 	if ( ! isset( $instance ) ) {		
