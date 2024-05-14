@@ -1,8 +1,8 @@
 <?php
 /**
- * CEV  admin 
+ * EVFWR  admin 
  *
- * @class   cev_admin
+ * @class   evfwr_admin
  * @package WooCommerce/Classes
  */
  
@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Cev_admin class.
+ * evfwr_admin class.
  */
 class WooCommerce_Customer_Email_Verification_Customize {
 
@@ -52,8 +52,8 @@ class WooCommerce_Customer_Email_Verification_Customize {
 	 * @since  1.0
 	*/
 	public function init() {				
-		add_filter( 'cev_verification_popup_heading', array( $this, 'cev_verification_popup_heading_callback' ) );
-		add_filter( 'cev_verification_popup_message', array( $this, 'cev_verification_popup_message_callback' ), 10, 2 );
+		add_filter( 'evfwr_verification_popup_heading', array( $this, 'evfwr_verification_popup_heading_callback' ) );
+		add_filter( 'evfwr_verification_popup_message', array( $this, 'evfwr_verification_popup_message_callback' ), 10, 2 );
 	}
 	
 	/**	
@@ -61,9 +61,9 @@ class WooCommerce_Customer_Email_Verification_Customize {
 	 * 
 	 * @since  1.0.0
 	*/
-	public function cev_verification_popup_heading_callback( $heading ) {
+	public function evfwr_verification_popup_heading_callback( $heading ) {
 		
-		$heading_text = get_option( 'cev_verification_header', $heading );
+		$heading_text = get_option( 'evfwr_verification_header', $heading );
 		
 		if ( '' != $heading_text ) {
 			return $heading_text;
@@ -77,8 +77,8 @@ class WooCommerce_Customer_Email_Verification_Customize {
 	 * 
 	 * @since  1.0.0
 	*/
-	public function cev_verification_popup_message_callback( $message, $email ) {
-		$message_text = get_option( 'cev_verification_message', $message );
+	public function evfwr_verification_popup_message_callback( $message, $email ) {
+		$message_text = get_option( 'evfwr_verification_message', $message );
 		$message_text = str_replace( '{customer_email}', $email, $message_text );
 		
 		if ( '' != $message_text ) {
