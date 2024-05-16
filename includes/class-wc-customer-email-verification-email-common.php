@@ -329,4 +329,4 @@ function woocommerce_customer_email_verification_email_Common() {
  *
  * Backward compatibility.
 */
-WC_customer_email_verification_email_Common();
+woocommerce_customer_email_verification_email_Common();
