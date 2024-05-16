@@ -1,6 +1,6 @@
 === Email Verification For WC Registration   ===
 Contributors: redvilla plugins
-Tags: woocommerce, email verification, validation, customer verification, registration verification
+Tags: woocommerce account verification, email verification, email validation, customer email verification, registration verification
 Requires at least: 5.3
 Requires PHP: 7.2
 Tested up to: 6.5.3
