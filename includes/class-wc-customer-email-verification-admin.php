@@ -295,6 +295,7 @@ class WooCommerce_Customer_Email_Verification_Admin
 								<span class="label">
 									<?php
 									$sanitized_url = esc_url($array['link']);
+									/* translators: %s is the URL to be used for email verification */
 									esc_html(sprintf(__('Click here to verify your email: %s', 'customer-email-verification-for-woocommerce'), $sanitized_url));
 
 									if (!empty($array['select'])) {
