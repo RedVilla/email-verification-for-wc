@@ -477,16 +477,6 @@ class Redvilla_Woo_Customer_Email_Verification
 		}
 	}
 
-	/*
-	* Hide admin notice on dismiss of ignore-notice
-	*/
-	public function evfwr_pro_notice_ignore()
-	{
-		if (isset($_GET['wc-evfwr-pro-ignore-notice-1-5'])) {
-			update_option('wc_evfwr_pro_notice_ignore_1_5', 'true');
-		}
-	}
-
 	/**
 	 * Add plugin action links.
 	 *
