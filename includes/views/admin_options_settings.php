@@ -25,17 +25,17 @@ $dismissable_url = esc_url(add_query_arg('evfwr-pro-settings-ignore-notice', 'tr
 					?>
 					<div class="accordion-toggle">
 						<input type="hidden" name="evfwr_enable_email_verification" value="0" />
-						<input class="tgl tgl-flat-evfwr" id="evfwr_enable_email_verification" name="evfwr_enable_email_verification" type="checkbox" <?php esc_html_e($checked); ?> value="1" />
+						<input class="tgl tgl-flat-evfwr" id="evfwr_enable_email_verification" name="evfwr_enable_email_verification" type="checkbox" <?php esc_html($checked); ?> value="1" />
 						<label class="tgl-btn tgl-panel-label" for="evfwr_enable_email_verification"></label>
 					</div>
-					<div class="accordion-open accordion-label <?php esc_html_e($disable_toggle_class); ?>">
-						<?php esc_html_e('Signup Verification', 'customer-email-verification-for-woocommerce'); ?>
+					<div class="accordion-open accordion-label <?php esc_html($disable_toggle_class); ?>">
+						<?php esc_html('Signup Verification', 'customer-email-verification-for-woocommerce'); ?>
 					</div>
 
-					<div class="accordion-btn accordion-open <?php esc_html_e($disable_toggle_class); ?>">
+					<div class="accordion-btn accordion-open <?php esc_html($disable_toggle_class); ?>">
 						<span class="dashicons dashicons-arrow-right-alt2"></span>
 						<div class="spinner workflow_spinner" style="float:none"></div>
-						<button name="save" class="button-primary woocommerce-save-button evfwr_settings_save" type="submit" value="Save changes"><?php esc_html_e('Save & Close', 'customer-email-verification-for-woocommerce'); ?></button>
+						<button name="save" class="button-primary woocommerce-save-button evfwr_settings_save" type="submit" value="Save changes"><?php esc_html('Save & Close', 'customer-email-verification-for-woocommerce'); ?></button>
 					</div>
 				</div>
 				<div class="panel options add-tracking-option">
@@ -46,13 +46,13 @@ $dismissable_url = esc_url(add_query_arg('evfwr-pro-settings-ignore-notice', 'tr
 				<div class="accordion heading evfwr-main-settings">
 
 					<div class="accordion-open accordion-label">
-						<?php esc_html_e('Email verification settings', 'customer-email-verification-for-woocommerce'); ?>
+						<?php esc_html('Email verification settings', 'customer-email-verification-for-woocommerce'); ?>
 					</div>
 
 					<div class="accordion-btn accordion-open">
 						<span class="dashicons dashicons-arrow-right-alt2"></span>
 						<div class="spinner workflow_spinner" style="float:none"></div>
-						<button name="save" class="button-primary woocommerce-save-button evfwr_settings_save" type="submit" value="Save changes"><?php esc_html_e('Save & Close', 'customer-email-verification-for-woocommerce'); ?></button>
+						<button name="save" class="button-primary woocommerce-save-button evfwr_settings_save" type="submit" value="Save changes"><?php esc_html('Save & Close', 'customer-email-verification-for-woocommerce'); ?></button>
 					</div>
 
 				</div>
