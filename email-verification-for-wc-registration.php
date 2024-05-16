@@ -227,13 +227,13 @@ class Redvilla_Woo_Customer_Email_Verification
 	private function includes()
 	{
 		require_once $this->get_plugin_path() . '/includes/class-wc-customer-email-verification-admin.php';
-		$this->admin = WC_customer_email_verification_admin::get_instance();
+		$this->admin = woocommerce_customer_email_verification_admin::get_instance();
 
 		require_once $this->get_plugin_path() . '/includes/class-wc-customer-email-verification-email.php';
-		$this->email = WC_customer_email_verification_email::get_instance();
+		$this->email = woocommerce_customer_email_verification_email::get_instance();
 
 		require_once $this->get_plugin_path() . '/includes/class-wc-customer-email-verification-preview-front.php';
-		$this->preview = WC_customer_email_verification_preview::get_instance();
+		$this->preview = woocommerce_customer_email_verification_preview::get_instance();
 
 		require_once $this->get_plugin_path() . '/includes/class-wc-customer-email-verification-email-common.php';
 	}
