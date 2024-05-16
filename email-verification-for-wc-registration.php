@@ -12,7 +12,7 @@
  * License URI: 
  * Text Domain: email-verification-for-wc-registration
  * Domain Path: /lang/
- * WC tested up to: 8.5.2
+ * WC tested up to: 8.8.3
  */
 
 
