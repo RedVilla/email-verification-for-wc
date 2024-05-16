@@ -141,7 +141,7 @@ class WooCommerce_Customer_Email_Verification_Admin
 ?>
 		<div class="redvilla-layout-evfwr__header">
 			<h1 class="page_heading">
-				<a href="javascript:void(0)"><?php esc_html_e('Customer Email Verification', 'customer-email-verification'); ?></a> <span class="dashicons dashicons-arrow-right-alt2"></span> <span class="breadcums_page_heading"><?php esc_html_e('Settings', 'customer-email-verification'); ?></span>
+				<a href="javascript:void(0)"><?php esc_html('Customer Email Verification', 'customer-email-verification'); ?></a> <span class="dashicons dashicons-arrow-right-alt2"></span> <span class="breadcums_page_heading"><?php esc_html('Settings', 'customer-email-verification'); ?></span>
 			</h1>
 		</div>
 		<div class="woocommerce evfwr_admin_layout">
@@ -166,7 +166,7 @@ class WooCommerce_Customer_Email_Verification_Admin
 		foreach ((array) $arrays as $id => $array) {
 			if (isset($array['type']) && 'link' == $array['type']) {
 		?>
-				<a class="menu_evfwr_link" href="<?php echo esc_url($array['link']); ?>"><?php esc_url($array['title']); ?></a>
+				<a class="menu_evfwr_link" href="<?php echo esc_url($array['link']); ?>"><?php esc_html($array['title']); ?></a>
 			<?php
 			} else {
 			?>
@@ -221,16 +221,16 @@ class WooCommerce_Customer_Email_Verification_Admin
 				if ($array['show']) {
 					$class = isset($array['class']) ? $array['class'] : '';
 			?>
-					<li class="<?php esc_html_e($class); ?>">
+					<li class="<?php esc_html($class); ?>">
 						<?php
 						if ('desc' != $array['type'] && 'checkbox' != $array['type'] && 'checkbox_select' != $array['type']) {
 						?>
 							<label class="settings_label">
 								<?php
-								esc_html_e($array['title']);
+								esc_html($array['title']);
 								if (isset($array['tooltip'])) {
 								?>
-									<span class="woocommerce-help-tip tipTip" title="<?php esc_html_e($array['tooltip']); ?>"></span>
+									<span class="woocommerce-help-tip tipTip" title="<?php esc_html($array['tooltip']); ?>"></span>
 								<?php } ?>
 							</label>
 						<?php
@@ -240,12 +240,12 @@ class WooCommerce_Customer_Email_Verification_Admin
 							$field_id = isset($array['multiple']) ? $array['multiple'] : $id;
 						?>
 							<fieldset>
-								<select class="select select2" id="<?php esc_html_e($field_id); ?>" name="<?php esc_html_e($id); ?>" <?php esc_html_e($multiple); ?>>
+								<select class="select select2" id="<?php esc_html($field_id); ?>" name="<?php esc_html($id); ?>" <?php esc_html($multiple); ?>>
 									<?php
 									foreach ((array) $array['options'] as $key => $val) {
 										$selected = (get_option($id, $array['Default']) == (string) $key) ? 'selected' : '';
 									?>
-										<option value="<?php esc_html_e($key); ?>" <?php esc_html_e($selected); ?>><?php esc_html_e($val); ?></option>
+										<option value="<?php esc_html($key); ?>" <?php esc_html($selected); ?>><?php esc_html($val); ?></option>
 									<?php
 									}
 									?>
@@ -255,14 +255,14 @@ class WooCommerce_Customer_Email_Verification_Admin
 						} elseif (isset($array['type']) && 'multiple_select' == $array['type']) {
 						?>
 							<div class="multiple_select_container">
-								<select multiple class="wc-enhanced-select" name="<?php esc_html_e($id); ?>[]" id="<?php esc_html_e($id); ?>">
+								<select multiple class="wc-enhanced-select" name="<?php esc_html($id); ?>[]" id="<?php esc_html($id); ?>">
 									<?php
 									foreach ((array) $array['options'] as $key => $val) :
 										$multi_checkbox_data = get_option($id);
 										$checked = isset($multi_checkbox_data[$key]) && 1 == $multi_checkbox_data[$key] ? 'selected' : '';
 									?>
-										<option value="<?php esc_html_e($key); ?>" <?php esc_html_e($checked); ?>>
-											<?php esc_html_e($val); ?>
+										<option value="<?php esc_html($key); ?>" <?php esc_html($checked); ?>>
+											<?php esc_html($val); ?>
 										</option>
 									<?php
 									endforeach;
@@ -273,15 +273,15 @@ class WooCommerce_Customer_Email_Verification_Admin
 						} elseif ('checkbox' == $array['type']) {
 							$checked = (get_option($id, $array['Default'])) ? 'checked' : '';
 						?>
-							<label class="" for="<?php esc_html_e($id); ?>">
-								<input type="hidden" name="<?php esc_html_e($id); ?>" value="0" />
-								<input type="checkbox" id="<?php esc_html_e($id); ?>" name="<?php esc_html_e($id); ?>" class="" <?php esc_html_e($checked); ?> value="1" />
+							<label class="" for="<?php esc_html($id); ?>">
+								<input type="hidden" name="<?php esc_html($id); ?>" value="0" />
+								<input type="checkbox" id="<?php esc_html($id); ?>" name="<?php esc_html($id); ?>" class="" <?php esc_html($checked); ?> value="1" />
 								<span class="label">
 									<?php
-									esc_html_e($array['title']);
+									esc_html($array['title']);
 									if (isset($array['tooltip'])) {
 									?>
-										<span class="woocommerce-help-tip tipTip" title="<?php esc_html_e($array['tooltip']); ?>"></span>
+										<span class="woocommerce-help-tip tipTip" title="<?php esc_html($array['tooltip']); ?>"></span>
 									<?php } ?>
 								</span>
 							</label>
@@ -289,9 +289,9 @@ class WooCommerce_Customer_Email_Verification_Admin
 						} elseif ('checkbox_select' == $array['type']) {
 							$checked = (get_option($id, $array['Default'])) ? 'checked' : '';
 						?>
-							<label class="" for="<?php esc_html_e($id); ?>">
-								<input type="hidden" name="<?php esc_html_e($id); ?>" value="0" />
-								<input type="checkbox" id="<?php esc_html_e($id); ?>" name="<?php esc_html_e($id); ?>" class="" <?php esc_html_e($checked); ?> value="1" />
+							<label class="" for="<?php esc_html($id); ?>">
+								<input type="hidden" name="<?php esc_html($id); ?>" value="0" />
+								<input type="checkbox" id="<?php esc_html($id); ?>" name="<?php esc_html($id); ?>" class="" <?php esc_html($checked); ?> value="1" />
 								<span class="label">
 									<?php
 									$sanitized_url = esc_url($array['link']);
@@ -299,12 +299,12 @@ class WooCommerce_Customer_Email_Verification_Admin
 
 									if (!empty($array['select'])) {
 									?>
-										<select name="<?php esc_html_e($array['select']['id']); ?>" style="width: auto;">
+										<select name="<?php esc_html($array['select']['id']); ?>" style="width: auto;">
 											<?php
 											foreach ($array['select']['options'] as $key => $val) {
 												$selected = (get_option($array['select']['id'], '') == $key) ? 'selected' : '';
 											?>
-												<option value="<?php esc_html_e($key); ?>" <?php esc_html_e($selected); ?>><?php esc_html_e($val); ?></option>
+												<option value="<?php esc_html($key); ?>" <?php esc_html($selected); ?>><?php esc_html($val); ?></option>
 											<?php
 											}
 											?>
@@ -313,7 +313,7 @@ class WooCommerce_Customer_Email_Verification_Admin
 									}
 									if (isset($array['tooltip'])) {
 									?>
-										<span class="woocommerce-help-tip tipTip" title="<?php esc_html_e($array['tooltip']); ?>"></span>
+										<span class="woocommerce-help-tip tipTip" title="<?php esc_html($array['tooltip']); ?>"></span>
 									<?php } ?>
 								</span>
 							</label>
@@ -331,10 +331,10 @@ class WooCommerce_Customer_Email_Verification_Admin
 							?>
 
 								<span class="multiple_checkbox">
-									<label class="" for="<?php esc_html_e($key); ?>">
-										<input type="hidden" name="<?php esc_html_e($id); ?>[<?php esc_html_e($key); ?>]" value="0" />
-										<input type="checkbox" id="<?php esc_html_e($key); ?>" name="<?php esc_html_e($id); ?>[<?php esc_html_e($key); ?>]" class="" <?php esc_html_e($checked); ?> value="1" />
-										<span class="multiple_label"><?php esc_html_e($val); ?></span>
+									<label class="" for="<?php esc_html($key); ?>">
+										<input type="hidden" name="<?php esc_html($id); ?>[<?php esc_html($key); ?>]" value="0" />
+										<input type="checkbox" id="<?php esc_html($key); ?>" name="<?php esc_html($id); ?>[<?php esc_html($key); ?>]" class="" <?php esc_html($checked); ?> value="1" />
+										<span class="multiple_label"><?php esc_html($val); ?></span>
 										</br>
 									</label>
 								</span>
@@ -345,9 +345,9 @@ class WooCommerce_Customer_Email_Verification_Admin
 							?>
 
 							<fieldset>
-								<textarea placeholder="<?php esc_html_e($placeholder); ?>" class="input-text regular-input" name="<?php esc_html_e($id); ?>" id="<?php esc_html_e($id); ?>"><?php esc_html_e(get_option($id, $array['Default'])); ?></textarea>
+								<textarea placeholder="<?php esc_html($placeholder); ?>" class="input-text regular-input" name="<?php esc_html($id); ?>" id="<?php esc_html($id); ?>"><?php esc_html(get_option($id, $array['Default'])); ?></textarea>
 							</fieldset>
-							<span class="" style="font-size: 12px;"><?php esc_html_e($array['desc_tip']); ?></span>
+							<span class="" style="font-size: 12px;"><?php esc_html($array['desc_tip']); ?></span>
 						<?php
 						} elseif ('tag_block' == $array['type']) {
 						?>
@@ -357,13 +357,13 @@ class WooCommerce_Customer_Email_Verification_Admin
 						<?php
 						} elseif ('desc' == $array['type']) {
 						?>
-							<p class="section_desc"><?php esc_html_e($array['title']); ?></p>
+							<p class="section_desc"><?php esc_html($array['title']); ?></p>
 						<?php
 						} else {
 							$placeholder = (!empty($array['placeholder'])) ? $array['placeholder'] : '';
 						?>
 							<fieldset>
-								<input class="input-text regular-input " type="text" name="<?php esc_html_e($id); ?>" id="<?php esc_html_e($id); ?>" style="" value="<?php esc_html_e(get_option($id, $array['Default'])); ?>" placeholder="<?php esc_html_e($placeholder); ?>">
+								<input class="input-text regular-input " type="text" name="<?php esc_html($id); ?>" id="<?php esc_html($id); ?>" style="" value="<?php esc_html(get_option($id, $array['Default'])); ?>" placeholder="<?php esc_html($placeholder); ?>">
 							</fieldset>
 						<?php } ?>
 					</li>
@@ -670,7 +670,7 @@ class WooCommerce_Customer_Email_Verification_Admin
 	{
 	?>
 		<p class="woocommerce-LostPassword lost_password">
-			<a href="<?php echo esc_url(get_home_url()); ?>?p=reset-verification-email"><?php esc_html_e('Resend verification email', 'customer-email-verification-for-woocommerce'); ?></a>
+			<a href="<?php echo esc_url(get_home_url()); ?>?p=reset-verification-email"><?php esc_html('Resend verification email', 'customer-email-verification-for-woocommerce'); ?></a>
 		</p>
 	<?php
 	}
@@ -689,10 +689,10 @@ class WooCommerce_Customer_Email_Verification_Admin
 
 		<table class="form-table evfwr-admin-menu">
 			<th colspan="2">
-				<h4 class="evfwr_admin_user"><?php esc_html_e('Customer verification', 'customer-email-verification-for-woocommerce'); ?></h4>
+				<h4 class="evfwr_admin_user"><?php esc_html('Customer verification', 'customer-email-verification-for-woocommerce'); ?></h4>
 			</th>
 			<tr>
-				<th class="evfwr-admin-padding"><label for="year_of_birth"><?php esc_html_e('Email verification status:', 'customer-email-verification-for-woocommerce'); ?></label></th>
+				<th class="evfwr-admin-padding"><label for="year_of_birth"><?php esc_html('Email verification status:', 'customer-email-verification-for-woocommerce'); ?></label></th>
 				<td>
 					<?php
 					if (!woo_customer_email_verification()->is_admin_user($user_id)  && !woo_customer_email_verification()->is_verification_skip_for_user($user_id)) {
