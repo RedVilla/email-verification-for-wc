@@ -40,13 +40,6 @@ class WooCommerce_EVFWR_Admin_Notices_Under_WooCommerce_Admin {
 		
 		add_action( 'admin_init', array( $this, 'evfwr_settings_admin_notice_ignore' ) );
 	}
-
-	
-	public function evfwr_settings_admin_notice_ignore() {
-		if ( isset( $_GET['evfwr-pro-settings-ignore-notice'] ) ) {
-			set_transient( 'evfwr_settings_admin_notice_ignore', 'yes', 2592000 );
-		}
-	}
 			
 }
 
