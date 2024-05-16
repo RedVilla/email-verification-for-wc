@@ -175,7 +175,7 @@ class evfwr_Verification_Widget_Message {
 				'input_attrs' => array(
 					'class' => '',
 					'style' => '',
-					'placeholder' => __( $this->defaults['evfwr_verification_header'], 'customer-email-verification-for-woocommerce' ),			
+					'placeholder' => $this->defaults['evfwr_verification_header'],			
 				),
 			)
 			
@@ -199,7 +199,7 @@ class evfwr_Verification_Widget_Message {
 				'input_attrs' => array(
 					'class' => '',
 					'style' => '',
-					'placeholder' => __( $this->defaults['evfwr_verification_message'], 'customer-email-verification-for-woocommerce' ),
+					'placeholder' => $this->defaults['evfwr_verification_message'],
 				),	
 			)
 		);
@@ -222,7 +222,7 @@ class evfwr_Verification_Widget_Message {
 				'input_attrs' => array(
 					'class' => '',
 					'style' => '',
-					'placeholder' => __( $this->defaults['evfwr_verification_widget_footer'], 'customer-email-verification-for-woocommerce' ),
+					'placeholder' => $this->defaults['evfwr_verification_widget_footer'],
 				),
 			)
 		);
