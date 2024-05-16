@@ -10,7 +10,7 @@
  * Author URI: https://redvilla.tech 
  * License: GPL-2.0+
  * License URI: 
- * Text Domain: email-verification-for-wc-registration
+ * Text Domain: Email-Verification-for-WC-Registration-main
  * Domain Path: /lang/
  * WC tested up to: 8.8.3
  */
