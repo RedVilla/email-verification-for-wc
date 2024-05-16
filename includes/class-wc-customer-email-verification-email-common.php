@@ -281,7 +281,7 @@ class WooCommerce_Customer_Email_Verification_Email_Common {
 	}
 	
 	public function generate_verification_pin() {
-		$digits = apply_filters( 'cev_verification_code_length', __( 4, 'customer-email-verification-for-woocommerce' ) );
+		$digits = apply_filters( 4, 'customer-email-verification-for-woocommerce' );
 		$i = 0; //counter
 		$pin = ''; //our default pin is blank.
 		while ( $i < $digits ) {
