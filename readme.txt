@@ -1,6 +1,6 @@
 === Email Verification For WC Registration   ===
 Contributors: redvilla plugins
-Tags: woocommerce, email address verification, email validation, woocommerce registration, customer account, customer verification, registration verification, woocommerce signup spam
+Tags: woocommerce, email verification, validation, customer verification, registration verification
 Requires at least: 5.3
 Requires PHP: 7.2
 Tested up to: 6.5.3
@@ -8,7 +8,7 @@ Stable tag: 1.0
 License: GPLv2 
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-This Customer verification will reduce WooCommerce registration spam in your store and will require them to verify their email address by sending a verification link to the email address which they registered to their account. You can allow the customer to log-in to their account when they first register and to require them to verify the email on the next login or you can restrict access to their account until they verify their email.
+This plugin will reduce WooCommerce registration spam by requiring users to verify their email address before creating an account.
 
 == Key Features==
 
