@@ -300,7 +300,7 @@ class WooCommerce_Customer_Email_Verification_Email_Common {
 		$resend_limit_reached = apply_filters( 'cev_resend_email_limit', false, get_current_user_id() );
 		$resend_email_link = add_query_arg( array('cev_redirect_limit_resend' => base64_encode( get_current_user_id() ),), get_the_permalink( $this->wuev_myaccount_page_id ) ); 
 		ob_start(); ?>
-		<a href="<?php echo esc_url( $resend_email_link ); ?>" class="cev-link-try-again <?php echo ( $resend_limit_reached ) ? 'cev-try-again-disable' : ''; ?>"><?php esc_html_e( 'Try Again', 'customer-email-verification-for-woocommerce' ); ?></a>
+		<a href="<?php echo esc_url( $resend_email_link ); ?>" class="cev-link-try-again <?php echo ( $resend_limit_reached ) ? 'cev-try-again-disable' : ''; ?>"><?php esc_html( 'Try Again', 'customer-email-verification-for-woocommerce' ); ?></a>
 		<?php
 		$try_again_url = ob_get_clean();
 		return $try_again_url;
