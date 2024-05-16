@@ -129,7 +129,7 @@ Or, verify your account by clicking on the verification link: ', 'customer-email
 				'input_attrs' => array(
 					'class' => '',
 					'style' => '',
-					'placeholder' => __( $this->defaults['evfwr_new_acoount_email_heading'], 'customer-email-verification-for-woocommerce' ),
+					'placeholder' => $this->defaults['evfwr_new_acoount_email_heading'],
 				),
 			)
 		);	
@@ -152,7 +152,7 @@ Or, verify your account by clicking on the verification link: ', 'customer-email
 				'input_attrs' => array(
 					'class' => '',
 					'style' => '',
-					'placeholder' => __( $this->defaults['evfwr_new_verification_email_body'], 'customer-email-verification-for-woocommerce' ),
+					'placeholder' => $this->defaults['evfwr_new_verification_email_body'],
 				),
 			)
 		);
