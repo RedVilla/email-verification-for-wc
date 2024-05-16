@@ -175,7 +175,7 @@ class evwfr_Initialise_Customizer_Settings {
 				'input_attrs' => array(
 					'class' => '',
 					'style' => '',
-					'placeholder' => __( $this->defaults['evwfr_verification_email_body'], 'customer-email-verification-for-woocommerce' ),
+					'placeholder' => $this->defaults['evwfr_verification_email_body'],
 				),
 			)
 		);
