@@ -3,7 +3,7 @@ Contributors: redvilla plugins
 Tags: woocommerce, email address verification, email validation, woocommerce registration, customer account, customer verification, registration verification, woocommerce signup spam
 Requires at least: 5.3
 Requires PHP: 7.2
-Tested up to: 6.5
+Tested up to: 6.5.3
 Stable tag: 1.0
 License: GPLv2 
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
