@@ -17,18 +17,18 @@ class WooCommerce_Customer_Email_Verification_Email_Common {
 	}
 	
 	public function init() {	
-		add_filter( 'wc_cev_decode_html_content', array( $this, 'wc_cev_decode_html_content' ), 1 );
+		add_filter( 'woocommerce_evfwr_decode_html_content', array( $this, 'woocommerce_evfwr_decode_html_content' ), 1 );
 		add_filter( 'verification_email_email_body', array( $this, 'content_do_shortcode' ) );
 	}
 
 	public function code_mail_sender( $email ) {
 				
 		$verification_pin = $this->generate_verification_pin();
-		$cev_initialise_customizer_settings = new cev_initialise_customizer_settings();		
+		$evfwr_initialise_customizer_settings = new evfwr_initialise_customizer_settings();		
 		
 		$user_id = $this->wuev_user_id;	
 		
-		$expire_time =  get_option('cev_verification_code_expiration', 'never');
+		$expire_time =  get_option('evfwr_verification_code_expiration', 'never');
 		
 		if ( empty( $expire_time ) ) {
 			$expire_time = 'never';
@@ -40,23 +40,23 @@ class WooCommerce_Customer_Email_Verification_Email_Common {
 			'enddate' => time() + (int) $expire_time,
 		);		
 
-		update_user_meta( $user_id, 'cev_email_verification_pin', $verification_data );		
+		update_user_meta( $user_id, 'evfwr_email_verification_pin', $verification_data );		
 		
 		$result = false;		
 		
-		$email_subject = get_option( 'cev_verification_email_subject', $cev_initialise_customizer_settings->defaults['cev_verification_email_subject'] );
+		$email_subject = get_option( 'evfwr_verification_email_subject', $evfwr_initialise_customizer_settings->defaults['evfwr_verification_email_subject'] );
 		$email_subject = $this->maybe_parse_merge_tags( $email_subject );
 		
-		$email_heading = get_option( 'cev_verification_email_heading', $cev_initialise_customizer_settings->defaults['cev_verification_email_heading'] );
+		$email_heading = get_option( 'evfwr_verification_email_heading', $evfwr_initialise_customizer_settings->defaults['evfwr_verification_email_heading'] );
 		
 		$mailer = WC()->mailer();
 		ob_start();
 	
 		//do_action( 'woocommerce_email_header',  $email_heading,  $email ); 	
 		$mailer->email_header( $email_heading, $email );		
-		$email_body = get_option( 'cev_verification_email_body', $cev_initialise_customizer_settings->defaults['cev_verification_email_body'] );
+		$email_body = get_option( 'evfwr_verification_email_body', $evfwr_initialise_customizer_settings->defaults['evfwr_verification_email_body'] );
 		$email_body = $this->maybe_parse_merge_tags( $email_body );
-		$email_body = apply_filters( 'cev_verification_email_content', $email_body );
+		$email_body = apply_filters( 'evfwr_verification_email_content', $email_body );
 		$email_body = wpautop( $email_body );
 		$email_body = wp_kses_post( $email_body );
 		echo wp_kses_post( $email_body );
@@ -69,7 +69,7 @@ class WooCommerce_Customer_Email_Verification_Email_Common {
 		
 		$email_body = apply_filters( 'woocommerce_mail_content', $email_abstract_object->style_inline( wptexturize( $email_body ) ) );		
 			
-		$email_body = apply_filters( 'wc_cev_decode_html_content', $email_body );		
+		$email_body = apply_filters( 'woocommerce_evfwr_decode_html_content', $email_body );		
 		
 		$result = $mailer->send( $email, $email_subject, $email_body );
 
@@ -83,7 +83,7 @@ class WooCommerce_Customer_Email_Verification_Email_Common {
 	/*
 	 * This function removes backslashes from the textfields and textareas of the plugin settings.
 	 */
-	public function wc_cev_decode_html_content( $content ) {
+	public function woocommerce_evfwr_decode_html_content( $content ) {
 		if ( empty( $content ) ) {
 			return '';
 		}
@@ -166,19 +166,19 @@ class WooCommerce_Customer_Email_Verification_Email_Common {
 		$tags = array(
 			array(
 				'name' => __( 'User login', 'customer-email-verification-for-woocommerce' ),
-				'tag'  => 'cev_user_login',
+				'tag'  => 'evfwr_user_login',
 			),
 			array(
 				'name' => __( 'User display name', 'customer-email-verification-for-woocommerce' ),
-				'tag'  => 'cev_display_name',
+				'tag'  => 'evfwr_display_name',
 			),
 			array(
 				'name' => __( 'User email', 'customer-email-verification-for-woocommerce' ),
-				'tag'  => 'cev_user_email',
+				'tag'  => 'evfwr_user_email',
 			),
 			array(
 				'name' => __( 'Email Verification Link', 'customer-email-verification-for-woocommerce' ),
-				'tag'  => 'cev_user_verification_link',
+				'tag'  => 'evfwr_user_verification_link',
 			),			
 			array(
 				'name' => __( 'Verification link', 'customer-email-verification-for-woocommerce' ),
@@ -186,11 +186,11 @@ class WooCommerce_Customer_Email_Verification_Email_Common {
 			),
 			array(
 				'name' => __( 'Resend Confirmation Email', 'customer-email-verification-for-woocommerce' ),
-				'tag'  => 'cev_resend_email_link',
+				'tag'  => 'evfwr_resend_email_link',
 			),	
 			array(
 				'name' => __( 'Verification Pin', 'customer-email-verification-for-woocommerce' ),
-				'tag'  => 'cev_user_verification_pin',
+				'tag'  => 'evfwr_user_verification_pin',
 			),
 			array(
 				'name' => __( 'Site Title', 'customer-email-verification-for-woocommerce' ),
@@ -198,7 +198,7 @@ class WooCommerce_Customer_Email_Verification_Email_Common {
 			),
 			array(
 				'name' => __( 'Try Again', 'customer-email-verification-for-woocommerce' ),
-				'tag'  => 'cev_resend_verification',
+				'tag'  => 'evfwr_resend_verification',
 			),	
 		);
 
@@ -210,27 +210,27 @@ class WooCommerce_Customer_Email_Verification_Email_Common {
 		return $secret;
 	}
 	
-	public function cev_user_login() {
+	public function evfwr_user_login() {
 		$user = get_userdata( $this->wuev_user_id );		
 		$user_login = $user->user_login ;	
 		return $user_login;
 	}
 	
-	public function cev_user_email() {
+	public function evfwr_user_email() {
 		$user = get_userdata( $this->wuev_user_id );		
 		$user_email = $user->user_email ;	
 		return $user_email;
 	}
 	
-	public function cev_display_name() {		
+	public function evfwr_display_name() {		
 		$user = get_userdata( $this->wuev_user_id );		
 		$display_name = $user->display_name;
 
 		return $display_name;
 	}
 	
-	public function cev_user_verification_link() {		
-		$cev_verification_selection = get_option('cev_verification_selection');	
+	public function evfwr_user_verification_link() {		
+		$evfwr_verification_selection = get_option('evfwr_verification_selection');	
 		$secret      = get_user_meta( $this->wuev_user_id, 'customer_email_verification_code', true );
 		$create_link = $secret . '@' . $this->wuev_user_id;
 		$hyperlink   = add_query_arg( array(
@@ -238,46 +238,46 @@ class WooCommerce_Customer_Email_Verification_Email_Common {
 		), get_the_permalink( $this->wuev_myaccount_page_id ) );	
 		
 		$style = 'text-decoration:  none ';
-		$style = apply_filters( 'cev_user_verification_link_style', $style );
+		$style = apply_filters( 'evfwr_user_verification_link_style', $style );
 		
-		if ( 'button' == $cev_verification_selection ) {
-			$link = '<p style="display:inline-block;"><a style="' . $style . '" href="' . $hyperlink . '">' . get_option( 'cev_new_acoount_button_text', __( 'Verify your email', 'customer-email-verification-for-woocommerce' ) ) . '</a></p>';	
+		if ( 'button' == $evfwr_verification_selection ) {
+			$link = '<p style="display:inline-block;"><a style="' . $style . '" href="' . $hyperlink . '">' . get_option( 'evfwr_new_acoount_button_text', __( 'Verify your email', 'customer-email-verification-for-woocommerce' ) ) . '</a></p>';	
 		} else {
-			$link = '<p><a style="' . $style . '" href="' . $hyperlink . '">' . get_option( 'cev_new_acoount_link_text', __( 'Verify your email', 'customer-email-verification-for-woocommerce' ) ) . '</a></p>';	
+			$link = '<p><a style="' . $style . '" href="' . $hyperlink . '">' . get_option( 'evfwr_new_acoount_link_text', __( 'Verify your email', 'customer-email-verification-for-woocommerce' ) ) . '</a></p>';	
 		}
 		
 		return $link;
 		
 	}
 	
-	public function cev_resend_email_link() {
+	public function evfwr_resend_email_link() {
 		$link = add_query_arg( array(
-			'cev_redirect_limit_resend' => base64_encode( $this->wuev_user_id ),
+			'evfwr_redirect_limit_resend' => base64_encode( $this->wuev_user_id ),
 		), get_the_permalink( $this->wuev_myaccount_page_id ) );
 		$resend_confirmation_text = __( 'Resend confirmation email', 'customer-email-verification-for-woocommerce' );
-		$cev_resend_link          = '<a href="' . $link . '">' . $resend_confirmation_text . '</a>';
+		$evfwr_resend_link          = '<a href="' . $link . '">' . $resend_confirmation_text . '</a>';
 
-		return $cev_resend_link;
+		return $evfwr_resend_link;
 	}
 	
-	public function cev_user_verification_pin() {
+	public function evfwr_user_verification_pin() {
 		
 		$user_id = $this->wuev_user_id;			
 		
-		$cev_email_verification_pin = get_user_meta( $user_id, 'cev_email_verification_pin', true );
+		$evfwr_email_verification_pin = get_user_meta( $user_id, 'evfwr_email_verification_pin', true );
 		
 		$verification_pin = $this->generate_verification_pin();
 		
-		if ( empty( $cev_email_verification_pin ) ) {
-			$cev_email_verification_pin = array();
-			$cev_email_verification_pin['pin'] = $verification_pin;
+		if ( empty( $evfwr_email_verification_pin ) ) {
+			$evfwr_email_verification_pin = array();
+			$evfwr_email_verification_pin['pin'] = $verification_pin;
 		}
 		
-		if ( !is_array( $cev_email_verification_pin ) ) {
-			return '<span>' . $cev_email_verification_pin . '</span>';
+		if ( !is_array( $evfwr_email_verification_pin ) ) {
+			return '<span>' . $evfwr_email_verification_pin . '</span>';
 		}
 				
-		return '<span>' . $cev_email_verification_pin['pin'] . '</span>';
+		return '<span>' . $evfwr_email_verification_pin['pin'] . '</span>';
 	}
 	
 	public function generate_verification_pin() {
@@ -296,11 +296,11 @@ class WooCommerce_Customer_Email_Verification_Email_Common {
 		return get_bloginfo( 'name' );
 	}
 	
-	public function cev_resend_verification() {	
-		$resend_limit_reached = apply_filters( 'cev_resend_email_limit', false, get_current_user_id() );
-		$resend_email_link = add_query_arg( array('cev_redirect_limit_resend' => base64_encode( get_current_user_id() ),), get_the_permalink( $this->wuev_myaccount_page_id ) ); 
+	public function evfwr_resend_verification() {	
+		$resend_limit_reached = apply_filters( 'evfwr_resend_email_limit', false, get_current_user_id() );
+		$resend_email_link = add_query_arg( array('evfwr_redirect_limit_resend' => base64_encode( get_current_user_id() ),), get_the_permalink( $this->wuev_myaccount_page_id ) ); 
 		ob_start(); ?>
-		<a href="<?php echo esc_url( $resend_email_link ); ?>" class="cev-link-try-again <?php echo ( $resend_limit_reached ) ? 'cev-try-again-disable' : ''; ?>"><?php esc_html( 'Try Again', 'customer-email-verification-for-woocommerce' ); ?></a>
+		<a href="<?php echo esc_url( $resend_email_link ); ?>" class="evfwr-link-try-again <?php echo ( $resend_limit_reached ) ? 'evfwr-try-again-disable' : ''; ?>"><?php esc_html( 'Try Again', 'customer-email-verification-for-woocommerce' ); ?></a>
 		<?php
 		$try_again_url = ob_get_clean();
 		return $try_again_url;
