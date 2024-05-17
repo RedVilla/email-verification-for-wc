@@ -305,6 +305,7 @@ class WooCommerce_Customer_Email_Verification_Email {
 	 * If the email is already verified then it redirects to my-account page
 	 */
 	public function evfwr_resend_verification_email() {
+		if ( isset( $_POST['_wpnonce'] ) && wp_verify_nonce( $_POST['_wpnonce'], 'evfwr_redirect_limit_resend_action' ) ) {
 		if ( isset( $_GET['evfwr_redirect_limit_resend'] ) && '' !== $_GET['evfwr_redirect_limit_resend'] ) { // WPCS: input var ok, CSRF ok.
 			
 			$user_id = base64_decode( wc_clean( $_GET['evfwr_redirect_limit_resend'] ) ); // WPCS: input var ok, CSRF ok.
@@ -344,6 +345,7 @@ class WooCommerce_Customer_Email_Verification_Email {
 				$message = get_option('evfwr_resend_verification_email_message', 'A new verification link is sent. Check email. {{evfwr_resend_email_link}}');
 				$message = WooCommerce_customer_email_verification_email_Common()->maybe_parse_merge_tags( $message );
 				wc_add_notice( $message, 'notice' );
+				}
 			}
 		}
 	}
