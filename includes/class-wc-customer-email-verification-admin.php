@@ -914,27 +914,30 @@ $admin_url = add_query_arg(
 		return $redirect;
 	}
 
-	public function user_bulk_action_notices()
-	{
+	public function user_bulk_action_notices() {
 
-		if (!empty($_REQUEST['verify_users_emails'])) {
-			printf('<div id="message" class="updated notice is-dismissible"><p>' .
-				/* translators: %s: replace with email */
-				esc_html(_n(
-					'Verification Status updated for  %s user.',
-					'Verification Status updated for  %s users.',
-					intval($_REQUEST['verify_users_emails'])
-				)) . '</p></div>', intval($_REQUEST['verify_users_emails']));
-		}
+  	// Check for valid nonce
+  		if ( ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'user_bulk_action_notices' ) ) {
+    			return;  // Exit if nonce is invalid
+  	}
 
-		if (!empty($_REQUEST['send_verification_emails'])) {
-			printf('<div id="message" class="updated notice is-dismissible"><p>' .
-				/* translators: %s: replace with email */
-				esc_html(_n(
-					'Verification email sent to %s user.',
-					'Verification email sent to %s users.',
-					intval($_REQUEST['send_verification_emails'])
-				)) . '</p></div>', intval($_REQUEST['send_verification_emails']));
+  	if (!empty($_REQUEST['verify_users_emails'])) {
+    		printf('<div id="message" class="updated notice is-dismissible"><p>' .
+      			/* translators: %s: replace with email */
+      			esc_html(_n(
+        			'Verification Status updated for  %s user.',
+        			'Verification Status updated for  %s users.',
+        			intval($_REQUEST['verify_users_emails'])
+      				)) . '</p></div>', intval($_REQUEST['verify_users_emails']));
+  			}
+
+  	if (!empty($_REQUEST['send_verification_emails'])) {
+    		printf('<div id="message" class="updated notice is-dismissible"><p>' .
+      			/* translators: %s: replace with email */
+      			esc_html(_n(
+        			'Verification email sent to %s user.',
+        			'Verification email sent to %s users.',
+        			intval($_REQUEST['send_verification_emails'])
+      				)) . '</p></div>', intval($_REQUEST['send_verification_emails']));
+  			}
 		}
-	}
-}
