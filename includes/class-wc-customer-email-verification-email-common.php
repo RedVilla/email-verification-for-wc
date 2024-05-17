@@ -318,7 +318,7 @@ function woocommerce_customer_email_verification_email_Common() {
 	static $instance;
 
 	if ( ! isset( $instance ) ) {		
-		$instance = new WC_Customer_Email_Verification_Email_Common();
+		$instance = new WooCommerce_Customer_Email_Verification_Email_Common();
 	}
 
 	return $instance;
