@@ -78,17 +78,24 @@ class WooCommerce_Customer_Email_Verification_Email {
 	}
 	
 	public function evfwr_verify_user_email_on_registration_checkout( $user_id ) {
-		
-		$woocommerce_process_checkout_nonce = isset( $_REQUEST['woocommerce-process-checkout-nonce'] ) ? wc_clean( $_REQUEST['woocommerce-process-checkout-nonce'] ) : '';
-		$_wpnonce = isset( $_REQUEST['_wpnonce'] ) ? wc_clean( $_REQUEST['_wpnonce'] ) : '';
-		
-		$nonce_value = wc_get_var( $woocommerce_process_checkout_nonce, wc_get_var( $_wpnonce, '' ) );
-		
-		if ( wp_verify_nonce( $nonce_value, 'woocommerce-process_checkout' ) ) {		
-			if ( isset($_POST['createaccount']) && '1' == $_POST['createaccount'] ) {
-				update_user_meta( $user_id, 'customer_email_verified', 'true' );
-			}
-		}
+
+    	// Check for both potential nonce fields
+    	$woocommerce_process_checkout_nonce = isset( $_REQUEST['woocommerce-process-checkout-nonce'] ) ? wp_verify_nonce( $_REQUEST['woocommerce-process-checkout-nonce'], 'woocommerce-process_checkout' ) : false;
+    	$_wpnonce = isset( $_REQUEST['_wpnonce'] ) ? wp_verify_nonce( $_REQUEST['_wpnonce'], 'wp_update_user' ) : false;
+
+    	// Use the first valid nonce, if available
+    	$valid_nonce = $woocommerce_process_checkout_nonce ? $woocommerce_process_checkout_nonce : $_wpnonce;
+
+    	if ( $valid_nonce ) {  // Process only if a valid nonce is found
+
+        if ( isset($_POST['createaccount']) && '1' == $_POST['createaccount'] ) {
+            update_user_meta( $user_id, 'customer_email_verified', 'true' );
+        	}
+    		} else {
+        	// Handle the case of missing or invalid nonce (optional)
+        	// You can display an error message or redirect to the login page
+        	wp_die( esc_html__( 'Nonce verification failed. Please try again.', 'email-verification-for-wc-registration' ) );
+    		}
 	}
 	
 	/*	
