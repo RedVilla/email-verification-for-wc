@@ -92,48 +92,59 @@ class WooCommerce_Customer_Email_Verification_Admin
 	 */
 	public function admin_styles($hook)
 	{
+    		// Verify the nonce
+    		if (!isset($_GET['_wpnonce']) || !wp_verify_nonce($_GET['_wpnonce'], 'evfwr_nonce_creation')) {
+        		return;
+    	}
 
-		if (!isset($_GET['page'])) {
-			return;
-		}
+    		if (!isset($_GET['page'])) {
+        		return;
+    	}
 
-		if ('email-verification-for-wc-registration' != $_GET['page']) {
-			return;
-		}
+    		if ('email-verification-for-wc-registration' != $_GET['page']) {
+        		return;
+    	}
 
-		$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
+    		$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
 
-		wp_register_script('select2', WC()->plugin_url() . '/assets/js/select2/select2.full' . $suffix . '.js', array('jquery'), '4.0.3');
-		wp_enqueue_script('select2');
-		wp_enqueue_style('wp-color-picker');
-		wp_enqueue_style('customer_email_verification_styles', woo_customer_email_verification()->plugin_dir_url() . 'assets/css/admin.css', array(), woo_customer_email_verification()->version);
+    		wp_register_script('select2', WC()->plugin_url() . '/assets/js/select2/select2.full' . $suffix . '.js', array('jquery'), '4.0.3');
+    		wp_enqueue_script('select2');
+    		wp_enqueue_style('wp-color-picker');
+    		wp_enqueue_style('customer_email_verification_styles', woo_customer_email_verification()->plugin_dir_url() . 'assets/css/admin.css', array(), woo_customer_email_verification()->version);
 
-		wp_enqueue_script('customer_email_verification_script', woo_customer_email_verification()->plugin_dir_url() . 'assets/js/admin.js', array('jquery', 'wp-util'), woo_customer_email_verification()->version, true);
+    		wp_enqueue_script('customer_email_verification_script', woo_customer_email_verification()->plugin_dir_url() . 'assets/js/admin.js', array('jquery', 'wp-util'), woo_customer_email_verification()->version, true);
 
-		wp_localize_script('customer_email_verification_script', 'customer_email_verification_script', array());
+    		wp_localize_script('customer_email_verification_script', 'customer_email_verification_script', array());
 
-		wp_register_script('selectWoo', WC()->plugin_url() . '/assets/js/selectWoo/selectWoo.full' . $suffix . '.js', array('jquery'), '1.0.4', true);
-		wp_register_script('wc-enhanced-select', WC()->plugin_url() . '/assets/js/admin/wc-enhanced-select' . $suffix . '.js', array('jquery', 'selectWoo'), WC_VERSION, true);
-		wp_register_script('jquery-blockui', WC()->plugin_url() . '/assets/js/jquery-blockui/jquery.blockUI' . $suffix . '.js', array('jquery'), '2.70', true);
+    		wp_register_script('selectWoo', WC()->plugin_url() . '/assets/js/selectWoo/selectWoo.full' . $suffix . '.js', array('jquery'), '1.0.4', true);
+    		wp_register_script('wc-enhanced-select', WC()->plugin_url() . '/assets/js/admin/wc-enhanced-select' . $suffix . '.js', array('jquery', 'selectWoo'), WC_VERSION, true);
+    		wp_register_script('jquery-blockui', WC()->plugin_url() . '/assets/js/jquery-blockui/jquery.blockUI' . $suffix . '.js', array('jquery'), '2.70', true);
 
+    		wp_enqueue_script('selectWoo');
+    		wp_enqueue_script('wc-enhanced-select');
 
-		wp_enqueue_script('selectWoo');
-		wp_enqueue_script('wc-enhanced-select');
+    		wp_register_style('woocommerce_admin_styles', WC()->plugin_url() . '/assets/css/admin.css', array(), WC_VERSION);
+    		wp_enqueue_style('woocommerce_admin_styles');
 
-		wp_register_style('woocommerce_admin_styles', WC()->plugin_url() . '/assets/css/admin.css', array(), WC_VERSION);
-		wp_enqueue_style('woocommerce_admin_styles');
+    		wp_register_script('jquery-tiptip', WC()->plugin_url() . '/assets/js/jquery-tiptip/jquery.tipTip.min.js', array('jquery'), WC_VERSION, true);
 
-		wp_register_script('jquery-tiptip', WC()->plugin_url() . '/assets/js/jquery-tiptip/jquery.tipTip.min.js', array('jquery'), WC_VERSION, true);
-
-
-		wp_enqueue_script('jquery-tiptip');
-		wp_enqueue_script('jquery-blockui');
-		wp_enqueue_script('wp-color-picker');
-		wp_enqueue_script('jquery-ui-sortable');
-		wp_enqueue_script('media-upload');
-		wp_enqueue_script('thickbox');
-		wp_enqueue_style('thickbox');
+    		wp_enqueue_script('jquery-tiptip');
+    		wp_enqueue_script('jquery-blockui');
+    		wp_enqueue_script('wp-color-picker');
+    		wp_enqueue_script('jquery-ui-sortable');
+    		wp_enqueue_script('media-upload');
+    		wp_enqueue_script('thickbox');
+    		wp_enqueue_style('thickbox');
 	}
+
+// You need to generate a nonce when creating the URL with the 'page' parameter.
+$admin_url = add_query_arg(
+    array(
+        'page' => 'email-verification-for-wc-registration',
+        '_wpnonce' => wp_create_nonce('evfwr_nonce_creation')
+    ),
+    admin_url('admin.php')
+);
 
 	/*
 	* Callback for Customer Email Verification page
