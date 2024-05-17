@@ -279,22 +279,28 @@ class WooCommerce_Customer_Email_Verification_Email {
 	}
 	
 	public function show_evfwr_notification_message_after_register() {
-		if ( isset( $_GET['evfwr'] ) && '' !== $_GET['evfwr'] ) { // WPCS: input var ok, CSRF ok.
-			$registration_message = get_option( 'evfwr_verification_message', 'We sent you a verification email. Check and verify your account.' );
-			wc_add_notice( $registration_message, 'notice' );
-		}
-		if ( isset( $_GET['evfwrsm'] ) && '' !== $_GET['evfwrsm'] ) { // WPCS: input var ok, CSRF ok.
-			WooCommerce_customer_email_verification_email_Common()->wuev_user_id = base64_decode( wc_clean( $_GET['evfwrsm'] ) ); // WPCS: input var ok, CSRF ok.
-			if ( false === WC()->session->has_session() ) {
-				WC()->session->set_customer_session_cookie( true );
-			}
-			$message = get_option('evfwr_resend_verification_email_message', 'You need to verify your account before login. {{evfwr_resend_email_link}}');
-			$message = WooCommerce_customer_email_verification_email_Common()->maybe_parse_merge_tags( $message );
-			if ( false === wc_has_notice( $message, 'notice' ) ) {
-				wc_add_notice( $message, 'notice' );
-			}
-		}
+  		if (!check_admin_referer('evfwr_action', 'evfwr_nonce')) {
+    			return; // Exit if nonce verification fails
+  			}
+
+  	if (isset($_GET['evfwr']) && '' !== $_GET['evfwr']) {
+    		$registration_message = get_option('evfwr_verification_message', 'We sent you a verification email. Check and verify your account.');
+    		wc_add_notice($registration_message, 'notice');
+  		}
+
+  		if (isset($_GET['evfwrsm']) && '' !== $_GET['evfwrsm']) {
+    			WooCommerce_customer_email_verification_email_Common()->wuev_user_id = base64_decode(wc_clean($_GET['evfwrsm']));
+    		if (false === WC()->session->has_session()) {
+      			WC()->session->set_customer_session_cookie(true);
+    			}
+    			$message = get_option('evfwr_resend_verification_email_message', 'You need to verify your account before login. {{evfwr_resend_email_link}}');
+    			$message = WooCommerce_customer_email_verification_email_Common()->maybe_parse_merge_tags($message);
+    		if (false === wc_has_notice($message, 'notice')) {
+      			wc_add_notice($message, 'notice');
+    			}
+  		}
 	}
+
 	
 	/**
 	 * This function sends a new verification email to user if the user clicks on 'resend verification email' link.
