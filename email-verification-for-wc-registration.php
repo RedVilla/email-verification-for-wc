@@ -256,7 +256,7 @@ class Redvilla_Woo_Customer_Email_Verification
 	 */
 	public function front_styles()
 	{
-		wp_register_script('evfwr-front-js', woo_customer_email_verification()->plugin_dir_url() . 'assets/js/front.js', array('jquery'), woo_customer_email_verification()->version);
+		wp_register_script('evfwr-front-js', woo_customer_email_verification()->plugin_dir_url() . 'assets/js/front.js', array('jquery'), woo_customer_email_verification()->version, true);
 		wp_localize_script('evfwr-front-js', 'evfwr_ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
 		wp_register_style('evfwr_front_style', woo_customer_email_verification()->plugin_dir_url() . 'assets/css/front.css', array(), woo_customer_email_verification()->version);
 
