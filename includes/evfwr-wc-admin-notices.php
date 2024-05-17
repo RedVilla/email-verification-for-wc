@@ -22,7 +22,7 @@ class WooCommerce_EVFWR_Admin_Notices_Under_WooCommerce_Admin {
 	/**
 	 * Get the class instance
 	 *
-	 * @return WC_EVFWR_Admin_Notices_Under_WC_Admin
+	 * @return WooCommerce_EVFWR_Admin_Notices_Under_WooCommerce_Admin
 	*/
 	public static function get_instance() {
 
@@ -44,18 +44,18 @@ class WooCommerce_EVFWR_Admin_Notices_Under_WooCommerce_Admin {
 }
 
 /**
- * Returns an instance of WC_EVFWR_Admin_Notices_Under_WC_Admin.
+ * Returns an instance of WooCommerce_EVFWR_Admin_Notices_Under_WooCommerce_Admin.
  *
  * @since 1.6.5
  * @version 1.6.5
  *
- * @return WC_EVFWR_Admin_Notices_Under_WC_Admin
+ * @return WooCommerce_EVFWR_Admin_Notices_Under_WooCommerce_Admin
 */
 function WooCommerce_EVFWR_Admin_Notices_Under_WooCommerce_Admin() {
 	static $instance;
 
 	if ( ! isset( $instance ) ) {		
-		$instance = new WC_EVFWR_Admin_Notices_Under_WC_Admin();
+		$instance = new WooCommerce_EVFWR_Admin_Notices_Under_WooCommerce_Admin();
 	}
 
 	return $instance;
@@ -66,4 +66,4 @@ function WooCommerce_EVFWR_Admin_Notices_Under_WooCommerce_Admin() {
  *
  * Backward compatibility.
 */
-WC_EVFWR_Admin_Notices_Under_WC_Admin();
+WooCommerce_EVFWR_Admin_Notices_Under_WooCommerce_Admin();
