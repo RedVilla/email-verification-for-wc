@@ -141,7 +141,7 @@ class WooCommerce_evfwr_Customizer {
 			wp_enqueue_style('evfwr-customizer-styles', woo_customer_email_verification()->plugin_dir_url() . 'assets/css/customizer-styles.css', array(), woo_customer_email_verification()->version  );
 			wp_enqueue_script('evfwr-customizer-scripts', woo_customer_email_verification()->plugin_dir_url() . 'assets/js/customizer-scripts.js', array('jquery', 'customize-controls'), woo_customer_email_verification()->version, true);
 			
-			$section = isset( $_REQUEST['section'] ) ? wc_clean( $_REQUEST['section'] ) : ''; 
+			$section = isset( $_REQUEST['section'] ) ? woocommerce_clean( $_REQUEST['section'] ) : ''; 
 			// Send variables to Javascript
 			wp_localize_script('evfwr-customizer-scripts', 'evfwr_customizer', array(
 				'ajax_url'              => admin_url('admin-ajax.php'),				
@@ -218,7 +218,7 @@ function woocommerce_evfwr_customizer() {
 	static $instance;
 
 	if ( ! isset( $instance ) ) {		
-		$instance = new wc_evfwr_customizer();
+		$instance = new woocommerce_evfwr_customizer();
 	}
 
 	return $instance;
@@ -229,4 +229,4 @@ function woocommerce_evfwr_customizer() {
  *
  * Backward compatibility.
 */
-wc_evfwr_customizer();
+woocommerce_evfwr_customizer();
