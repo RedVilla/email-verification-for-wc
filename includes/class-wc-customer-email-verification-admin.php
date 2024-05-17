@@ -59,7 +59,10 @@ class WooCommerce_Customer_Email_Verification_Admin
 		add_filter('handle_bulk_actions-users', array($this, 'users_bulk_action_handler'), 10, 3);
 		add_action('admin_notices', array($this, 'user_bulk_action_notices'));
 
-		if (isset($_GET['page']) && 'email-verification-for-wc-registration' == $_GET['page']) {
+		$evfwr_settings_nonce = wp_create_nonce('evfwr_settings_update');
+    		$settings_page_url = add_query_arg(array('page' => 'email-verification-for-wc-registration', 'nonce' => $evfwr_settings_nonce));
+		
+		if (isset($_GET['page']) && 'email-verification-for-wc-registration' == $_GET['page'] && wp_verify_nonce($_GET['nonce'], 'evfwr_settings_update')) {
 			// Hook for add admin body class in settings page
 			add_filter('admin_body_class', array($this, 'evfwr_post_admin_body_class'), 100);
 		}
