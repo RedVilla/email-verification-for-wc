@@ -808,49 +808,57 @@ $admin_url = add_query_arg(
     		echo '</form>';
 	}
 
-	public function filter_users_by_user_by_verified_section($query)
-	{
-		global $pagenow;
-		if (is_admin() && 'users.php' == $pagenow) {
+	public function filter_users_by_user_by_verified_section($query) {
+  	global $pagenow;
 
-			// figure out which button was clicked. The $which in filter_by_job_role()
-			if (isset($_GET['customer_email_verified_top'])) {
-				$top = wc_clean($_GET['customer_email_verified_top']) ? wc_clean($_GET['customer_email_verified_top']) : null;
-			}
+  	if (is_admin() && 'users.php' == $pagenow) {
+    	// Check for nonce presence and validity
+    	if (isset($_GET['_wpnonce']) && wp_verify_nonce($_GET['_wpnonce'], 'filter_users_by_verified_section')) {
 
-			if (isset($_GET['customer_email_verified_bottom'])) {
-				$bottom = wc_clean($_GET['customer_email_verified_bottom']) ? wc_clean($_GET['customer_email_verified_bottom']) : null;
-			}
+      	// figure out which button was clicked
+      	if (isset($_GET['customer_email_verified_top'])) {
+        	$top = wc_clean($_GET['customer_email_verified_top']) ? wc_clean($_GET['customer_email_verified_top']) : null;
+      	}
 
-			if (!empty($top) || !empty($bottom)) {
+      	if (isset($_GET['customer_email_verified_bottom'])) {
+        	$bottom = wc_clean($_GET['customer_email_verified_bottom']) ? wc_clean($_GET['customer_email_verified_bottom']) : null;
+      	}
 
-				$section = !empty($top) ? $top : $bottom;
+      	if (!empty($top) || !empty($bottom)) {
+        $section = !empty($top) ? $top : $bottom;
 
-				if ('true' == $section) {
-					// change the meta query based on which option was chosen
-					$meta_query = array(array(
-						'key' => 'customer_email_verified',
-						'value' => $section,
-						'compare' => 'LIKE'
-					));
-				} else {
-					$meta_query = array(
-						'relation' => 'AND',
-						array(
-							'key' => 'evfwr_email_verification_pin',
-							'compare' => 'EXISTS'
-						),
-						array(
-							'key' => 'customer_email_verified',
-							'value' => $section,
-							'compare' => 'NOT EXISTS'
-						),
-					);
-				}
-				$query->set('meta_query', $meta_query);
-			}
-		}
+        if ('true' == $section) {
+          	// change the meta query based on which option was chosen
+          	$meta_query = array(
+            	array(
+              		'key' => 'customer_email_verified',
+              		'value' => $section,
+              		'compare' => 'LIKE'
+            	)
+          );
+        	} else {
+          	$meta_query = array(
+            		'relation' => 'AND',
+            	array(
+              		'key' => 'evfwr_email_verification_pin',
+              		'compare' => 'EXISTS'
+            	),
+            	array(
+              		'key' => 'customer_email_verified',
+              		'value' => $section,
+              		'compare' => 'NOT EXISTS'
+            		),
+          	);
+        }
+        	$query->set('meta_query', $meta_query);
+      			}
+    			} else {
+      			// Handle invalid nonce (optional: display error message)
+      			wp_die('Invalid request.');
+    			}
+  		}
 	}
+
 
 	public function add_custom_bulk_actions_for_user($bulk_array)
 	{
