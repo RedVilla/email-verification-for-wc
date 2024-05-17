@@ -59,7 +59,7 @@ class WooCommerce_Customer_Email_Verification_Admin
 		add_filter('handle_bulk_actions-users', array($this, 'users_bulk_action_handler'), 10, 3);
 		add_action('admin_notices', array($this, 'user_bulk_action_notices'));
 
-		if (isset($_GET['page']) && 'customer-email-verification-for-woocommerce' == $_GET['page']) {
+		if (isset($_GET['page']) && 'email-verification-for-wc-registration' == $_GET['page']) {
 			// Hook for add admin body class in settings page
 			add_filter('admin_body_class', array($this, 'evfwr_post_admin_body_class'), 100);
 		}
@@ -72,7 +72,7 @@ class WooCommerce_Customer_Email_Verification_Admin
 	*/
 	public function register_woocommerce_menu()
 	{
-		add_submenu_page('woocommerce', 'Customer Verification', 'Email Verification', 'manage_woocommerce', 'customer-email-verification-for-woocommerce', array($this, 'wc_customer_email_verification_page_callback'));
+		add_submenu_page('woocommerce', 'Customer Verification', 'Email Verification', 'manage_woocommerce', 'email-verification-for-wc-registration', array($this, 'wc_customer_email_verification_page_callback'));
 	}
 
 	/*
@@ -80,7 +80,7 @@ class WooCommerce_Customer_Email_Verification_Admin
 	*/
 	public function evfwr_post_admin_body_class($body_class)
 	{
-		$body_class .= ' customer-email-verification-for-woocommerce';
+		$body_class .= ' email-verification-for-wc-registration';
 		return $body_class;
 	}
 
@@ -94,7 +94,7 @@ class WooCommerce_Customer_Email_Verification_Admin
 			return;
 		}
 
-		if ('customer-email-verification-for-woocommerce' != $_GET['page']) {
+		if ('email-verification-for-wc-registration' != $_GET['page']) {
 			return;
 		}
 
@@ -184,11 +184,11 @@ class WooCommerce_Customer_Email_Verification_Admin
 
 		$setting_data = array(
 			'setting_tab' => array(
-				'title'		=> __('Settings', 'customer-email-verification-for-woocommerce'),
+				'title'		=> __('Settings', 'email-verification-for-wc-registration'),
 				'show'      => true,
 				'class'     => 'evfwr_tab_label first_label',
 				'data-tab'  => 'email-verification',
-				'data-label' => __('Settings', 'customer-email-verification-for-woocommerce'),
+				'data-label' => __('Settings', 'email-verification-for-wc-registration'),
 				'name'  => 'tabs',
 			),
 
@@ -296,7 +296,7 @@ class WooCommerce_Customer_Email_Verification_Admin
 									<?php
 									$sanitized_url = esc_url($array['link']);
 									/* translators: %s is the URL to be used for email verification */
-									esc_html(sprintf(__('Click here to verify your email: %s', 'customer-email-verification-for-woocommerce'), $sanitized_url));
+									esc_html(sprintf(__('Click here to verify your email: %s', 'email-verification-for-wc-registration'), $sanitized_url));
 
 									if (!empty($array['select'])) {
 									?>
@@ -404,10 +404,10 @@ class WooCommerce_Customer_Email_Verification_Admin
 			),
 			'evfwr_redirect_page_after_varification' => array(
 				'type'		=> 'dropdown',
-				'title'		=> __('Page to redirect after successful verification', 'customer-email-verification-for-woocommerce'),
+				'title'		=> __('Page to redirect after successful verification', 'email-verification-for-wc-registration'),
 				'class'		=> 'redirect_page border_class',
 				'show' => true,
-				'tooltip'	=> __('select a page to redirect users after successful verification. In case the email verification was during checkout, the user will be directed to checkout', 'customer-email-verification-for-woocommerce'),
+				'tooltip'	=> __('select a page to redirect users after successful verification. In case the email verification was during checkout, the user will be directed to checkout', 'email-verification-for-wc-registration'),
 				'Default'   => get_option('woocommerce_myaccount_page_id'),
 				'options'   => $page_list,
 			),
@@ -437,18 +437,18 @@ class WooCommerce_Customer_Email_Verification_Admin
 		$form_data_2 = array(
 			'evfwr_verification_success_message' => array(
 				'type'		=> 'textarea',
-				'title'		=> __('Email verification success message', 'customer-email-verification-for-woocommerce'),
+				'title'		=> __('Email verification success message', 'email-verification-for-wc-registration'),
 				'show'		=> true,
-				'tooltip'	=> __('the message that will appear on the top of the my-account or checkout page after successful email verification', 'customer-email-verification-for-woocommerce'),
-				'Default'   => __('Your email is verified!', 'customer-email-verification-for-woocommerce'),
+				'tooltip'	=> __('the message that will appear on the top of the my-account or checkout page after successful email verification', 'email-verification-for-wc-registration'),
+				'Default'   => __('Your email is verified!', 'email-verification-for-wc-registration'),
 				'id'        => '',
-				'placeholder' => __('Your email is verified!', 'customer-email-verification-for-woocommerce'),
+				'placeholder' => __('Your email is verified!', 'email-verification-for-wc-registration'),
 				'desc_tip'      => '',
 				'class'     => 'top',
 			),
 			'evfwr_skip_verification_for_selected_roles' => array(
 				'type'		=> 'multiple_select',
-				'title'		=> __('Skip email verification for the selected user roles:', 'customer-email-verification-for-woocommerce'),
+				'title'		=> __('Skip email verification for the selected user roles:', 'email-verification-for-wc-registration'),
 				'options'   => $all_roles_array,
 				'show' => true,
 				'Default'   => '',
@@ -515,8 +515,8 @@ class WooCommerce_Customer_Email_Verification_Admin
 	 */
 	public function add_column_users_list($column)
 	{
-		$column['evfwr_verified'] = __('Email verification', 'customer-email-verification-for-woocommerce');
-		$column['evfwr_action'] = __('Actions', 'customer-email-verification-for-woocommerce');
+		$column['evfwr_verified'] = __('Email verification', 'email-verification-for-wc-registration');
+		$column['evfwr_action'] = __('Actions', 'email-verification-for-wc-registration');
 		return $column;
 	}
 
@@ -639,7 +639,7 @@ class WooCommerce_Customer_Email_Verification_Admin
 
 	public function manual_confirmation_email_success_admin()
 	{
-		$text = __('Verification email successfully sent.', 'customer-email-verification-for-woocommerce');
+		$text = __('Verification email successfully sent.', 'email-verification-for-wc-registration');
 	?>
 		<div class="updated notice">
 			<p><?php echo esc_html($text); ?></p>
@@ -649,7 +649,7 @@ class WooCommerce_Customer_Email_Verification_Admin
 
 	public function manual_evfwr_verify_email_success_admin()
 	{
-		$text = __('User verified successfully.', 'customer-email-verification-for-woocommerce');
+		$text = __('User verified successfully.', 'email-verification-for-wc-registration');
 	?>
 		<div class="updated notice">
 			<p><?php echo esc_html($text); ?></p>
@@ -658,7 +658,7 @@ class WooCommerce_Customer_Email_Verification_Admin
 	}
 	public function manual_evfwr_verify_email_unverify_admin()
 	{
-		$text = __('User unverified.', 'customer-email-verification-for-woocommerce');
+		$text = __('User unverified.', 'email-verification-for-wc-registration');
 	?>
 		<div class="updated notice">
 			<p><?php echo esc_html($text); ?></p>
@@ -671,7 +671,7 @@ class WooCommerce_Customer_Email_Verification_Admin
 	{
 	?>
 		<p class="woocommerce-LostPassword lost_password">
-			<a href="<?php echo esc_url(get_home_url()); ?>?p=reset-verification-email"><?php esc_html('Resend verification email', 'customer-email-verification-for-woocommerce'); ?></a>
+			<a href="<?php echo esc_url(get_home_url()); ?>?p=reset-verification-email"><?php esc_html('Resend verification email', 'email-verification-for-wc-registration'); ?></a>
 		</p>
 	<?php
 	}
@@ -690,10 +690,10 @@ class WooCommerce_Customer_Email_Verification_Admin
 
 		<table class="form-table evfwr-admin-menu">
 			<th colspan="2">
-				<h4 class="evfwr_admin_user"><?php esc_html('Customer verification', 'customer-email-verification-for-woocommerce'); ?></h4>
+				<h4 class="evfwr_admin_user"><?php esc_html('Customer verification', 'email-verification-for-wc-registration'); ?></h4>
 			</th>
 			<tr>
-				<th class="evfwr-admin-padding"><label for="year_of_birth"><?php esc_html('Email verification status:', 'customer-email-verification-for-woocommerce'); ?></label></th>
+				<th class="evfwr-admin-padding"><label for="year_of_birth"><?php esc_html('Email verification status:', 'email-verification-for-wc-registration'); ?></label></th>
 				<td>
 					<?php
 					if (!woo_customer_email_verification()->is_admin_user($user_id)  && !woo_customer_email_verification()->is_verification_skip_for_user($user_id)) {
@@ -718,15 +718,15 @@ class WooCommerce_Customer_Email_Verification_Admin
 						$verify_btn_css   = ('true' == $verified) ? 'display:none' : '';
 						$unverify_btn_css = ('true' != $verified) ? 'display:none' : '';
 
-						$text = '<span class="dashicons dashicons-yes evfwr-admin-dashicons" style="color:#ffffff; margin-right: 2px;"></span><span>' . __('Verify email manually', 'customer-email-verification-for-woocommerce') . '</span>';
+						$text = '<span class="dashicons dashicons-yes evfwr-admin-dashicons" style="color:#ffffff; margin-right: 2px;"></span><span>' . __('Verify email manually', 'email-verification-for-wc-registration') . '</span>';
 
 						echo '<a style="' . esc_html($verify_btn_css) . '" class="button-primary evfwr-admin-verify-button evfwr_dashicons_icon_verify_user" id="' . esc_html($user_id) . '" wp_nonce="' . esc_html(wp_create_nonce('wc_evfwr_email')) . ' "> ' . wp_kses_post($text) . '</a>';
 
-						$text = '<span class="dashicons dashicons-image-rotate evfwr-admin-dashicons evfwr-rotate" ></span><span> ' . __('Resend verification email', 'customer-email-verification-for-woocommerce') . '</span>';
+						$text = '<span class="dashicons dashicons-image-rotate evfwr-admin-dashicons evfwr-rotate" ></span><span> ' . __('Resend verification email', 'email-verification-for-wc-registration') . '</span>';
 
 						echo '<a style="' . esc_html($verify_btn_css) . '" class="button-primary evfwr-admin-resend-button evfwr_dashicons_icon_resend_email" id="' . esc_html($user_id) . '" wp_nonce="' . esc_html(wp_create_nonce('wc_evfwr_email')) . ' "> ' . wp_kses_post($text) . '</a>';
 
-						$text = '<span class="dashicons dashicons-no evfwr-admin-dashicons"></span><span>' . __('Un-verify email', 'customer-email-verification-for-woocommerce') . '</span>';
+						$text = '<span class="dashicons dashicons-no evfwr-admin-dashicons"></span><span>' . __('Un-verify email', 'email-verification-for-wc-registration') . '</span>';
 
 						echo '<a style="' . esc_html($unverify_btn_css) . '" class="button-primary evfwr-admin-unverify-button evfwr_dashicons_icon_unverify_user" id="' . esc_html($user_id) . '" wp_nonce="' . esc_html(wp_create_nonce('wc_evfwr_email')) . '">' . wp_kses_post($text) . '</a>';
 					}
@@ -773,11 +773,11 @@ class WooCommerce_Customer_Email_Verification_Admin
 
 
 		// generate options
-		$options = '<option value="true" ' . $true_selected . '>' . __('Verified', 'customer-email-verification-for-woocommerce') . '</option>
-			<option value="false" ' . $false_selected . '>' . __('Non verified', 'customer-email-verification-for-woocommerce') . '</option>';
+		$options = '<option value="true" ' . $true_selected . '>' . __('Verified', 'email-verification-for-wc-registration') . '</option>
+			<option value="false" ' . $false_selected . '>' . __('Non verified', 'email-verification-for-wc-registration') . '</option>';
 
 		// combine template and options
-		$select = sprintf($st, $which, __('User verification', 'customer-email-verification-for-woocommerce'), $options);
+		$select = sprintf($st, $which, __('User verification', 'email-verification-for-wc-registration'), $options);
 
 		// output <select> and submit button
 		echo esc_html($select);
@@ -831,8 +831,8 @@ class WooCommerce_Customer_Email_Verification_Admin
 	public function add_custom_bulk_actions_for_user($bulk_array)
 	{
 
-		$bulk_array['verify_users_email'] = __('Verify users email', 'customer-email-verification-for-woocommerce');
-		$bulk_array['send_verification_email'] = __('Send verification email', 'customer-email-verification-for-woocommerce');
+		$bulk_array['verify_users_email'] = __('Verify users email', 'email-verification-for-wc-registration');
+		$bulk_array['send_verification_email'] = __('Send verification email', 'email-verification-for-wc-registration');
 		return $bulk_array;
 	}
 
