@@ -168,9 +168,10 @@ class WooCommerce_Customer_Email_Verification_Email {
 			$evfwr_enable_email_verification = get_option( 'evfwr_enable_email_verification', 1 );
 			
 			if ( isset( $_REQUEST['evfwr-new-account-email-preview'] ) && '1' == $_REQUEST['evfwr-new-account-email-preview'] ) {
-				$preview = true;
-			} else {
 				$preview = false;
+			}
+				if ( wp_verify_nonce( $_REQUEST['_wpnonce'], 'evfwr_preview_email' ) ) {
+					$preview = true;
 			}
 			
 			if ( ( !woo_customer_email_verification()->is_admin_user( $user_id )  && !woo_customer_email_verification()->is_verification_skip_for_user( $user_id ) && 1 == $evfwr_enable_email_verification ) || $preview) {
