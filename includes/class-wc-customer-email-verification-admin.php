@@ -176,19 +176,24 @@ $admin_url = add_query_arg(
 
 	public function get_html_menu_tab($arrays)
 	{
-		$tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : 'email-verification';
-		foreach ((array) $arrays as $id => $array) {
-			if (isset($array['type']) && 'link' == $array['type']) {
-		?>
-				<a class="menu_evfwr_link" href="<?php echo esc_url($array['link']); ?>"><?php esc_html($array['title']); ?></a>
-			<?php
-			} else {
-			?>
-				<input class="evfwr_tab_input" id="<?php echo esc_html($id); ?>" name="<?php echo esc_html($array['name']); ?>" type="radio" data-tab="<?php echo esc_html($array['data-tab']); ?>" data-label="<?php echo esc_html($array['data-label']); ?>" <?php echo ($tab == $array['data-tab'] ? 'checked' : ''); ?> />
-				<label class="<?php echo esc_html($array['class']); ?>" for="<?php echo esc_html($id); ?>"><?php echo esc_html($array['title']); ?></label>
-		<?php
-			}
-		}
+  	// Check for a valid nonce with specific action name 
+  	if (!wp_verify_nonce($_GET['_wpnonce'], 'evfwr_menu_tab_nonce')) {
+    		wp_die('Invalid nonce'); // Die if nonce verification fails
+  	}
+
+  	$tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : 'email-verification';
+  		foreach ((array) $arrays as $id => $array) {
+    			if (isset($array['type']) && 'link' == $array['type']) {
+  				?>
+      				<a class="menu_evfwr_link" href="<?php echo esc_url($array['link']); ?>"><?php esc_html($array['title']); ?></a>
+    				<?php
+    				} else {
+    				?>
+      				<input class="evfwr_tab_input" id="<?php echo esc_html($id); ?>" name="<?php echo esc_html($array['name']); ?>" type="radio" data-tab="<?php echo esc_html($array['data-tab']); ?>" data-label="<?php echo esc_html($array['data-label']); ?>" <?php echo ($tab == $array['data-tab'] ? 'checked' : ''); ?> />
+      				<label class="<?php echo esc_html($array['class']); ?>" for="<?php echo esc_html($id); ?>"><?php echo esc_html($array['title']); ?></label>
+    				<?php
+    			}
+  		}
 	}
 
 	public function get_evfwr_tab_settings_data()
