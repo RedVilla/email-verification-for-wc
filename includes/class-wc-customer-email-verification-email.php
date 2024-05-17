@@ -223,9 +223,11 @@ class WooCommerce_Customer_Email_Verification_Email {
 	 * If automatic login setting is enabled in plugin setting screen, then the user is forced loggedin.
 	 */
 	public function authenticate_user_by_email() {
+
+		$nonce = wp_create_nonce( 'evfwr_email_verification' );
 		
-		if ( isset( $_GET['cusomer_email_verify'] ) && '' !== $_GET['cusomer_email_verify'] ) { // WPCS: input var ok, CSRF ok.
-			$user_meta = explode( '@', base64_decode( wc_clean( $_GET['cusomer_email_verify'] ) ) ); // WPCS: input var ok, CSRF ok.
+		if ( isset( $_GET['cusomer_email_verify'] ) && '' !== $_GET['cusomer_email_verify'] && wp_verify_nonce( $_GET['nonce'], 'evfwr_email_verification' ) ) { // WPCS: input var ok, CSRF ok.
+			$user_meta = explode( '@', base64_decode( wc_clean( $_GET['cusomer_email_verify'] ) ) );
 			if ( 'true' === get_user_meta( (int) $user_meta[1], 'customer_email_verified', true ) ) {
 				$this->is_user_already_verified = true;
 			}
