@@ -4,7 +4,7 @@ Tags: woocommerce account verification, email verification, email validation, cu
 Requires at least: 5.3
 Requires PHP: 7.2
 Tested up to: 6.5.3
-Stable tag: 1.0
+Stable tag: 1.0.0
 License: GPLv2 
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,5 +32,5 @@ This plugin will reduce WooCommerce registration spam by requiring users to veri
 
 == Changelog ==
 
-= 1.0 =
+= 1.0.0 =
 * Initial version.
