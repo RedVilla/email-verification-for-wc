@@ -77,12 +77,22 @@ class evfwr_New_Account_Email_Customizer {
 	}
 	
 	/**
-	 * Checks to see if we are opening our custom customizer controls
-	 *	 
-	 * @return bool
-	 */
+ 	* Checks to see if we are opening our custom customizer controls
+ 	*  
+ 	* @return bool
+ 	*/
 	public static function is_own_customizer_request() {
-		return isset( $_REQUEST['section'] ) && 'evfwr_main_controls_section' === $_REQUEST['section'];
+  		if ( ! isset( $_REQUEST['section'] ) || 'evfwr_main_controls_section' !== $_REQUEST['section'] ) {
+    			return false;
+  		}
+
+  		// Check for presence of nonce and its validity
+  		$nonce = isset( $_REQUEST['_wpnonce'] ) ? $_REQUEST['_wpnonce'] : '';
+  		if ( ! wp_verify_nonce( $nonce, 'evfwr_customizer_nonce' ) ) {
+    			return false;
+  		}
+
+  		return true;
 	}
 	
 	/**
