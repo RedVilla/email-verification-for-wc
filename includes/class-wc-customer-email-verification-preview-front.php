@@ -72,19 +72,23 @@ class WooCommerce_Customer_Email_Verification_Preview {
 	* EVFWR Page preview
 	*/
 	public function preview_evfwr_page() {
-		
-		$action = ( isset( $_REQUEST[ 'action' ] ) ? wc_clean( $_REQUEST[ 'action' ] ) : '' );
-		
-		if ( 'preview_evfwr_verification_lightbox' != $action ) {
-			return;
-		}
-		
-		wp_head();				
-		include 'views/front/preview_evfwr_popup_page.php';
-		get_footer();
-		exit;
+
+  	if ( ! isset( $_REQUEST['nonce'] ) || ! wp_verify_nonce( $_REQUEST['nonce'], 'evfwr_preview_nonce' ) ) {
+    		wp_die( 'Invalid nonce' );
+  	}
+
+  		$action = ( isset( $_REQUEST[ 'action' ] ) ? wc_clean( $_REQUEST[ 'action' ] ) : '' );
+
+  		if ( 'preview_evfwr_verification_lightbox' != $action ) {
+    			return;
+  	}
+
+  		wp_head();
+  		include 'views/front/preview_evfwr_popup_page.php';
+  		get_footer();
+  		exit;
 	}
-	
+
 	/**
 	 * Return Email verification widget message
 	 * 
