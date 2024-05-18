@@ -136,32 +136,36 @@ class WooCommerce_evfwr_Customizer {
 	 * Add css and js for customizer
 	*/
 	public function enqueue_customizer_scripts() {
-		if ( isset( $_REQUEST['evfwr-customizer'] ) && '1' === $_REQUEST['evfwr-customizer'] ) {
-			wp_enqueue_style( 'wp-color-picker' );	
-			wp_enqueue_style('evfwr-customizer-styles', woo_customer_email_verification()->plugin_dir_url() . 'assets/css/customizer-styles.css', array(), woo_customer_email_verification()->version  );
-			wp_enqueue_script('evfwr-customizer-scripts', woo_customer_email_verification()->plugin_dir_url() . 'assets/js/customizer-scripts.js', array('jquery', 'customize-controls'), woo_customer_email_verification()->version, true);
-			
-			$section = isset( $_REQUEST['section'] ) ? woocommerce_clean( $_REQUEST['section'] ) : ''; 
-			// Send variables to Javascript
-			wp_localize_script('evfwr-customizer-scripts', 'evfwr_customizer', array(
-				'ajax_url'              => admin_url('admin-ajax.php'),				
-				'trigger_click'        => '#accordion-section-' . $section . ' h3',
-				'seperate_email_preview_url'    => $this->seperate_email_preview_url(),		
-				'my_account_email_preview_url'  => $this->my_account_email_preview_url(),
-				'verification_widget_preview_url'    => $this->verification_widget_preview_url(),
-				'verification_widget_message_preview_url'    => $this->verification_widget_message_preview_url(),
-			));
+  		if ( isset( $_REQUEST['evfwr-customizer'] ) && '1' === $_REQUEST['evfwr-customizer'] && wp_verify_nonce( $_REQUEST['_wpnonce'], 'evfwr_customizer_nonce' ) ) {
 
-			wp_localize_script('wp-color-picker', 'wpColorPickerL10n', array(
-				'clear'            => __( 'Clear' ),
-				'clearAriaLabel'   => __( 'Clear color' ),
-				'defaultString'    => __( 'Default' ),
-				'defaultAriaLabel' => __( 'Select default color' ),
-				'pick'             => __( 'Select Color' ),
-				'defaultLabel'     => __( 'Color value' ),
-			));			
-		}
+    			// Enqueue scripts and styles as usual
+    			wp_enqueue_style( 'wp-color-picker' );
+    			wp_enqueue_style('evfwr-customizer-styles', woo_customer_email_verification()->plugin_dir_url() . 'assets/css/customizer-styles.css', array(), woo_customer_email_verification()->version );
+    			wp_enqueue_script('evfwr-customizer-scripts', woo_customer_email_verification()->plugin_dir_url() . 'assets/js/customizer-scripts.js', array('jquery', 'customize-controls'), woo_customer_email_verification()->version, true);
+
+    			$section = isset( $_REQUEST['section'] ) ? woocommerce_clean( $_REQUEST['section'] ) : '';
+
+    			// Send variables to Javascript
+    			wp_localize_script('evfwr-customizer-scripts', 'evfwr_customizer', array(
+      				'ajax_url'       => admin_url('admin-ajax.php'),
+      				'trigger_click'    => '#accordion-section-' . $section . ' h3',
+      				'seperate_email_preview_url'  => $this->seperate_email_preview_url(),
+      				'my_account_email_preview_url' => $this->my_account_email_preview_url(),
+      				'verification_widget_preview_url'  => $this->verification_widget_preview_url(),
+      				'verification_widget_message_preview_url'  => $this->verification_widget_message_preview_url(),
+    			));
+
+    			wp_localize_script('wp-color-picker', 'wpColorPickerL10n', array(
+      				'clear'      => __( 'Clear' ),
+      				'clearAriaLabel'  => __( 'Clear color' ),
+      				'defaultString'  => __( 'Default' ),
+      				'defaultAriaLabel' => __( 'Select default color' ),
+      				'pick'       => __( 'Select Color' ),
+      				'defaultLabel'   => __( 'Color value' ),
+    			));
+  		}
 	}
+
 	
 	/**
 	 * Get Customizer URL
