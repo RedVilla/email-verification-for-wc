@@ -57,12 +57,23 @@ class evfwr_New_Account_Email_Customizer {
 	}	
 	
 	/**
-	 * Checks to see if we are opening our custom customizer preview
-	 *	 
-	 * @return bool
-	 */
+ 	* Checks to see if we are opening our custom customizer preview
+ 	*  
+ 	* @return bool
+ 	*/
 	public static function is_own_preview_request() {
-		return isset( $_REQUEST['evfwr-new-account-email-preview'] ) && '1' === $_REQUEST['evfwr-new-account-email-preview'];
+  		if ( ! isset( $_REQUEST['evfwr-new-account-email-preview'] ) || '1' !== $_REQUEST['evfwr-new-account-email-preview'] ) {
+    			return false;
+  		}
+
+  		// Check for the nonce with proper action name
+  		$nonce = wp_get_current_user() ? wp_create_nonce( 'evfwr_preview_nonce' ) : '';
+  		if ( ! $nonce || ! wp_verify_nonce( $nonce, 'evfwr_preview_nonce' ) ) {
+    			return false;
+  		}
+
+  		// If both conditions are met, it's a valid request
+  		return true;
 	}
 	
 	/**
