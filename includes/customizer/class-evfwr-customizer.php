@@ -60,7 +60,22 @@ class evwfr_Initialise_Customizer_Settings {
 	 * @return bool
 	 */
 	public static function is_own_preview_request() {
-		return isset( $_REQUEST['evwfr-email-preview'] ) && '1' === $_REQUEST['evwfr-email-preview'];
+
+  		// Check if the 'evwfr-email-preview' key exists in the request data
+  		if ( ! isset( $_REQUEST['evwfr-email-preview'] ) ) {
+    			return false;
+  		}
+
+  		// Check if the value is '1'
+  		if ( '1' !== $_REQUEST['evwfr-email-preview'] ) {
+    			return false;
+  		}
+
+  		// Generate a unique nonce with the action 'evwfr_email_preview'
+  		$nonce = wp_create_nonce( 'evwfr_email_preview' );
+
+  		// Check if the 'evwfr-email-preview' nonce from request data is valid 
+  		return wp_verify_nonce( $_REQUEST['evwfr-email-preview'], 'evwfr_email_preview' );
 	}
 	
 	/**
