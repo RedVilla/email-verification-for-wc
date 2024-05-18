@@ -85,17 +85,21 @@ class evfwr_New_Account_Email_Customizer {
  	* @return bool
  	*/
 	public static function is_own_customizer_request() {
-  		if ( ! isset( $_REQUEST['section'] ) || 'evfwr_main_controls_section' !== $_REQUEST['section'] ) {
+  		// Check for both GET and POST requests as some customizer actions might use either
+  		if ( ! ( isset( $_GET['page'] ) && 'customize.php' === $_GET['page'] ) && ! ( isset( $_POST['page'] ) && 'customize.php' === $_POST['page'] ) ) {
     			return false;
   		}
 
-  		// Check for presence of nonce **and** use wp_create_nonce instead of empty string
-  		if ( ! isset( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'evfwr_customizer_nonce' ) ) {
+  		// Check for the section name and add nonce verification
+  		$nonce_action = 'evfwr_verification_widget_messages'; // Replace with unique action name for your section
+  		$nonce_name = "evfwr_customizer_{$nonce_action}_nonce";
+  		if ( ! isset( $_REQUEST['section'] ) || 'evfwr_verification_widget_messages' !== $_REQUEST['section'] || ! wp_verify_nonce( $_REQUEST[ $nonce_name ], $nonce_action ) ) {
     			return false;
   		}
 
   		return true;
 	}
+
 	
 	/**
 	 * Get Customizer URL
