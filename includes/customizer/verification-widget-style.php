@@ -24,8 +24,12 @@ class evfwr_Verification_Widget_Style {
 	 * @return bool
 	 */
 	public static function is_own_preview_request() {
-		return isset( $_REQUEST['action'] ) && 'preview_evfwr_verification_lightbox' === $_REQUEST['action'];
+  		// Check for both action and nonce existence and validity
+  		return isset( $_REQUEST['action'] ) 
+         	&& 'preview_evfwr_verification_lightbox' === $_REQUEST['action'] 
+         	&& wp_verify_nonce( $_REQUEST['_wpnonce'], 'evfwr_verification_preview_nonce' ); // Replace 'evfwr_verification_preview_nonce' with a unique identifier for your functionality
 	}
+
 	
 	/**
 	 * Checks to see if we are opening our custom customizer controls
