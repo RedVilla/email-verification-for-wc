@@ -62,19 +62,22 @@ class evfwr_New_Account_Email_Customizer {
  	* @return bool
  	*/
 	public static function is_own_preview_request() {
-  		if ( ! isset( $_REQUEST['evfwr-new-account-email-preview'] ) || '1' !== $_REQUEST['evfwr-new-account-email-preview'] ) {
-    			return false;
+  		if ( ! isset( $_REQUEST['action'] ) ) {
+    			return false; // Early exit if no action is set
   		}
 
-  		// Check for the nonce with proper action name
-  		$nonce = wp_get_current_user() ? wp_create_nonce( 'evfwr_preview_nonce' ) : '';
-  		if ( ! $nonce || ! wp_verify_nonce( $nonce, 'evfwr_preview_nonce' ) ) {
-    			return false;
-  		}
+  		// Validate and sanitize the action before using it
+  		$action = sanitize_key( $_REQUEST['action'] );
 
-  		// If both conditions are met, it's a valid request
-  		return true;
-	}
+  		// Check for valid nonces for both actions (unchanged)
+  		if ( ! ( wp_verify_nonce( $_REQUEST['_wpnonce'], 'preview_evfwr_verification_lightbox' ) ||
+         		wp_verify_nonce( $_REQUEST['_wpnonce'], 'guest_user_preview_evfwr_verification_lightbox' ) ) ) {
+    				return false; // Invalid nonce
+  			}
+
+  			// If both nonce checks fail, the code continues here assuming the actions are valid
+  			return ( $action === 'preview_evfwr_verification_lightbox' || $action === 'guest_user_preview_evfwr_verification_lightbox' );
+		}
 	
 	/**
  	* Checks to see if we are opening our custom customizer controls
