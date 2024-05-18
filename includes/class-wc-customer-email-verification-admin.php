@@ -107,7 +107,7 @@ class WooCommerce_Customer_Email_Verification_Admin
 
     		$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
 
-    		wp_register_script('select2', WC()->plugin_url() . '/assets/js/select2/select2.full' . $suffix . '.js', array('jquery'), '4.0.3');
+    		wp_register_script('select2', WC()->plugin_url() . '/assets/js/select2/select2.full' . $suffix . '.js', array('jquery'), '4.0.3', true);
     		wp_enqueue_script('select2');
     		wp_enqueue_style('wp-color-picker');
     		wp_enqueue_style('customer_email_verification_styles', woo_customer_email_verification()->plugin_dir_url() . 'assets/css/admin.css', array(), woo_customer_email_verification()->version);
