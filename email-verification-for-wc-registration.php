@@ -5,7 +5,7 @@
  * Plugin Name: Email Verification for WC Registration
  * Plugin URI: https://redvilla.tech/download/apps/plugins/email-verification-for-wc-registration/ 
  * Description: Reduce registration spam by requiring customers to verify their email addresses before they Create an account.
- * Version: 1.0
+ * Version: 1.0.0
  * Author: redvilla
  * Author URI: https://redvilla.tech 
  * License: GPL-2.0+
