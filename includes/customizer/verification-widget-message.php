@@ -61,7 +61,12 @@ class evfwr_Verification_Widget_Message {
 	 * @return bool
 	 */
 	public static function is_own_preview_request() {
-		return isset( $_REQUEST['action'] ) && ( 'preview_evfwr_verification_lightbox' === $_REQUEST['action'] || 'guest_user_preview_evfwr_verification_lightbox' === $_REQUEST['action'] );
+		$action = isset( $_REQUEST['action'] ) ? sanitize_key( $_REQUEST['action'] ) : '';
+
+		$valid_actions = array( 'preview_evfwr_verification_lightbox', 'guest_user_preview_evfwr_verification_lightbox' );
+
+		// Check if action is valid and nonce is present and verified
+		return in_array( $action, $valid_actions ) && wp_verify_nonce( $_REQUEST['_wpnonce'], $action );
 	}
 	
 	/**
