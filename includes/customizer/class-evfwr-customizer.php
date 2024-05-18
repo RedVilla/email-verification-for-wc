@@ -79,13 +79,19 @@ class evwfr_Initialise_Customizer_Settings {
 	}
 	
 	/**
-	 * Checks to see if we are opening our custom customizer controls
-	 *	 
-	 * @return bool
-	 */
+ 	* Checks to see if we are opening our custom customizer controls
+ 	*  
+ 	* @return bool
+ 	*/
 	public static function is_own_customizer_request() {
-		return isset( $_REQUEST['section'] ) && 'evwfr_main_controls_section' === $_REQUEST['section'];
+  		// Check for presence of both section and security nonce
+  		if ( ! isset( $_REQUEST['section'] ) || ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'evwfr_customizer_nonce' ) ) {
+    			return false;
+  		}
+
+  		return 'evwfr_main_controls_section' === $_REQUEST['section'];
 	}
+
 	
 	/**
 	 * Get Customizer URL	 
