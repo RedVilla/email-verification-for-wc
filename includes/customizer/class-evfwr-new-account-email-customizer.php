@@ -86,9 +86,8 @@ class evfwr_New_Account_Email_Customizer {
     			return false;
   		}
 
-  		// Check for presence of nonce and its validity
-  		$nonce = isset( $_REQUEST['_wpnonce'] ) ? $_REQUEST['_wpnonce'] : '';
-  		if ( ! wp_verify_nonce( $nonce, 'evfwr_customizer_nonce' ) ) {
+  		// Check for presence of nonce **and** use wp_create_nonce instead of empty string
+  		if ( ! isset( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'evfwr_customizer_nonce' ) ) {
     			return false;
   		}
 
