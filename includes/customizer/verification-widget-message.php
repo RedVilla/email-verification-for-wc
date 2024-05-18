@@ -70,13 +70,19 @@ class evfwr_Verification_Widget_Message {
 	}
 	
 	/**
-	 * Checks to see if we are opening our custom customizer controls
-	 *	 
-	 * @return bool
-	 */
+ 	* Checks to see if we are opening our custom customizer controls
+ 	* 
+ 	* @return bool
+ 	*/
 	public static function is_own_customizer_request() {
-		return isset( $_REQUEST['section'] ) && 'evfwr_verification_widget_messages' === $_REQUEST['section'];
+    		// Check if the nonce field is present and valid
+    		if (!isset($_REQUEST['_wpnonce']) || !wp_verify_nonce($_REQUEST['_wpnonce'], 'your_nonce_action')) {
+        		return false;
+    		}
+
+    		return isset($_REQUEST['section']) && 'evfwr_verification_widget_messages' === $_REQUEST['section'];
 	}
+
 	
 	/**
 	 * Get Customizer URL	 
