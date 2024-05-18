@@ -32,14 +32,20 @@ class evfwr_Verification_Widget_Style {
 
 	
 	/**
-	 * Checks to see if we are opening our custom customizer controls
-	 *	 
-	 * @return bool
-	 */
+ 	* Checks to see if we are opening our custom customizer controls
+ 	* 
+ 	* @return bool
+ 	*/
 	public static function is_own_customizer_request() {
-		return isset( $_REQUEST['section'] ) && 'evfwr_verification_widget_style' === $_REQUEST['section'];
-	}		
-}
+  		// Check for nonce first
+  		if ( ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'evfwr_customizer_verification' ) ) {
+    			return false;
+  		}
+
+  		// Original logic to check for section
+  		return isset( $_REQUEST['section'] ) && 'evfwr_verification_widget_style' === $_REQUEST['section'];
+	}
+
 
 /**
  * Initialise our Customizer settings
