@@ -57,14 +57,16 @@ class WooCommerce_Customer_Email_Verification_Preview {
 	/**
 	 * Include front js and css
 	*/
-	public function evfwr_pro_front_styles() {				
-		
-		$action = ( isset( $_REQUEST[ 'action' ] ) ? wc_clean( $_REQUEST[ 'action' ] ) : '' );
-		
-		if ( 'preview_evfwr_verification_lightbox' == $action ) {
-			wp_enqueue_style( 'evfwr_front_style' );								
-		}		
+	public function evfwr_pro_front_styles() {
+
+  		$action = isset( $_REQUEST['action'] ) ? sanitize_key( $_REQUEST['action'] ) : '';
+
+  		// Check for presence of a valid nonce for the specific action
+  		if ( 'preview_evfwr_verification_lightbox' === $action && wp_verify_nonce( $_REQUEST['_wpnonce'], 'evfwr_verification_preview' ) ) {
+    		wp_enqueue_style( 'evfwr_front_style' );
+  		}
 	}
+
 	
 	/*
 	* EVFWR Page preview
